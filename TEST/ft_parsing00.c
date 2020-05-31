@@ -20,19 +20,39 @@ int				is_whitespace(int c)
 	return (0);
 }
 
-void		ft_parse_map(int fd, t_read *args)
+int		ft_parse_resolution(char *str, int fd, t_read args)
 {
-	char *str;
-	int		i;
+	int i;
 
-	str = args->get_line;
 	i = 0;
 	while (str[i])
 	{
 		if (str[i] == 'R')
-			args->count = 1;
-		if (str[i] != 'R')
-			args->count = 2;
+			return(1);;
 		i++;
 	}
+}
+
+int		ft_parse_resol(char *str, int fd, t_read args)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == 'S')
+			return(2);;
+		i++;
+	}
+}
+
+
+void		ft_parse_map(int fd, char *str)
+{
+	t_read	args;
+
+	args.count = ft_parse_resolution(str, fd, args);
+	args.recount = ft_parse_resol(str, fd, args);
+		printf("count : %d\n", args.count);
+		printf("recount : %d\n", args.recount);
 }

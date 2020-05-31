@@ -16,15 +16,18 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "mlx.h"
-# include "math.h"
+// # include "mlx.h"
+// include "math.h"
 # include "get_next_line.h"
 
 typedef	struct		s_read{
 		char 	*get_line;
 		int		count;
+		int		recount;
 }					t_read;
 
-void			ft_parse_map(int fd, t_read *args);
+void			ft_parse_map(int fd, char *str);
+int		ft_parse_resolution(char *str, int fd, t_read args);
+int		ft_parse_resol(char *str, int fd, t_read args);
 
 #endif

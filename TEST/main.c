@@ -30,9 +30,10 @@ int	main()
 	while (ret > 0)
 	{
 		ret = get_next_line(fd, &args.get_line);	
-		printf("args : %s\n", args.get_line);
-		ft_parse_map(fd, &args);
-		printf("args ; %d\n", args.count);
+		printf("str : %s\n", args.get_line);
+		ft_parse_map(fd, args.get_line);
+	//	printf("count ; %d\n", args.count);
+	//	printf("recount; %d\n", args.recount);
 		free(args.get_line);
 	}
 	close(fd);
