@@ -54,8 +54,8 @@ int			ft_parse_resolution1(char *str, int fd, t_read args)
 
 int		ft_err(int i)
 {
-	write(1, "Error\n", 1);
-	write(1, "try again", 1);
+	write(1, "Error\n", 6);
+	write(1, "try again\n", 10);
 	return (0);
 }
 
@@ -63,22 +63,24 @@ void		ft_parse_tabx(int fd, t_read *args)
 {
 	int	ret;
 	char *line;
+	int		i;
 
 	args->x = 0;
 	args->y = 0;
 	ret = 1;
+	i = 0;
 	line = args->get_line;
 // ajouter la condition du flag 1 si et seulement si les donnees anterieurs sont valides.
 	while (ret > 0)
 	{
 		ret = get_next_line(fd, &line);
-			if (ft_isalpha(*line) == 1)
-				ft_err(1);
-			if (ft_isdigit(*line) || is_whitespace(*line))
-			{	
-				args->y += 1;	
-				args->x = (ft_strlen((char*)line) > args->x) ? ft_strlen((char*)line) : args->x;	
-			}
+			if (*line == ' ')
+				line++;
+			if (ft_isalpha(*line) || )
+				{	
+					args->y += 1;	
+					args->x = (ft_strlen((char*)line) > args->x) ? ft_strlen((char*)line) : args->x;	
+				}
 	}
 	free (line);
 	close(fd);
@@ -100,7 +102,7 @@ void	make_scene(t_read *args, int fd)
 		ret = get_next_line(fd, &args->get_line);
 			args->map[i] = args->get_line;
 	//	printf("tab = %s\n", args->map[i]);
-	//	printf("line = %s\n", args->get_line);
+		printf("line = %s\n", args->get_line);
 //		flood_fill(args->map, "102NSWE", '9')
 		free(args->get_line);
 	}

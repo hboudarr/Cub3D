@@ -1,31 +1,35 @@
 CHM		=	./
 
+LIBFT	= ./libft/libft.a
+
 SRCS	=
 
 OBJS	= ${SRCS:.c=.o}
 
-HEADERS	= ./includes/cub3d.h
+HEADERS	= ./includes./cub3d.h
 
 CFLAGS	= -Wall -Wextra -Werror
 
 CC		= gcc
 
-NAME	=	cub3d.a
-
-LIB = -L ./libft -lft
+NAME	=	libftcub3d.a
 
 .c.o:
-			${CC} ${CFLAGS} -I ${HEADERS} ${LIB}  ./libft/libft.a -o -c $< -o ${<:.c=.o}
+			${CC} ${CFLAGS} -I ${HEADERS} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
+			$(MAKE) -C ./libft
+			cp libft/libft.a $(NAME)
 			ar rc ${NAME} ${OBJS}
 
 all:		${NAME}
 
 clean:
-			rm -f ${OBJS}
+	$(MAKE) clean -C ./libft
+	rm -f ${OBJS}
 
 fclean:		clean
+			$(MAKE) clean -C ./libft
 			rm -f ${NAME}
 
 re:			fclean all
