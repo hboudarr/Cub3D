@@ -6,11 +6,23 @@
 /*   By: hboudarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:49:01 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/06/08 15:57:43 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/06/11 14:15:32 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+/*
+
+open le fichier
+
+envoyer le fichier lu dans une fonction qui prend en paramettre la structure + le fichier fd
+creer un tableau d'int initialiser a 0 pour le modifier des qu on recoit une info pleine.
+boucle while tcheck tab == 0
+(renvoyer 0 si au moins un element est a 0, sinon renvoi 1)
+gnl ligne apres ligne
+
+
+
 
 int		ft_parse_resolution(char *str, int fd, t_read args)
 {
@@ -52,8 +64,36 @@ int			ft_parse_resolution1(char *str, int fd, t_read args)
 	return (1);
 }
 
+void		ft_parse_tabx(int fd, t_read *args)
+{
+	int	ret;
+	char *line;
+	int		i;
+
+	args->x = 0;
+	args->y = 0;
+	ret = 1;
+	i = 0;
+	line = args->get_line;
+// ajouter la condition du flag 1 si et seulement si les donnees anterieurs sont valides.
+	while (ret > 0)
+	{
+		ret = get_next_line(fd, &line);
+			if (ft_isalpha(*line))
+				line++;
+			if (ft_isdigit(*line))
+				{
+					args->y += 1;
+					args->x = (ft_strlen((char*)line) > (unsigned long)args->x) ? ft_strlen((char*)line) : args->x;
+				}
+	}
+	free (line);
+	close(fd);
+}
+*/
 int		ft_err(int i)
 {
+	i = 0;
 	write(1, "Error\n", 6);
 	write(1, "try again\n", 10);
 	return (0);
@@ -74,12 +114,12 @@ void		ft_parse_tabx(int fd, t_read *args)
 	while (ret > 0)
 	{
 		ret = get_next_line(fd, &line);
-			if (*line == ' ')
+			if (ft_isalpha(*line))
 				line++;
-			if (ft_isalpha(*line) || )
+			if (ft_isdigit(*line))
 				{	
 					args->y += 1;	
-					args->x = (ft_strlen((char*)line) > args->x) ? ft_strlen((char*)line) : args->x;	
+					args->x = (ft_strlen((char*)line) > (unsigned long)args->x) ? ft_strlen((char*)line) : args->x;	
 				}
 	}
 	free (line);
@@ -101,12 +141,11 @@ void	make_scene(t_read *args, int fd)
 		args->map[i] = malloc(sizeof(char*) * (args->x + 1));
 		ret = get_next_line(fd, &args->get_line);
 			args->map[i] = args->get_line;
-	//	printf("tab = %s\n", args->map[i]);
+//		printf("map = %s\n", args->map[i]);
 		printf("line = %s\n", args->get_line);
 //		flood_fill(args->map, "102NSWE", '9')
 		free(args->get_line);
 	}
-	close (fd);
 }
 
 /*
@@ -143,7 +182,7 @@ void  flood_fill(char **tab, char *str, char c)
     }
 }
 */
-
+/*
 void		ft_parse_map(int fd, char *str)
 {
 	t_read	args;
@@ -156,4 +195,4 @@ void		ft_parse_map(int fd, char *str)
 //		y++;
 
 //	args.north = ft_parse_north(str, fd, args);
-}
+}*/
