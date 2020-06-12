@@ -6,7 +6,7 @@
 /*   By: hboudarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:09:58 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/06/11 20:41:00 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/06/12 17:56:50 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_error(int nb)
 	if (nb == 1)
 		write(1, "Can't open your file\n", 21);
 	if (nb == 2)
-		write(1, "An error has occurred\n", 22);
+		write(1, "An error has occurred with gnl\n", 31);
 	if (nb == 3)
 		write(1, "End of file\n", 12);
 	if (nb == 4)
@@ -35,6 +35,9 @@ int		ft_error(int nb)
 	if (nb == 10)
 		write(1, "Wrong information for floor\n", 28);
 	if (nb == 11)
-		write(1, "Wrong information for celling\n", 30);	
+		write(1, "Wrong information for celling\n", 30);
+	if (nb == 12)
+		write(1, "Wrong map information\n", 22);
+//	exit(0); // changer le retour de fonction par void pour exite.
 	return (0);
 }

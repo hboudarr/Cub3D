@@ -6,7 +6,7 @@
 /*   By: hboudarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/06/11 21:16:24 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/06/12 17:56:56 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@
 
 // STRUCTURE DE PARSING
 typedef	struct		s_read{
+		char	*s;
+		char	**map;
+		int		i;
+		int		count;
+		int		x;
+		int		y;
+		int		tab[8];
 		int		resol[2];
 		char	*no;
 		char	*so;
@@ -42,23 +49,30 @@ typedef	struct		s_read{
 
 // ERROR FONCTION
 
-int		ft_error(int nb);
+//void		ft_error(int nb); pour le exit.
+int			ft_error(int nb);
 
-// PARSING FONCTION
+// 1st PART OF PARSING FUNCTIONS
 
 void		ft_read(t_read *args, int fd);
 int			ft_check_element(int tab[8]);
-void		ft_analyse_line(t_read *args, char *str, int tab[8]);
-void		ft_get_resol(t_read *args, char *str, int i, int tab[8]);
-void		ft_get_north(t_read *north, char *str, int i, int tab[8]);
-void		ft_get_south(t_read *args, char *str, int i, int tab[8]);
-void		ft_get_south(t_read *args, char *str, int i, int tab[8]);
-void		ft_get_west(t_read *args, char *str, int i, int tab[8]);
-void		ft_get_east(t_read *args, char *str, int i, int tab[8]);
-void		ft_get_sprite(t_read *args, char *str, int i, int tab[8]);
-void		ft_get_floor(t_read *args, char *str, int i,int tab[8]);
-void		ft_get_celling(t_read *args, char *str, int i, int tab[8]);
+void		ft_analyse_line(t_read *args, char *str);
+void		ft_get_resol(t_read *args, char *str, int i);
+void		ft_get_north(t_read *north, char *str, int i);
+void		ft_get_south(t_read *args, char *str, int i);
+void		ft_get_south(t_read *args, char *str, int i);
+void		ft_get_west(t_read *args, char *str, int i);
+void		ft_get_east(t_read *args, char *str, int i);
+void		ft_get_sprite(t_read *args, char *str, int i);
+void		ft_get_floor(t_read *args, char *str, int i);
+void		ft_get_celling(t_read *args, char *str, int i);
 void		ft_free_split(char **tab);
+// 2nd PART OF PARSING FUNCTIONS
+
+void		ft_make_range(t_read *args);
+void		ft_read_second_part(t_read *args, int fd);
+void		ft_analyse_str(t_read *args);
+int			ft_check_alphanum(char *str, char *letter);
 
 // STRDUP + SPLIT
 char		*ft_strdup(const char *src);
