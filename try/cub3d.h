@@ -6,7 +6,7 @@
 /*   By: hboudarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/06/12 17:56:56 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/06/15 18:27:50 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,17 @@
 #endif 
 
 // STRUCTURE DE PARSING
+
 typedef	struct		s_read{
 		char	*s;
 		char	**map;
+		char 	**mapdup;
 		int		i;
 		int		count;
 		int		x;
 		int		y;
+		int		posX;
+		int		posY;
 		int		tab[8];
 		int		resol[2];
 		char	*no;
@@ -49,8 +53,8 @@ typedef	struct		s_read{
 
 // ERROR FONCTION
 
-//void		ft_error(int nb); pour le exit.
-int			ft_error(int nb);
+void		ft_error(int nb); 
+//int			ft_error(int nb);
 
 // 1st PART OF PARSING FUNCTIONS
 
@@ -67,9 +71,15 @@ void		ft_get_sprite(t_read *args, char *str, int i);
 void		ft_get_floor(t_read *args, char *str, int i);
 void		ft_get_celling(t_read *args, char *str, int i);
 void		ft_free_split(char **tab);
+int			ft_check_nb(char *str1, char *str2);
+void		ft_check_value(char *str);
+void		ft_check_resolution(int i, int j);
+
 // 2nd PART OF PARSING FUNCTIONS
 
 void		ft_make_range(t_read *args);
+void		ft_make_map(t_read *args);
+int			ft_flood_fill(char **map, int x, int y, int max);
 void		ft_read_second_part(t_read *args, int fd);
 void		ft_analyse_str(t_read *args);
 int			ft_check_alphanum(char *str, char *letter);

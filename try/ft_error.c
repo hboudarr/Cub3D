@@ -6,13 +6,13 @@
 /*   By: hboudarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:09:58 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/06/12 17:56:50 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/06/15 16:37:17 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "cub3d.h"
 
-int		ft_error(int nb)
+void		ft_error(int nb)
 {
 	if (nb == 1)
 		write(1, "Can't open your file\n", 21);
@@ -38,6 +38,8 @@ int		ft_error(int nb)
 		write(1, "Wrong information for celling\n", 30);
 	if (nb == 12)
 		write(1, "Wrong map information\n", 22);
-//	exit(0); // changer le retour de fonction par void pour exite.
-	return (0);
+	if (nb == 13)
+		write(1, "Wrong information\n", 18);
+	exit(0); // changer le retour de fonction par void pour exite.
+//	return (0);
 }
