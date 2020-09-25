@@ -1,3 +1,5 @@
+
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -62,7 +64,7 @@ int	ft_check_nb(char *str1, char *str2)
 
 void	ft_check_resolution(int i, int j)
 {
-	if (i < 0 || i > 1400)
+	if (i < 0 || i > 2000)
 		ft_error(13);
 	if (j < 0 || j > 2570)
 		ft_error(13);

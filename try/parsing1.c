@@ -36,6 +36,44 @@ int		ft_check_alphanum(char *str, char *letter)
 	return (1);
 }
 
+void	ft_orient2(t_read *args, char c)
+{
+	if (c == 'W')
+	{
+		args->dirx = -1;
+		args->diry = 0;
+		args->planex = 0;
+		args->planey = -0.66;
+	}
+	if (c == 'E')
+	{
+		args->dirx = 1;
+		args->diry = 0;
+		args->planex = 0;
+		args->planey = 0.66;
+	}
+}
+
+void		ft_orient(t_read *args, char c)
+{
+	if (c == 'N')
+	{
+		args->dirx = 0;
+		args->diry = -1;
+		args->planex = 0.66;
+		args->planey = 0;
+	}
+	if (c == 'S')
+	{
+		args->dirx = 0;
+		args->diry = 1;
+		args->planex = -0.66;
+		args->planey = 0;
+	}
+	ft_orient2(args, c);
+
+}
+
 void	ft_analyse_str(t_read *args)
 {
 	int i;
@@ -47,9 +85,10 @@ void	ft_analyse_str(t_read *args)
 	{
 		if (args->s[i] == 'N' || args->s[i] == 'S' || args->s[i] == 'E' || args->s[i] == 'W')
 		{
-			args->posY = (args->y - 1) + 0.5;
-			args->posX = i + 0.5; // ajouter la direction du joueur // N S E W
+			args->posy = (args->y - 1) + 0.5;
+			args->posx = i + 0.5; // ajouter la direction du joueur // N S E W
 			args->count += 1;
+			ft_orient(args, args->s[i]);
 		}
 		i++;
 	}
@@ -99,6 +138,7 @@ void	ft_make_map(t_read *args)
 	else
 	{
 		tmp = args->mapdup;
+		
 		if (!(args->mapdup = malloc(sizeof(char *) * (args->y))))
 			ft_error(4);
 		while (i < args->y - 1)
@@ -140,7 +180,7 @@ int		ft_flood_fill(char **map, int x, int y, int max)
 		return (1);
 	return (0);
 }
-
+/*
 void	ft_free_map(char **tab, t_read *args)
 {
 	int i;
@@ -152,6 +192,22 @@ void	ft_free_map(char **tab, t_read *args)
 		i++;
 	}
 	free(tab);
+	// tab = NULL;
+}
+*/
+void	ft_free_map(t_read *args)
+{
+	int i;
+
+	i = 0;
+	while (i < args->y)
+	{
+		free(args->mapdup[i]);
+		args->mapdup[i] = NULL;
+		i++;
+	}
+	free(args->mapdup);
+	args->mapdup = NULL;
 }
 
 void	ft_read_second_part(t_read *args, int fd)
@@ -173,25 +229,17 @@ void	ft_read_second_part(t_read *args, int fd)
 			ft_analyse_str(args);
 			ft_make_range(args);
 			ft_make_map(args);
+			//printf("map[%ld]\tmapdup[]\n", args->map - args->mapdup);
 		}
 	}
-	i = 0;
-	while (i < args->y)
-	{
-		printf("map: %s\n", args->mapdup[i]);
-		i++;
-	}
-	i = ft_flood_fill(args->mapdup, args->posX, args->posY, args->y);
+	i = ft_flood_fill(args->mapdup, args->posx, args->posy, args->y);
 	if (i == -1)
 		ft_error(12);
-	i = 0;
-	while (i < args->y)
-	{
-		printf("map: %s\n", args->mapdup[i]);
-		i++;
-	}
+	
 	if (i == -1)
 		ft_error(12);
-ft_free_map(args->mapdup, args);
+//printf("%p\n", args->map);	
+//printf("%p\n", args->mapdup);	
+ft_free_map(args);
 	close (fd);	
 }

@@ -17,7 +17,9 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <mlx.h>
+# include <math.h>
 # include "get_next_line.h"
+# include <limits.h>
 
 
 # ifndef BUFER_SIZE
@@ -25,6 +27,8 @@
 #endif 
 
 // STRUCTURE DE PARSING
+
+void ft_bzero(void *s, int size);
 
 typedef	struct		s_read{
 		char	*s;
@@ -34,8 +38,8 @@ typedef	struct		s_read{
 		int		count;
 		int		x;
 		int		y;
-		int		posX;
-		int		posY;
+		double		posx;
+		double		posy;
 		int		tab[8];
 		int		resol[2];
 		char	*no;
@@ -46,9 +50,48 @@ typedef	struct		s_read{
 		int		f[3];
 		int		c[3];
 		char	**split;
+		double	dirx;
+		double 	diry;
+		double 	planex;
+		double	planey;
+		void	*win_ptr;
 		void	*mlx_ptr;
+		int		wth;
+		int		hth;
+		double	raydirx;
+		double	raydiry;
+		double	camerax;
+		double	cameray;
+		int		mapx;
+		int		mapy;
+		double 	sidedistx;
+      	double 	sidedisty;
+		double 	deltadistx;
+		double 	deltadisty;
+		double	perpwalldist;
+		int		stepx;
+		int		stepy;
+		int		hit;
+		int		side;
+		int		linehth;
+		int		drawstart;
+		int		drawend;
+		unsigned int	color;
+		char        *addr;
+   		int         bits_per_pixel;
+    	int         line_length;
+    	int         endian;
+		void		*img;
+		int			xcoor;
+		int			ycoor;
+
+
+
+
 }					t_read;
 
+
+void	draw_to_image(t_read *data, int x, int y, int color);
 
 
 // ERROR FONCTION
@@ -58,6 +101,7 @@ void		ft_error(int nb);
 
 // 1st PART OF PARSING FUNCTIONS
 
+void  	    ft_init(t_read *args);
 void		ft_read(t_read *args, int fd);
 int			ft_check_element(int tab[8]);
 void		ft_analyse_line(t_read *args, char *str);
@@ -83,8 +127,11 @@ int			ft_flood_fill(char **map, int x, int y, int max);
 void		ft_read_second_part(t_read *args, int fd);
 void		ft_analyse_str(t_read *args);
 int			ft_check_alphanum(char *str, char *letter);
+void		ft_orient(t_read *args, char c);
+void		ft_orient2(t_read *args, char c);
 
 // STRDUP + SPLIT
+
 char		*ft_strdup(const char *src);
 char		**ft_split(char const *s, char c);
 
@@ -94,5 +141,6 @@ int		ft_isalpha(int c);
 int		is_whitespace(int c);
 int		ft_atoi(const char *nptr);
 int		ft_isdigit(int c);
+void    ft_init(t_read *args);
 
 #endif

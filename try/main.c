@@ -37,7 +37,7 @@ void	ft_get_celling(t_read *args, char *str, int i)
 	args->c[2] = ft_atoi(args->split[2]);
 	args->tab[7] = 1;
 	printf("Celling 1 : %d\n", args->c[0]);
-	printf("Celling 2 : %d\n", args->c[1]);
+	printf("Celling 2 : %d\n", args->c[1]);g
 	printf("Celling 3 : %d\n", args->c[2]);
 	ft_free_split(args->split);
 }*/
