@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 10:55:20 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/06/15 17:55:47 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/09/29 16:14:05 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,10 @@ void	ft_analyse_str(t_read *args)
 		if (args->s[i] == 'N' || args->s[i] == 'S' || args->s[i] == 'E' || args->s[i] == 'W')
 		{
 			args->posy = (args->y - 1) + 0.5;
-			args->posx = i + 0.5; // ajouter la direction du joueur // N S E W
+			args->posx = i + 0.5;
 			args->count += 1;
 			ft_orient(args, args->s[i]);
+			args->s[i] = '0';
 		}
 		i++;
 	}

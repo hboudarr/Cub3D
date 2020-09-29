@@ -85,8 +85,8 @@ void	ft_get_resol(t_read *args, char *str, int i)
 			ft_error(13);
 		if (args->resol[0] <= 0 || args->resol[1] <= 0)	
 			ft_error(13);
-		printf("Resol 2 : %d\n", args->resol[0]);
-		printf("Resol 1 : %d\n", args->resol[1]);
+	//	printf("Resol 1 : %d\n", args->resol[0]);
+	//	printf("Resol 2 : %d\n", args->resol[1]);
 		args->tab[0] = 1;
 		ft_free_split(args->split);
 }
@@ -203,9 +203,9 @@ void	ft_get_floor(t_read *args, char *str, int i)
 	args->f[1] = ft_atoi(args->split[1]);
 	args->f[2] = ft_atoi(args->split[2]);
 	args->tab[6] = 1;
-	printf("Floor 1 : %d\n", args->f[0]);
-	printf("Floor 2 : %d\n", args->f[1]);
-	printf("Floor 3 : %d\n", args->f[2]);
+//	printf("Floor 1 : %d\n", args->f[0]);
+//	printf("Floor 2 : %d\n", args->f[1]);
+//	printf("Floor 3 : %d\n", args->f[2]);
 	ft_free_split(args->split);
 }
 
@@ -226,9 +226,9 @@ void	ft_get_celling(t_read *args, char *str, int i)
 	args->c[1] = ft_atoi(args->split[1]);
 	args->c[2] = ft_atoi(args->split[2]);
 	args->tab[7] = 1;
-	printf("Celling 1 : %d\n", args->c[0]);
-	printf("Celling 2 : %d\n", args->c[1]);
-	printf("Celling 3 : %d\n", args->c[2]);
+//	printf("Celling 1 : %d\n", args->c[0]);
+//	printf("Celling 2 : %d\n", args->c[1]);
+//	printf("Celling 3 : %d\n", args->c[2]);
 	ft_free_split(args->split);
 }
 void	ft_analyse_line(t_read *args, char *str)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/06/15 18:27:50 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/09/29 15:41:17 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@
 # include "get_next_line.h"
 # include <limits.h>
 
+# define W 13
+# define S 1
+# define A 0
+# define D 2
+# define ESC 53
+# define LEFT 123
+# define RIGHT 124
+# define MOVESPEED 0.15
+# define ROTSPEED 0.025
 
 # ifndef BUFER_SIZE
 # define BUFFER_SIZE 7
@@ -82,8 +91,18 @@ typedef	struct		s_read{
     	int         line_length;
     	int         endian;
 		void		*img;
+		int			padding;
 		int			xcoor;
 		int			ycoor;
+		double		olddirx;
+		int			padding2;
+		double		oldplanex;
+		int			padding3;
+		int			up;
+		int			down;
+		int			left;
+		int			right;
+
 
 
 
@@ -142,5 +161,17 @@ int		is_whitespace(int c);
 int		ft_atoi(const char *nptr);
 int		ft_isdigit(int c);
 void    ft_init(t_read *args);
+
+// RAY
+
+int		ft_raycasting(t_read *args);
+int		ft_key_press(int key, t_read *args);
+int		ft_key_release(int key, t_read 	*args);
+
+// MOVE
+
+int 	ft_hook(t_read  *args);
+void  	ft_move_fwd(t_read *args);
+
 
 #endif
