@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/09/29 15:41:17 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/09/30 16:51:17 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@
 # define S 1
 # define A 0
 # define D 2
+# define FWD 126
+# define BWD 125
 # define ESC 53
-# define LEFT 123
-# define RIGHT 124
+# define ROTLEFT 123
+# define ROTRIGHT 124
 # define MOVESPEED 0.15
 # define ROTSPEED 0.025
 
@@ -37,7 +39,33 @@
 
 // STRUCTURE DE PARSING
 
-void ft_bzero(void *s, int size);
+typedef	struct		s_texures{
+
+	void					*tex_ptr;
+	int						*tex_data;
+	int						bpp;
+	int						size_line;
+	int						endian;
+	int						width;
+	int						height;
+
+}					t_textures;
+
+typedef	struct		s_tex{
+		int		x;
+		int		y;
+		double	step_tex;
+		double	tex_pos;
+		double	rh;
+}					t_tex;
+
+
+
+typedef	struct		s_rgb{
+		int	r;
+		int	g;
+		int	b;
+}					t_rgb;
 
 typedef	struct		s_read{
 		char	*s;
@@ -98,19 +126,22 @@ typedef	struct		s_read{
 		int			padding2;
 		double		oldplanex;
 		int			padding3;
-		int			up;
-		int			down;
+		int			fwd;
+		int			bwd;
 		int			left;
 		int			right;
-
-
-
-
+		int			rotleft;
+		int			rotright;
+		unsigned int	ceiling;
+		unsigned int	floor;
+		t_rgb			rgb;
+		t_tex			tex;
+		t_textures			tex1;
+		t_textures			tex2;
+		t_textures			tex3;
+		t_textures			tex4;
 
 }					t_read;
-
-
-void	draw_to_image(t_read *data, int x, int y, int color);
 
 
 // ERROR FONCTION
@@ -132,7 +163,9 @@ void		ft_get_west(t_read *args, char *str, int i);
 void		ft_get_east(t_read *args, char *str, int i);
 void		ft_get_sprite(t_read *args, char *str, int i);
 void		ft_get_floor(t_read *args, char *str, int i);
+void		ft_get_floor_rgb(t_read *args);
 void		ft_get_celling(t_read *args, char *str, int i);
+void		ft_get_ceiling_rgb(t_read *args);
 void		ft_free_split(char **tab);
 int			ft_check_nb(char *str1, char *str2);
 void		ft_check_value(char *str);
@@ -161,17 +194,24 @@ int		is_whitespace(int c);
 int		ft_atoi(const char *nptr);
 int		ft_isdigit(int c);
 void    ft_init(t_read *args);
+void 	ft_bzero(void *s, int size);
 
 // RAY
 
 int		ft_raycasting(t_read *args);
+void	ft_draw_to_image(t_read *data, int x, int y, int color);
 int		ft_key_press(int key, t_read *args);
 int		ft_key_release(int key, t_read 	*args);
+int  	ft_display_color(t_read *args, int x);
+void    ft_wall_tex(t_read *args);
 
 // MOVE
 
 int 	ft_hook(t_read  *args);
 void  	ft_move_fwd(t_read *args);
-
+void  	ft_move_bwd(t_read *args);
+void  	ft_move_left(t_read *args);
+void  	ft_move_right(t_read *args);
+void	ft_rotate(t_read *args, int advance);
 
 #endif

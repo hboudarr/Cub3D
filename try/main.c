@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:07:45 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/09/29 15:51:13 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/09/30 13:44:25 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,36 @@
 
 int		ft_key_press(int key, t_read *args)
 {
-	if (key == W)
-		args->up = 1;
-	if (key == S)
-		args->down = 1;
+	if (key == W || key == FWD)
+		args->fwd = 1;
+	if (key == S || key == BWD)
+		args->bwd = 1;
 	if (key == A)
 		args->left = 1;
 	if (key == D)
 		args->right = 1;
+	if (key == ROTLEFT)
+		args->rotleft = 1;
+	if (key == ROTRIGHT)
+		args->rotright = 1;
+	
 	return (0);
-
 }
 
 int		ft_key_release(int key, t_read 	*args)
 {
-	if (key == W)
-		args->up = 0;
-	if (key == S)
-		args->down = 0;
+	if (key == W || key == FWD)
+		args->fwd = 0;
+	if (key == S || key == BWD)
+		args->bwd = 0;
 	if (key == A)
 		args->left = 0;
 	if (key == D)
 		args->right = 0;
+	if (key == ROTLEFT)
+		args->rotleft = 0;
+	if (key == ROTRIGHT)
+		args->rotright = 0;
 	return (0);
 }
 

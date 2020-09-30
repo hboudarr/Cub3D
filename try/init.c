@@ -9,4 +9,7 @@ void    ft_init(t_read *args)
     args->c[0] = -1;
     args->c[1] = -1;
     args->c[2] = -1;
+    args->rgb.r = 0;
+    args->rgb.g = 0;
+    args->rgb.b = 0;
 }

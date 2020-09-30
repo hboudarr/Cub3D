@@ -186,6 +186,16 @@ void	ft_check_value(char *str)
 		ft_error(10);
 }
 
+void		ft_get_floor_rgb(t_read *args)
+{
+	args->rgb.r = args->f[0];
+	args->rgb.g = args->f[1];
+	args->rgb.b = args->f[2];
+	args->floor = args->rgb.b + args->rgb.g * 256 + args->rgb.r * 65536;
+//	printf("%u\n", args->floor);
+//	printf("[%d]\t[%d]\t[%d]\n", args->rgb.r,args->rgb.g,args->rgb.b);
+}
+
 void	ft_get_floor(t_read *args, char *str, int i)
 {
 	args->split = ft_split(str, ' ');
@@ -203,12 +213,19 @@ void	ft_get_floor(t_read *args, char *str, int i)
 	args->f[1] = ft_atoi(args->split[1]);
 	args->f[2] = ft_atoi(args->split[2]);
 	args->tab[6] = 1;
-//	printf("Floor 1 : %d\n", args->f[0]);
-//	printf("Floor 2 : %d\n", args->f[1]);
-//	printf("Floor 3 : %d\n", args->f[2]);
+	ft_get_floor_rgb(args);
 	ft_free_split(args->split);
 }
 
+void		ft_get_ceiling_rgb(t_read *args)
+{
+	args->rgb.r = args->c[0];
+	args->rgb.g = args->c[1];
+	args->rgb.b = args->c[2];
+	args->ceiling = args->rgb.b + args->rgb.g * 256 + args->rgb.r * 65536;
+//	printf("%u\n", args->ceiling);
+//	printf("[%d]\t[%d]\t[%d]\n", args->rgb.r,args->rgb.g,args->rgb.b);
+}
 void	ft_get_celling(t_read *args, char *str, int i)
 {
 	args->split = ft_split(str, ' ');
@@ -225,10 +242,8 @@ void	ft_get_celling(t_read *args, char *str, int i)
 	args->c[0] = ft_atoi(args->split[0]);
 	args->c[1] = ft_atoi(args->split[1]);
 	args->c[2] = ft_atoi(args->split[2]);
+	ft_get_ceiling_rgb(args);
 	args->tab[7] = 1;
-//	printf("Celling 1 : %d\n", args->c[0]);
-//	printf("Celling 2 : %d\n", args->c[1]);
-//	printf("Celling 3 : %d\n", args->c[2]);
 	ft_free_split(args->split);
 }
 void	ft_analyse_line(t_read *args, char *str)
@@ -243,7 +258,6 @@ void	ft_analyse_line(t_read *args, char *str)
 //	{
 		while (str[i] == ' ')
 		i++;
-//	}
 	if (str[i] == 'R')
 		ft_get_resol(args, str, i);
 	else if (str[i] == 'N' && str[i + 1] == 'O')

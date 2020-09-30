@@ -1,8 +1,55 @@
 #include "cub3d.h"
 
-void	draw_to_image(t_read *data, int x, int y, int color)
+void	ft_draw_to_image(t_read *data, int x, int y, int color)
 {
 	*(unsigned int *)(data->addr + y * data->line_length + x * data->bits_per_pixel / 8) = color;
+}
+
+ /* while (args->ycoor < args->drawend)
+    {
+      draw_to_image(args, x, args->ycoor, args->color);
+      args->ycoor++;
+    }*/
+/*
+int   ft_display_color(t_read *args, int x)
+{
+    int y;
+
+    y = 0;
+    while (y < args->drawstart)
+    {
+      draw_to_image(args->img, x, y, args->ceiling);
+      y++;
+    }
+    while (args->ycoor < args->drawend)
+    {
+      // env->rc.tex.y = (int)env->rc.tex_pos & (64 - 1);
+      draw_to_image(args->img, x, y, args->color);
+      y++;
+    }
+    while (y < args->resol[1])
+    {
+      draw_to_image(args->img, x, y, args->floor);
+      y++;
+    }
+    return (1);
+}*/
+void    ft_wall_tex(t_read *args)
+{
+	double wallx;
+
+	if (args->side == 0)
+		wallx = args->posy + args->perpwalldist * args->diry;
+	else
+		wallx = args->posx + args->perpwalldist * args->dirx;
+	wallx -= (int)wallx;
+	args->tex.x = (int)(wallx * 64);
+	if (args->perpwalldist == 0 && args->dirx > 0)
+		args->tex.x = 64 - args->tex.x - 1;
+	else if (args->perpwalldist == 1 && args->dirx < 0)
+		args->tex.x = 64 - args->tex.x - 1;
+	args->tex.step_tex = 1.0 * 64 / args->tex.rh;
+	args->tex.tex_pos = (args->drawstart - args->resol[1] / 2 + args->tex.rh / 2) * args->tex.step_tex;
 }
 
 int ft_raycasting(t_read *args)
@@ -92,15 +139,36 @@ int ft_raycasting(t_read *args)
     if(args->drawend >= args->resol[1])
       args->drawend = args->resol[1] - 1;
   
-    args->color = 0x00FF0000;
-    if (args->side == 1) 
-      args->color = args->color / 2;
-    args->ycoor = args->drawstart;
+    ft_wall_tex(args);
+   // args->color = 0x00FF0000;
+   // if (args->side == 1) 
+    //  args->color = args->color / 2;
+    // args->ycoor = args->drawstart;
+
+  
+    args->ycoor = 0;
+    while (args->ycoor < args->drawstart)
+    {
+      ft_draw_to_image(args, x, args->ycoor, args->ceiling);
+      args->ycoor++;
+    }
     while (args->ycoor < args->drawend)
+    {
+      // env->rc.tex.y = (int)env->rc.tex_pos & (64 - 1);
+      ft_draw_to_image(args, x, args->ycoor, args->color);
+      args->ycoor++;
+    }
+    
+    while (args->ycoor < args->resol[1])
+    {
+      ft_draw_to_image(args, x, args->ycoor, args->floor);
+      args->ycoor++;
+    }
+  /*  while (args->ycoor < args->drawend)
     {
       draw_to_image(args, x, args->ycoor, args->color);
       args->ycoor++;
-    }
+    }*/
     x++;
   }
 
@@ -116,7 +184,8 @@ int ft_raycasting(t_read *args)
   */
   //ßmlx_loop(args->mlx_ptr);
   mlx_put_image_to_window(args->mlx_ptr, args->win_ptr, args->img, 0, 0);
-
+  ft_hook(args);
+/*
   if (args->up == 1)
 	{
 		if (args->map[(int)(args->posy)][(int)(args->posx + args->dirx
@@ -146,6 +215,6 @@ int ft_raycasting(t_read *args)
 			args->posy -= -args->dirx * MOVESPEED;
 		if (args->map[(int)(args->posy)][(int)(args->posx - args->diry * MOVESPEED)] == '0')
 			args->posx -= args->diry * MOVESPEED;
-	}
+	} */
   return(1);
 }
