@@ -2,12 +2,18 @@ CHM		=	./
 
 LIBFT	= ./libft/libft.a
 
-SRCS	= ./try/parsing.c\
-		  ./try/parsing1.c\
+SRCS	= ./parsing.c\
+		  ./parsing1.c\
+		  ./ft_error.c\
+		  ./hook.c\
+		  ./init.c\
+		  ./myray.c\
+		  ./tex.c\
+		  ./utile.c\
 
 OBJS	= ${SRCS:.c=.o}
 
-HEADERS	= ./try/cub3d.h
+HEADERS	= ./cub3d.h
 
 CFLAGS	= -Wall -Wextra -Werror
 

@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:07:45 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/09/30 13:44:25 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/01 14:11:58 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,11 @@ int	main (int ac, char **av)
   	ft_init(args);
   	if ((fd = open(av[1], O_RDONLY)) < 0)
 		ft_error(1);
+	args->mlx_ptr = mlx_init();
+//	ft_textures_data(args,args->tex1);
   	ft_read(args, fd);
   	ft_read_second_part(args, fd);
- 	args->mlx_ptr = mlx_init();
+//	 	args->mlx_ptr = mlx_init();
  	args->win_ptr = mlx_new_window(args->mlx_ptr, args->resol[0], args->resol[1], "CUB3D");
  	//args->img = mlx_new_image(args->mlx_ptr, args->resol[0], args->resol[1]);
  //	args->addr = mlx_get_data_addr(args->img, &args->bits_per_pixel, &args->line_length, &args->endian);
@@ -68,9 +70,11 @@ int	main (int ac, char **av)
  //	mlx_put_image_to_window(args->mlx_ptr, args->win_ptr, args->img, 0, 0);
   	args->img = mlx_new_image(args->mlx_ptr, args->resol[0], args->resol[1]);
   	args->addr = mlx_get_data_addr(args->img, &args->bits_per_pixel, &args->line_length, &args->endian);
+	ft_textures_data(args,args->tex1);
 	mlx_hook(args->win_ptr, 2, 1L<<0, ft_key_press, args);
 	mlx_hook(args->win_ptr, 3, 1L<<1, ft_key_release, args);
 	mlx_loop_hook(args->mlx_ptr, ft_raycasting, args);
+//	ft_textures_data(args,args->tex1);
 	//ft_raycasting(args);
  	mlx_loop(args->mlx_ptr);
 }

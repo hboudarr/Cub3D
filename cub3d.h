@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/01 12:35:54 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/01 15:40:22 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdio.h>
 # include <mlx.h>
 # include <math.h>
-# include "get_next_line.h"
 # include <limits.h>
+# include "libft.h"
 
 # define W 13
 # define S 1
