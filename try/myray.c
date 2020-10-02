@@ -2,7 +2,11 @@
 
 void	ft_draw_to_image(t_read *data, int x, int y, int color)
 {
-	*(unsigned int *)(data->addr + y * data->line_length + x * data->bits_per_pixel / 8) = color;
+	// *((int *)data->addr + y * data->line_length + x) = color;
+   	*(unsigned int *)(data->addr + y * data->line_length + x * data->bits_per_pixel / 8) = color;
+   //  data->addr[(y * data->resol[0] + x)] = color;
+
+     //img->img_data[p_y * img->width + p_x] = color;
 }
 
  /* while (args->ycoor < args->drawend)
@@ -159,9 +163,9 @@ int ft_raycasting(t_read *args)
     }
     while (args->ycoor < args->drawend)
     {
-      args->tex.y = (int)args->tex.tex_pos;
+      args->tex.y = (int)args->tex.tex_pos & args->tex1->height - 1;;
       args->tex.tex_pos += args->tex.step_tex;
-      if (args->tex.y < 0 || args->tex.y >= args->tex1->height)
+     if (args->tex.y < 0 || args->tex.y >= args->tex1->height)
         args->tex.y = (args->tex.y < 0) ? 0 : args->tex1->height - 1;
       pix_color(args);
       ft_draw_to_image(args, x, args->ycoor, args->color);
@@ -173,6 +177,16 @@ int ft_raycasting(t_read *args)
       ft_draw_to_image(args, x, args->ycoor, args->floor);
       args->ycoor++;
     }
+    /*
+    int i, j;
+
+    i = -1;
+    while (++i < args->tex1->width)
+    {
+      j = -1;
+      while (++j < args->tex1->height)
+      ft_draw_to_image(args, i, j, *((int *)args->tex1->tex_data + i * args->tex1->width + j));
+    }*/
    /*  while (args->ycoor < args->drawend)
     {
       draw_to_image(args, x, args->ycoor, args->color);
