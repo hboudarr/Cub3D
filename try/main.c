@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:07:45 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/01 14:11:58 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/05 16:45:53 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	main (int ac, char **av)
  //	mlx_put_image_to_window(args->mlx_ptr, args->win_ptr, args->img, 0, 0);
   	args->img = mlx_new_image(args->mlx_ptr, args->resol[0], args->resol[1]);
   	args->addr = mlx_get_data_addr(args->img, &args->bits_per_pixel, &args->line_length, &args->endian);
-	ft_textures_data(args,args->tex1);
+	ft_textures_data(args);
 	mlx_hook(args->win_ptr, 2, 1L<<0, ft_key_press, args);
 	mlx_hook(args->win_ptr, 3, 1L<<1, ft_key_release, args);
 	mlx_loop_hook(args->mlx_ptr, ft_raycasting, args);

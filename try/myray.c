@@ -38,27 +38,49 @@ int   ft_display_color(t_read *args, int x)
     }
     return (1);
 }*/
+/*
+void    ft_wall_tex(t_read *args)
+{
+	double wallx;
+
+	if (args->side == 0)
+		wallx = args->posy + args->perpwalldist * args->raydiry;
+	else
+		wallx = args->posx + args->perpwalldist * args->raydirx;
+	wallx -= (int)wallx;
+	args->tex.x = (int)(wallx * args->tex1->width);
+	if (args->perpwalldist == 0 && args->dirx > 0)
+		args->tex.x = args->tex1->width - args->tex.x - 1;
+	else if (args->perpwalldist == 1 && args->dirx < 0)
+		args->tex.x = args->tex1->width - args->tex.x - 1;
+  if (args->side == 0 && args->raydirx > 0)
+    args->tex.x = args->tex1->width - args->tex.x - 1;
+  if (args->side == 1 && args->raydiry < 0)
+    args->tex.x = args->tex1->width - args->tex.x - 1;
+	args->tex.step_tex = 1.0 * args->tex1->height / args->linehth;
+	args->tex.tex_pos = (args->drawstart - args->resol[1] / 2 + args->linehth / 2) * args->tex.step_tex;
+}*/
 
 void    ft_wall_tex(t_read *args)
 {
 	double wallx;
 
 	if (args->side == 0)
-		wallx = args->posy + args->perpwalldist * args->diry;
+		wallx = args->posy + args->perpwalldist * args->raydiry;
 	else
-		wallx = args->posx + args->perpwalldist * args->dirx;
+		wallx = args->posx + args->perpwalldist * args->raydirx;
 	wallx -= (int)wallx;
-	args->tex.x = (int)(wallx * args->tex1->width);
+	args->tex.x = (int)(wallx * args->wthtext);
 	if (args->perpwalldist == 0 && args->dirx > 0)
-		args->tex.x = args->tex1->width - args->tex.x;
+		args->tex.x = args->wthtext - args->tex.x - 1;
 	else if (args->perpwalldist == 1 && args->dirx < 0)
-		args->tex.x = args->tex1->width - args->tex.x;
+		args->tex.x = args->wthtext - args->tex.x - 1;
   if (args->side == 0 && args->raydirx > 0)
-    args->tex.x = args->tex1->width - args->tex.x - 1;
+    args->tex.x = args->wthtext - args->tex.x - 1;
   if (args->side == 1 && args->raydiry < 0)
-    args->tex.x = args->tex1->width - args->tex.x - 1;
-	args->tex.step_tex = 1.0 * args->tex1->width / args->tex.rh;
-	args->tex.tex_pos = (args->drawstart - args->resol[1] / 2 + args->tex.rh / 2) * args->tex.step_tex;
+    args->tex.x = args->wthtext - args->tex.x - 1;
+	args->tex.step_tex = 1.0 * args->hthtext / args->linehth;
+	args->tex.tex_pos = (args->drawstart - args->resol[1] / 2 + args->linehth / 2) * args->tex.step_tex;
 }
 
 int ft_raycasting(t_read *args)
@@ -154,7 +176,6 @@ int ft_raycasting(t_read *args)
     //  args->color = args->color / 2;
     // args->ycoor = args->drawstart;
 
-  
     args->ycoor = 0;
     while (args->ycoor < args->drawstart)
     {
@@ -163,7 +184,30 @@ int ft_raycasting(t_read *args)
     }
     while (args->ycoor < args->drawend)
     {
-      args->tex.y = (int)args->tex.tex_pos & args->tex1->height - 1;;
+      args->tex.y = (int)args->tex.tex_pos;
+      args->tex.tex_pos += args->tex.step_tex;
+     if (args->tex.y < 0 || args->tex.y >= args->hthtext)
+        args->tex.y = (args->tex.y < 0) ? 0 : args->hthtext - 1;
+      pix_color(args);
+      ft_draw_to_image(args, x, args->ycoor, args->color);
+      args->ycoor++;
+    }
+    while (args->ycoor < args->resol[1])
+    {
+      ft_draw_to_image(args, x, args->ycoor, args->floor);
+      args->ycoor++;
+    }
+
+  /*
+    args->ycoor = 0;
+    while (args->ycoor < args->drawstart)
+    {
+      ft_draw_to_image(args, x, args->ycoor, args->ceiling);
+      args->ycoor++;
+    }
+    while (args->ycoor < args->drawend)
+    {
+      args->tex.y = (int)args->tex.tex_pos;
       args->tex.tex_pos += args->tex.step_tex;
      if (args->tex.y < 0 || args->tex.y >= args->tex1->height)
         args->tex.y = (args->tex.y < 0) ? 0 : args->tex1->height - 1;
@@ -171,12 +215,11 @@ int ft_raycasting(t_read *args)
       ft_draw_to_image(args, x, args->ycoor, args->color);
       args->ycoor++;
     }
-    
     while (args->ycoor < args->resol[1])
     {
       ft_draw_to_image(args, x, args->ycoor, args->floor);
       args->ycoor++;
-    }
+    } */
     /*
     int i, j;
 

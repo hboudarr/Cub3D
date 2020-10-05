@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/02 13:01:21 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/05 17:03:52 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 # define FWD 126
 # define BWD 125
 # define ESC 53
-# define ROTLEFT 123
-# define ROTRIGHT 124
+# define ROTLEFT 124
+# define ROTRIGHT 123
 # define MOVESPEED 0.15
 # define ROTSPEED 0.025
 
@@ -137,6 +137,11 @@ typedef	struct		s_read{
 		t_rgb			rgb;
 		t_tex			tex;
 		t_textures		*tex1;
+		t_textures		*tex2;
+		t_textures		*tex3;
+		t_textures		*tex4;
+		int				hthtext;
+		int				wthtext;
 
 }					t_read;
 
@@ -201,7 +206,7 @@ int		ft_key_press(int key, t_read *args);
 int		ft_key_release(int key, t_read 	*args);
 int  	ft_display_color(t_read *args, int x);
 void    ft_wall_tex(t_read *args);
-void	ft_textures_data(t_read *args, t_textures *textures);
+void	ft_textures_data(t_read *args);
 void	pix_color(t_read *args);
 void	pixel_tex(t_textures *tex, t_read *args);
 

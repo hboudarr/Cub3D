@@ -1,8 +1,8 @@
-  R 400 200
-NO ./textures/favelas.xpm
-SO ./textures/favelas.xpm
-WE ./textures/favelas.xpm
-EA ./textures/favelas.xpm
+  R 800 600
+NO ./textures/no_1.xpm
+SO ./textures/so.xpm
+WE ./textures/we.xpm
+EA ./textures/so.xpm
 S ./path_to_the_sprite_texture
 F 220,145,189
 C 175,100,57

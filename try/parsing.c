@@ -93,8 +93,6 @@ void	ft_get_resol(t_read *args, char *str, int i)
 
 void	ft_get_north(t_read *args, char *str, int i)
 {
-	//	int		a;
-	//	int		b;
 		args->split = ft_split(str, ' ');
 		if ((!(args->split[1]) || args->split[2]))
 			ft_error(5);
@@ -104,15 +102,12 @@ void	ft_get_north(t_read *args, char *str, int i)
 			i++;
 		args->no = ft_strdup(str + i);
 		args->tab[1] = 1;
-	//	if (!(mlx_xpm_file_to_image(args->mlx_ptr, args->no, &args->xpm[0].width, &args->xpm[0].height)))
-	//		ft_error(5);
+		if (!(mlx_xpm_file_to_image(args->mlx_ptr, args->no, &args->tex1->width, &args->tex1->height)))
+			ft_error(5);
 }
 
 void	ft_get_south(t_read *args, char *str, int i)
 {
-//		int		a;
-//		int		b;
-
 		args->split = ft_split(str, ' ');
 		if ((!(args->split[1]) || args->split[2]))
 				ft_error(6);
@@ -122,7 +117,7 @@ void	ft_get_south(t_read *args, char *str, int i)
 			i++;
 		args->so = ft_strdup(str + i);
 		args->tab[2] = 1;
-		if (!(mlx_xpm_file_to_image(args->mlx_ptr, args->so, &args->tex1->width, &args->tex1->height)))
+		if (!(mlx_xpm_file_to_image(args->mlx_ptr, args->so, &args->tex2->width, &args->tex2->height)))
 			ft_error(6);
 }
 
@@ -139,8 +134,8 @@ void	ft_get_west(t_read *args, char *str, int i)
 				i++;
 			args->we = ft_strdup(str + i);
 			args->tab[3] = 1;
-//		if (!(mlx_xpm_file_to_image(args->mlx_ptr, args->we, &a, &b)))
-//			ft_error(7);
+		if (!(mlx_xpm_file_to_image(args->mlx_ptr, args->we, &args->tex3->width, &args->tex3->height)))
+			ft_error(7);
 }
 
 void	ft_get_east(t_read *args, char *str, int i)
@@ -156,8 +151,8 @@ void	ft_get_east(t_read *args, char *str, int i)
 				i++;
 			args->ea = ft_strdup(str + i);
 			args->tab[4] = 1;
-	//	if (!(mlx_xpm_file_to_image(args->mlx_ptr, args->ea, &a, &b)))
-	//		ft_error(8);
+		if (!(mlx_xpm_file_to_image(args->mlx_ptr, args->ea, &args->tex4->width, &args->tex4->height)))
+			ft_error(8);
 }
 
 void	ft_get_sprite(t_read *args, char *str, int i)
