@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/07 17:13:44 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/12 17:04:39 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include <mlx.h>
+// # include <mlx.h>
+# include "./minilibx_opengl_20191021/mlx.h"
 # include <math.h>
 # include "get_next_line.h"
 # include <limits.h>
