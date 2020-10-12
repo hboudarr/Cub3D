@@ -21,7 +21,7 @@ void    ft_init(t_read *args)
     args->rgb.g = 0;
     args->rgb.b = 0;
 }
-/*
+
 void	ft_bzero(void *s, int n)
 {
 	unsigned char	*dest;
@@ -33,5 +33,5 @@ void	ft_bzero(void *s, int n)
 		n--;
 		dest++;
 	}
-} */
+}
 
