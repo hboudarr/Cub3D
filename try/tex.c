@@ -93,3 +93,5 @@ void	ft_textures_data(t_read *args)
 // les referencer dans un tableau d'init initiallement malloc
 // calculer la distance entre chaque 
 // gcc -Wall -Wextra -Werror  -g3 minilibx_opengl_20191021/libmlx.a -framework OpenGL -framework AppKit ft_error.c get_next_line_utils.c parsing.c get_next_line.c utile.c ../../Libft/ft_strdup.c ../../Libft/ft_split.c parsing1.c myray.c init.c ../Libft/ft_bzero.c main.c hook.c tex.c
+
+ok
