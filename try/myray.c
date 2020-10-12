@@ -169,7 +169,7 @@ int ft_raycasting(t_read *args)
     args->drawend = args->linehth / 2 + args->resol[1] / 2;
     if(args->drawend >= args->resol[1])
       args->drawend = args->resol[1] - 1;
-  
+   ft_size_text(args);
    ft_wall_tex(args);
    // args->color = 0x00FF0000;
    // if (args->side == 1) 

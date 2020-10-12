@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:07:45 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/05 16:45:53 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/07 17:15:35 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	main (int ac, char **av)
 //	ft_textures_data(args,args->tex1);
   	ft_read(args, fd);
   	ft_read_second_part(args, fd);
+	  printf("[%d]\n", args->nbsp);
 //	 	args->mlx_ptr = mlx_init();
  	args->win_ptr = mlx_new_window(args->mlx_ptr, args->resol[0], args->resol[1], "CUB3D");
  	//args->img = mlx_new_image(args->mlx_ptr, args->resol[0], args->resol[1]);

@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/05 17:03:52 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/07 17:13:44 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ typedef	struct		s_read{
 		t_textures		*tex4;
 		int				hthtext;
 		int				wthtext;
+		int				nbsp;
 
 }					t_read;
 
@@ -209,7 +210,7 @@ void    ft_wall_tex(t_read *args);
 void	ft_textures_data(t_read *args);
 void	pix_color(t_read *args);
 void	pixel_tex(t_textures *tex, t_read *args);
-
+void	ft_size_text(t_read *args);
 // MOVE
 
 int 	ft_hook(t_read  *args);

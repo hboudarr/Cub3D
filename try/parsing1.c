@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 10:55:20 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/09/29 16:14:05 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/07 17:20:14 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ void	ft_analyse_str(t_read *args)
 			ft_orient(args, args->s[i]);
 			args->s[i] = '0';
 		}
+		if (args->s[i] == '2')
+			args->nbsp += 1;
 		i++;
 	}
 	if (args->count > 1)
