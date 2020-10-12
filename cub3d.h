@@ -21,6 +21,8 @@
 # include <limits.h>
 # include "libft.h"
 
+// coucou
+
 # define W 13
 # define S 1
 # define A 0
