@@ -1,8 +1,8 @@
-  R 1200 800
-NO ./textures/no_1.xpm
-SO ./textures/so.xpm
-WE ./textures/fdp.xpm
-EA ./textures/ea.xpm
+R 1200 800
+NO ./textures/IMG_1167.xpm
+SO ./textures/IMG_1169.xpm
+WE ./textures/IMG_2147.xpm
+EA ./textures/IMG_7128.xpm
 S ./path_to_the_sprite_texture
 F 220,145,189
 C 175,100,57
