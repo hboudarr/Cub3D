@@ -1,41 +1,4 @@
 #include "cub3d.h"
-/*
-    //rotate to the right
-    if (args->right == 1)
-    {
-      //both camera direction angd camera plane must be rotated
-      args->olddirx = args->dirx;
-      args->dirx = args->dirx * cos(-ROTSPEED) - args->diry * sin(-ROTSPEED);
-      args->diry = args->olddirx * sin(-ROTSPEED) + args->diry * cos(-ROTSPEED);
-      args->oldplanex = args->planex;
-      args->planex =  args->planex * cos(-ROTSPEED) - args->planey * sin(-ROTSPEED);
-      args->planey = args->oldplanex * sin(-ROTSPEED) + args->planey * cos(-ROTSPEED);
-    } 
-    //rotate to the left
-    if (args->left == 1)
-    {
-      //both camera direction and camera plane must be rotated
-      args->olddirx = args->dirx;
-      args->dirx = args->dirx * cos(ROTSPEED) - args->diry * sin(ROTSPEED);
-      args->diry = args->olddirx * sin(ROTSPEED) + args->diry * cos(ROTSPEED);
-      args->oldplanex = args->planex;
-      args->planex = args->planex * cos(ROTSPEED) - args->planey * sin(ROTSPEED);
-      args->planey = args->oldplanex * sin(ROTSPEED) + args->planey * cos(ROTSPEED);
-    }
-}
-*/
-
-void  ft_move_fwd(t_read *args)
-{
-   if (args->fwd == 1)
-	{
-		if (args->map[(int)(args->posy)][(int)(args->posx + args->dirx
-			* 0.15)] == '0')
-			args->posx += args->dirx * 0.15;
-		if (args->map[(int)(args->posy + args->diry * 0.15)][(int)(args->posx)] == '0')
-		  args->posy += args->diry * 0.15;
-	}
-}
 
 void  ft_move_bwd(t_read *args)
 {

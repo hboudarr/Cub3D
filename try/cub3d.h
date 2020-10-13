@@ -6,7 +6,7 @@
 /*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/12 17:04:39 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/12 23:05:12 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,8 +180,8 @@ void		ft_check_resolution(int i, int j);
 void		ft_make_range(t_read *args);
 void		ft_make_map(t_read *args);
 int			ft_flood_fill(char **map, int x, int y, int max);
-void		ft_read_second_part(t_read *args, int fd);
 void		ft_analyse_str(t_read *args);
+void		ft_read_second_part(t_read *args, int fd);
 int			ft_check_alphanum(char *str, char *letter);
 void		ft_orient(t_read *args, char c);
 void		ft_orient2(t_read *args, char c);

@@ -35,3 +35,39 @@ void	ft_bzero(void *s, int n)
 	}
 }
 
+void  ft_move_fwd(t_read *args)
+{
+   if (args->fwd == 1)
+	{
+		if (args->map[(int)(args->posy)][(int)(args->posx + args->dirx
+			* 0.15)] == '0')
+			args->posx += args->dirx * 0.15;
+		if (args->map[(int)(args->posy + args->diry * 0.15)][(int)(args->posx)] == '0')
+		  args->posy += args->diry * 0.15;
+	}
+}
+
+void	ft_analyse_str(t_read *args)
+{
+	int i;
+
+	i = 0;
+	if (ft_check_alphanum(args->s, "NSEW102 ") == 0)
+			ft_error(12);
+	while (args->s[i])
+	{
+		if (args->s[i] == 'N' || args->s[i] == 'S' || args->s[i] == 'E' || args->s[i] == 'W')
+		{
+			args->posy = (args->y - 1) + 0.5;
+			args->posx = i + 0.5;
+			args->count += 1;
+			ft_orient(args, args->s[i]);
+			args->s[i] = '0';
+		}
+		if (args->s[i] == '2')
+			args->nbsp += 1;
+		i++;
+	}
+	if (args->count > 1)
+		ft_error(12);
+}

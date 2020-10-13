@@ -2,11 +2,7 @@
 
 void	ft_draw_to_image(t_read *data, int x, int y, int color)
 {
-	// *((int *)data->addr + y * data->line_length + x) = color;
-   	*(unsigned int *)(data->addr + y * data->line_length + x * data->bits_per_pixel / 8) = color;
-   //  data->addr[(y * data->resol[0] + x)] = color;
-
-     //img->img_data[p_y * img->width + p_x] = color;
+  *(unsigned int *)(data->addr + y * data->line_length + x * data->bits_per_pixel / 8) = color;
 }
 
  /* while (args->ycoor < args->drawend)
@@ -86,8 +82,6 @@ void    ft_wall_tex(t_read *args)
 int ft_raycasting(t_read *args)
 {
   int x;
- //  args->img = mlx_new_image(args->mlx_ptr, args->resol[0], args->resol[1]);
-   // args->addr = mlx_get_data_addr(args->img, &args->bits_per_pixel, &args->line_length, &args->endian);
 
   x = 0;
   while ( x < args->resol[0])
@@ -100,14 +94,10 @@ int ft_raycasting(t_read *args)
     args->mapy = (int)args->posy;
 
     args->hit = 0; 
-    //args->deltadistx = fabs(1 / args->raydirx);
     args->deltadistx = sqrt(1 + (args->raydiry * args->raydiry) / 
       (args->raydirx * args->raydirx));
-    //args->deltadisty = fabs(1 / args->raydiry);
     args->deltadisty = sqrt(1 + (args->raydirx * args->raydirx) / 
       (args->raydiry * args->raydiry));
-
- 
     if (args->raydirx < 0)
     {
       args->stepx = -1;
