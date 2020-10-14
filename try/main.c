@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:07:45 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/13 03:34:27 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/14 17:47:37 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	main (int ac, char **av)
 	args->mlx_ptr = mlx_init();
   	ft_read(args, fd);
   	ft_read_second_part(args, fd);
+		if (!(args->zbuffer = malloc(sizeof(double) * args->resol[0])))
+		ft_error(4);
  	args->win_ptr = mlx_new_window(args->mlx_ptr, args->resol[0], args->resol[1], "NARCISSE");
   	args->img = mlx_new_image(args->mlx_ptr, args->resol[0], args->resol[1]);
   	args->addr = mlx_get_data_addr(args->img, &args->bits_per_pixel, &args->line_length, &args->endian);

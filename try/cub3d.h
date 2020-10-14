@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/12 23:05:12 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/14 17:46:57 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,34 @@
 #endif 
 
 // STRUCTURE DE PARSING
+
+typedef	struct		s_spcast
+{
+	int				i;
+	double			spritex;
+	double			spritey;
+	double			invdet;
+	double			transformx;
+	double			transformy;
+	int				sp_screenx;
+	int				sp_height;
+	int				sp_width;
+	int				draw_starty;
+	int				draw_endy;
+	int				draw_startx;
+	int				draw_endx;
+	int				x;
+	int				y;
+	int				texx;
+	int				texy;
+	int				d;
+}					t_spcast;
+
+typedef	struct		s_sprite
+{
+	double			x;
+	double			y;
+}					t_sprite;
 
 typedef	struct		s_texures{
 
@@ -141,10 +169,14 @@ typedef	struct		s_read{
 		t_textures		*tex2;
 		t_textures		*tex3;
 		t_textures		*tex4;
+		t_textures		*sprite;
 		int				hthtext;
 		int				wthtext;
 		int				nbsp;
-
+		t_sprite		*tab_sprite;
+		int				*sp_order;
+		double			*sp_dist;
+		double			*zbuffer;
 }					t_read;
 
 
@@ -212,6 +244,15 @@ void	ft_textures_data(t_read *args);
 void	pix_color(t_read *args);
 void	pixel_tex(t_textures *tex, t_read *args);
 void	ft_size_text(t_read *args);
+
+// SPRITE
+
+void    ft_sprite(t_read *args);
+void	ft_place_sprites(t_read *args);
+void	ft_order_sprite(t_read *args);
+void	ft_sort(int *order, double *dist, int num);
+void	ft_raysprite(t_read *args);
+
 // MOVE
 
 int 	ft_hook(t_read  *args);

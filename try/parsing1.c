@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 10:55:20 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/13 02:49:59 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/14 13:47:30 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	ft_free_map(t_read *args)
 void	ft_read_second_part(t_read *args, int fd)
 {
 	int	ret;
-	int 	i;
+	int i;
 
 	ret = 1;
 	args->y = 0;
@@ -132,11 +132,10 @@ void	ft_read_second_part(t_read *args, int fd)
 			ft_make_map(args);
 		}
 	}
+	printf("%d\n", args->y);
 	i = ft_flood_fill(args->mapdup, args->posx, args->posy, args->y);
 	if (i == -1)
 		ft_error(12);
-	if (i == -1)
-		ft_error(12);
 	ft_free_map(args);
-	close (fd);	
+	close (fd);
 }

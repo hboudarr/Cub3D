@@ -161,6 +161,7 @@ int ft_raycasting(t_read *args)
       args->drawend = args->resol[1] - 1;
    ft_size_text(args);
    ft_wall_tex(args);
+   ft_sprite(args);
    // args->color = 0x00FF0000;
    // if (args->side == 1) 
     //  args->color = args->color / 2;
@@ -187,6 +188,7 @@ int ft_raycasting(t_read *args)
       ft_draw_to_image(args, x, args->ycoor, args->floor);
       args->ycoor++;
     }
+    args->zbuffer[x] = args->perpwalldist;
 
   /*
     args->ycoor = 0;

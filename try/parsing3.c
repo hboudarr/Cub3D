@@ -71,6 +71,6 @@ void	ft_get_sprite(t_read *args, char *str, int i)
 				i++;
 			args->sp = ft_strdup(str + i);
 			args->tab[5] = 1;
-//		if (!(mlx_xpm_file_to_image(args->mlx_ptr, args->sp, &a, &b)))
-//			ft_error(9);
+		if (!(mlx_xpm_file_to_image(args->mlx_ptr, args->sp, &args->sprite->width, &args->sprite->height)))
+			ft_error(9);
 }

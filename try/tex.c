@@ -63,4 +63,10 @@ void	ft_textures_data(t_read *args)
 		args->tex4->tex_ptr = mlx_xpm_file_to_image(args->mlx_ptr, args->ea, &args->tex4->width, &args->tex4->height);
 		args->tex4->tex_data = (int *)mlx_get_data_addr(args->tex4->tex_ptr, &args->tex4->bpp, &args->tex4->size_line, &args->tex4->endian);
 	}
+	if (args->tab[1] == 1)
+	{
+		args->sprite->tex_ptr = mlx_xpm_file_to_image(args->mlx_ptr, args->sp, &args->sprite->width, &args->sprite->height);
+		args->sprite->tex_data = (int *)mlx_get_data_addr(args->sprite->tex_ptr, &args->sprite->bpp, &args->sprite->size_line, &args->sprite->endian);
+		args->wthtext = args->sprite->width;
+	}
 }

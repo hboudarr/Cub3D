@@ -11,6 +11,8 @@ void    ft_init(t_read *args)
     ft_bzero(args->tex3, sizeof(t_textures));
     args->tex4 = malloc(sizeof(t_textures));
     ft_bzero(args->tex4, sizeof(t_textures));
+	args->sprite = malloc(sizeof(t_textures));
+    ft_bzero(args->sprite, sizeof(t_textures));
     args->f[0] = -1;
     args->f[1] = -1;
     args->f[2] = -1;
