@@ -46,6 +46,12 @@ void	ft_rotate(t_read *args, int advance)
 	args->planey = plane * sin(advance * 0.1) + args->planey * cos(advance * 0.1);
 }
 
+void	ft_esc(t_read *args)
+{	
+	args = 0;
+	//exit(1);
+}
+
 int ft_hook(t_read  *args)
 {
   ft_move_fwd(args);
@@ -56,5 +62,6 @@ int ft_hook(t_read  *args)
     ft_rotate(args, 1);
   if (args->rotright == 1)
     ft_rotate(args, -1);
+  ft_esc(args);
   return (1);
 }

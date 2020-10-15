@@ -32,14 +32,14 @@ void	ft_raysprite(t_read *args)
 	spcast->x = spcast->draw_startx;
     while (spcast->x < spcast->draw_endx)
 	{
-		spcast->texx = ((spcast->x - (-spcast->sp_width / 2 + spcast->sp_screenx)) * args->sprite->width / spcast->sp_width);
+		 spcast->texx = ((spcast->x - (-spcast->sp_width / 2 + spcast->sp_screenx)) * args->sprite->width / spcast->sp_width);
 		if (spcast->transformy > 0 && spcast->x >= 0 && spcast->x < args->resol[0] && spcast->transformy < args->zbuffer[spcast->x])
 		{
             spcast->y = spcast->draw_starty;
             while (spcast->y < spcast->draw_endy)
             {
                 spcast->d = spcast->y - args->resol[1] / 2 + spcast->sp_height / 2;
-                spcast->texy = ((spcast->d * args->sprite->height) / spcast->sp_height);
+             	spcast->texy = ((spcast->d * args->sprite->height) / spcast->sp_height);
 				// printf("[%f]\n", spcast->spritey);
                 args->color = (unsigned int)args->sprite->tex_data[args->sprite->width * (int)spcast->texy + (int)spcast->texx];
 			    if (args->color != 0xFFFFFF)
@@ -52,3 +52,5 @@ void	ft_raysprite(t_read *args)
 	spcast->i++;
     }
 }
+
+//faut que les calculs de position de sprite soient avant ta boucle while ( x < largeur_de_l'écran)

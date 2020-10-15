@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/14 17:46:57 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/15 16:31:01 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,25 @@
 #endif 
 
 // STRUCTURE DE PARSING
+
+typedef struct		s_img
+{
+	int				file_size;
+	short			reserved1;
+	short			reserved2;
+	unsigned int	offset_bits;
+	unsigned int	size_header;
+	unsigned int	width;
+	unsigned int	height;
+	short int		planes;
+	short int		bbp;
+	unsigned int	compression;
+	unsigned int	image_size;
+	unsigned int	ppm_x;
+	unsigned int	ppm_y;
+	unsigned int	clr_total;
+	unsigned int	clr_important;
+}					t_img;
 
 typedef	struct		s_spcast
 {
@@ -161,6 +180,7 @@ typedef	struct		s_read{
 		int			right;
 		int			rotleft;
 		int			rotright;
+		int			esc;
 		unsigned int	ceiling;
 		unsigned int	floor;
 		t_rgb			rgb;
@@ -231,6 +251,7 @@ int		ft_atoi(const char *nptr);
 int		ft_isdigit(int c);
 void    ft_init(t_read *args);
 void 	ft_bzero(void *s, int size);
+int		ft_check_filename(char *str);
 
 // RAY
 
@@ -261,8 +282,13 @@ void  	ft_move_bwd(t_read *args);
 void  	ft_move_left(t_read *args);
 void  	ft_move_right(t_read *args);
 void	ft_rotate(t_read *args, int advance);
+void	ft_esc(t_read *args);
+
+// SAVE 
+
+void	ft_define_ptr(t_read *args, t_img *ptr);
+void	ft_tab_in_img(t_read *args, int fd);
+void	ft_create_img(t_read *args);
+int		ft_check_arg(char *str);
 
 #endif
-
-
-// recuperer la textures, le chemin, creer le header 
