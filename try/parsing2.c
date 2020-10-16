@@ -4,15 +4,15 @@ void	ft_get_floor(t_read *args, char *str, int i)
 {
 	args->split = ft_split(str, ' ');
 	if ((!(args->split[1])) || args->split[2])
-		ft_error(10);	
+		ft_exit3(args, 6);	
 	ft_free_split(args->split);
 	i++;
 	args->split = ft_split(str + i, ',');
 	if ((!(args->split[2])) || args->split[3])
-		ft_error(10);
-	ft_check_value(args->split[0]);
-	ft_check_value(args->split[1]);
-	ft_check_value(args->split[2]);
+		ft_exit3(args, 3);
+	ft_check_value(args->split[0], args);
+	ft_check_value(args->split[1], args);
+	ft_check_value(args->split[2], args);
 	args->f[0] = ft_atoi(args->split[0]);
 	args->f[1] = ft_atoi(args->split[1]);
 	args->f[2] = ft_atoi(args->split[2]);
@@ -32,15 +32,15 @@ void	ft_get_celling(t_read *args, char *str, int i)
 {
 	args->split = ft_split(str, ' ');
 	if ((!(args->split[1])) || args->split[2])
-		ft_error(11);
+		ft_exit3(args, 7);
 	ft_free_split(args->split);
 	i++;
 	args->split = ft_split(str + i, ',');
 	if ((!(args->split[2])) || args->split[3])
-		ft_error(11);
-	ft_check_value(args->split[0]);
-	ft_check_value(args->split[1]);
-	ft_check_value(args->split[2]);
+		ft_exit3(args, 7);
+	ft_check_value(args->split[0], args);
+	ft_check_value(args->split[1], args);
+	ft_check_value(args->split[2], args);
 	args->c[0] = ft_atoi(args->split[0]);
 	args->c[1] = ft_atoi(args->split[1]);
 	args->c[2] = ft_atoi(args->split[2]);
@@ -72,7 +72,7 @@ void	ft_analyse_line(t_read *args, char *str)
 	else if (str[i] == 'C' && str[i + 1] == ' ')
 		ft_get_celling(args, str, i);
 	else
-		ft_error(13);
+		ft_exit1(args);
 }
 
 void	ft_read(t_read *args, int fd)
@@ -92,9 +92,9 @@ void	ft_read(t_read *args, int fd)
 	{
 		ret = get_next_line(fd, &line);
 			if (ret == -1)
-				ft_error(2);
+				ft_exit1(args);
 			if (ret == 0)
-				ft_error(3);
+				ft_exit1(args);
 			if (line[0] != '\0')
 				ft_analyse_line(args, line);
 		free(line);

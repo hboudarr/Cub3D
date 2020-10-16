@@ -14,10 +14,10 @@ void		ft_sort(int *order, double *dist, int num)
 			temp2 = dist[i + 1];
 			dist[i + 1] = dist[i];
 			dist[i] = temp2;
-			temp = order[i + 1];
-			order[i + 1] = order[i];
-			order[i] = temp;
-			i = 0;
+			temp = order[i];
+			order[i] = order[i + 1];
+			order[i + 1] = temp;
+			i = 0; 
 		}
 		else
 			i++;
@@ -71,11 +71,11 @@ void		ft_order_sprite(t_read *args)
 void    ft_sprite(t_read *args)
 {
     if (!(args->tab_sprite = malloc(sizeof(t_sprite) * args->nbsp)))
-        ft_error(9);
+        ft_exit3(args, 5);
     ft_place_sprites(args);
     if (!(args->sp_order = malloc(sizeof(int) * args->nbsp)))
-        ft_error(9);
+        ft_exit3(args, 5);
     if (!(args->sp_dist = malloc(sizeof(double) * args->nbsp)))
-        ft_error(9);
+        ft_exit3(args, 5);
     ft_order_sprite(args);
 }

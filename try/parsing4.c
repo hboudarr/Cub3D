@@ -1,12 +1,12 @@
 #include "cub3d.h"
 
-void	ft_check_value(char *str)
+void	ft_check_value(char *str, t_read *args)
 {
 	int	R;
 
 	R = ft_atoi(str);
 	if ((R < 0 || R > 255))
-		ft_error(10);
+		ft_exit3(args, 6);
 }
 
 void		ft_get_floor_rgb(t_read *args)

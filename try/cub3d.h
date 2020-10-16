@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/15 16:31:01 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/16 13:44:06 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,6 @@ typedef	struct		s_read{
 		int			right;
 		int			rotleft;
 		int			rotright;
-		int			esc;
 		unsigned int	ceiling;
 		unsigned int	floor;
 		t_rgb			rgb;
@@ -224,8 +223,8 @@ void		ft_get_celling(t_read *args, char *str, int i);
 void		ft_get_ceiling_rgb(t_read *args);
 void		ft_free_split(char **tab);
 int			ft_check_nb(char *str1, char *str2);
-void		ft_check_value(char *str);
-void		ft_check_resolution(int i, int j);
+void		ft_check_value(char *str, t_read *args);
+void		ft_check_resolution(int i, int j, t_read *args);
 
 // 2nd PART OF PARSING FUNCTIONS
 
@@ -237,6 +236,7 @@ void		ft_read_second_part(t_read *args, int fd);
 int			ft_check_alphanum(char *str, char *letter);
 void		ft_orient(t_read *args, char c);
 void		ft_orient2(t_read *args, char c);
+void		ft_free_map(t_read *args, char **map);
 
 // STRDUP + SPLIT
 
@@ -290,5 +290,16 @@ void	ft_define_ptr(t_read *args, t_img *ptr);
 void	ft_tab_in_img(t_read *args, int fd);
 void	ft_create_img(t_read *args);
 int		ft_check_arg(char *str);
+
+// EXIT
+void	ft_exit1(t_read *args);
+void	ft_exit2(void);
+void	ft_exit3(t_read *args, int nb);
+void	ft_exit4(t_read *args);
+void	ft_exit5(t_read *args);
+void	ft_exit6(t_read *args);
+void	ft_free_args(t_read *args);
+void	ft_free_args2(t_read *args);
+int		ft_deal_exit(t_read *args);
 
 #endif

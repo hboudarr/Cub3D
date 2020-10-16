@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/01 15:40:22 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/16 13:44:06 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include <mlx.h>
+// # include <mlx.h>
+# include "./minilibx_opengl_20191021/mlx.h"
 # include <math.h>
+# include "get_next_line.h"
 # include <limits.h>
-# include "libft.h"
-
-// coucou
 
 # define W 13
 # define S 1
@@ -30,8 +29,8 @@
 # define FWD 126
 # define BWD 125
 # define ESC 53
-# define ROTLEFT 123
-# define ROTRIGHT 124
+# define ROTLEFT 124
+# define ROTRIGHT 123
 # define MOVESPEED 0.15
 # define ROTSPEED 0.025
 
@@ -40,6 +39,53 @@
 #endif 
 
 // STRUCTURE DE PARSING
+
+typedef struct		s_img
+{
+	int				file_size;
+	short			reserved1;
+	short			reserved2;
+	unsigned int	offset_bits;
+	unsigned int	size_header;
+	unsigned int	width;
+	unsigned int	height;
+	short int		planes;
+	short int		bbp;
+	unsigned int	compression;
+	unsigned int	image_size;
+	unsigned int	ppm_x;
+	unsigned int	ppm_y;
+	unsigned int	clr_total;
+	unsigned int	clr_important;
+}					t_img;
+
+typedef	struct		s_spcast
+{
+	int				i;
+	double			spritex;
+	double			spritey;
+	double			invdet;
+	double			transformx;
+	double			transformy;
+	int				sp_screenx;
+	int				sp_height;
+	int				sp_width;
+	int				draw_starty;
+	int				draw_endy;
+	int				draw_startx;
+	int				draw_endx;
+	int				x;
+	int				y;
+	int				texx;
+	int				texy;
+	int				d;
+}					t_spcast;
+
+typedef	struct		s_sprite
+{
+	double			x;
+	double			y;
+}					t_sprite;
 
 typedef	struct		s_texures{
 
@@ -139,7 +185,17 @@ typedef	struct		s_read{
 		t_rgb			rgb;
 		t_tex			tex;
 		t_textures		*tex1;
-
+		t_textures		*tex2;
+		t_textures		*tex3;
+		t_textures		*tex4;
+		t_textures		*sprite;
+		int				hthtext;
+		int				wthtext;
+		int				nbsp;
+		t_sprite		*tab_sprite;
+		int				*sp_order;
+		double			*sp_dist;
+		double			*zbuffer;
 }					t_read;
 
 
@@ -167,19 +223,20 @@ void		ft_get_celling(t_read *args, char *str, int i);
 void		ft_get_ceiling_rgb(t_read *args);
 void		ft_free_split(char **tab);
 int			ft_check_nb(char *str1, char *str2);
-void		ft_check_value(char *str);
-void		ft_check_resolution(int i, int j);
+void		ft_check_value(char *str, t_read *args);
+void		ft_check_resolution(int i, int j, t_read *args);
 
 // 2nd PART OF PARSING FUNCTIONS
 
 void		ft_make_range(t_read *args);
 void		ft_make_map(t_read *args);
 int			ft_flood_fill(char **map, int x, int y, int max);
-void		ft_read_second_part(t_read *args, int fd);
 void		ft_analyse_str(t_read *args);
+void		ft_read_second_part(t_read *args, int fd);
 int			ft_check_alphanum(char *str, char *letter);
 void		ft_orient(t_read *args, char c);
 void		ft_orient2(t_read *args, char c);
+void		ft_free_map(t_read *args, char **map);
 
 // STRDUP + SPLIT
 
@@ -194,6 +251,7 @@ int		ft_atoi(const char *nptr);
 int		ft_isdigit(int c);
 void    ft_init(t_read *args);
 void 	ft_bzero(void *s, int size);
+int		ft_check_filename(char *str);
 
 // RAY
 
@@ -203,9 +261,18 @@ int		ft_key_press(int key, t_read *args);
 int		ft_key_release(int key, t_read 	*args);
 int  	ft_display_color(t_read *args, int x);
 void    ft_wall_tex(t_read *args);
-void	ft_textures_data(t_read *args, t_textures *textures);
+void	ft_textures_data(t_read *args);
 void	pix_color(t_read *args);
 void	pixel_tex(t_textures *tex, t_read *args);
+void	ft_size_text(t_read *args);
+
+// SPRITE
+
+void    ft_sprite(t_read *args);
+void	ft_place_sprites(t_read *args);
+void	ft_order_sprite(t_read *args);
+void	ft_sort(int *order, double *dist, int num);
+void	ft_raysprite(t_read *args);
 
 // MOVE
 
@@ -215,8 +282,24 @@ void  	ft_move_bwd(t_read *args);
 void  	ft_move_left(t_read *args);
 void  	ft_move_right(t_read *args);
 void	ft_rotate(t_read *args, int advance);
+void	ft_esc(t_read *args);
+
+// SAVE 
+
+void	ft_define_ptr(t_read *args, t_img *ptr);
+void	ft_tab_in_img(t_read *args, int fd);
+void	ft_create_img(t_read *args);
+int		ft_check_arg(char *str);
+
+// EXIT
+void	ft_exit1(t_read *args);
+void	ft_exit2(void);
+void	ft_exit3(t_read *args, int nb);
+void	ft_exit4(t_read *args);
+void	ft_exit5(t_read *args);
+void	ft_exit6(t_read *args);
+void	ft_free_args(t_read *args);
+void	ft_free_args2(t_read *args);
+int		ft_deal_exit(t_read *args);
 
 #endif
-
-
-// recuperer la textures, le chemin, creer le header 

@@ -55,7 +55,7 @@ void	ft_analyse_str(t_read *args)
 
 	i = 0;
 	if (ft_check_alphanum(args->s, "NSEW102 ") == 0)
-			ft_error(12);
+			ft_exit4(args);
 	while (args->s[i])
 	{
 		if (args->s[i] == 'N' || args->s[i] == 'S' || args->s[i] == 'E' || args->s[i] == 'W')
@@ -71,5 +71,5 @@ void	ft_analyse_str(t_read *args)
 		i++;
 	}
 	if (args->count > 1)
-		ft_error(12);
+		ft_exit4(args);
 }

@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 10:55:20 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/14 13:47:30 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/16 11:32:25 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	ft_make_range(t_read *args)
 	if (args->y == 1)
 	{
 		if (!(args->map = malloc(sizeof(char*) * (args->y))))
-			ft_error(4);
+			ft_exit4(args);
 		args->map[0] = args->s;
 	}
 	else
 	{
 		tmp = args->map;
 		if (!(args->map = malloc(sizeof(char*) * (args->y))))
-			ft_error(4);
+			ft_exit4(args);
 		while (i < args->y - 1)
 		{
 			args->map[i] = tmp[i];
@@ -48,14 +48,14 @@ void	ft_make_map(t_read *args)
 	if (args->y == 1)
 	{
 		if (!(args->mapdup = malloc(sizeof(char *) * (args->y))))
-			ft_error(4);
+			ft_exit4(args);
 		args->mapdup[0] = ft_strdup(args->s);
 	}
 	else
 	{
 		tmp = args->mapdup;	
 		if (!(args->mapdup = malloc(sizeof(char *) * (args->y))))
-			ft_error(4);
+			ft_exit4(args);
 		while (i < args->y - 1)
 		{
 			args->mapdup[i] = tmp[i];
@@ -96,19 +96,17 @@ int		ft_flood_fill(char **map, int x, int y, int max)
 	return (0);
 }
 
-void	ft_free_map(t_read *args)
+void	ft_free_map(t_read *args, char **map)
 {
 	int i;
 
 	i = 0;
 	while (i < args->y)
 	{
-		free(args->mapdup[i]);
-		args->mapdup[i] = NULL;
+		free(map[i]);
 		i++;
 	}
-	free(args->mapdup);
-	args->mapdup = NULL;
+	free(map);
 }
 
 void	ft_read_second_part(t_read *args, int fd)
@@ -123,7 +121,7 @@ void	ft_read_second_part(t_read *args, int fd)
 	{
 		ret = get_next_line(fd, &args->s);
 		if (ret == -1)
-			ft_error(2);
+			ft_exit1(args);
 		if (ret == 1 || ret == 0)
 		{
 			args->y += 1;
@@ -132,10 +130,9 @@ void	ft_read_second_part(t_read *args, int fd)
 			ft_make_map(args);
 		}
 	}
-	printf("%d\n", args->y);
 	i = ft_flood_fill(args->mapdup, args->posx, args->posy, args->y);
 	if (i == -1)
-		ft_error(12);
-	ft_free_map(args);
+		ft_exit1(args);
+	ft_free_map(args, args->mapdup);
 	close (fd);
 }

@@ -62,12 +62,12 @@ int	ft_check_nb(char *str1, char *str2)
 	return (1);
 }
 
-void	ft_check_resolution(int i, int j)
+void	ft_check_resolution(int i, int j, t_read *args)
 {
 	if (i < 0 || i > 2000)
-		ft_error(13);
+		ft_exit3(args, 0);
 	if (j < 0 || j > 2570)
-		ft_error(13);
+		ft_exit3(args, 0);
 }
 
 void	ft_get_resol(t_read *args, char *str, int i)
@@ -76,15 +76,15 @@ void	ft_get_resol(t_read *args, char *str, int i)
 	i = 0;
 		args->split = ft_split(str, ' ');
 		if ((!(args->split[2])) || args->split[3])
-			ft_error(13);
+			ft_exit3(args, 0);
 		args->resol[0] = ft_atoi(args->split[1]);
 		args->resol[1] = ft_atoi(args->split[2]);
-		ft_check_resolution(args->resol[0], args->resol[1]);
+		ft_check_resolution(args->resol[0], args->resol[1], args);
 		ret = ft_check_nb(args->split[1], args->split[2]);
 		if (ret == -1)
-			ft_error(13);
+			ft_exit3(args, 0);
 		if (args->resol[0] <= 0 || args->resol[1] <= 0)	
-			ft_error(13);
+			ft_exit3(args, 0);
 		args->tab[0] = 1;
 		ft_free_split(args->split);
 }
