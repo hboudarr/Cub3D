@@ -70,10 +70,10 @@ void	ft_check_resolution(int i, int j, t_read *args)
 		ft_exit3(args, 0);
 }
 
-void	ft_get_resol(t_read *args, char *str, int i)
+void	ft_get_resol(t_read *args, char *str)
 {
 	int		ret;
-	i = 0;
+
 		args->split = ft_split(str, ' ');
 		if ((!(args->split[2])) || args->split[3])
 			ft_exit3(args, 0);

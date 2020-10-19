@@ -1,6 +1,4 @@
-CHM		=	./
-
-LIBFT	= ./libft/libft.a
+NAME 	= Cub3D
 
 SRCS	= ./parsing.c\
 		  ./parsing1.c\
@@ -21,33 +19,58 @@ SRCS	= ./parsing.c\
 
 OBJS	= ${SRCS:.c=.o}
 
-HEADERS	= ./includes/cub3d.h
+LIBS	+= -lft
+LIBS	+= -lmlx
+LIBS	+= -lm
 
-CFLAGS	= -Wall -Wextra -Werror
 
-CC		= gcc
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S), Linux)
+	MLX_DIR = minilibx-linux
+	LIBS += -lXext
+	LIBS += -lX11
+	#LIBS += -lbsd
+else
+	MLX_DIR = minilibx_opengl_20191021
+	LIBS += -framework OpenGL
+	LIBS += -framework AppKit
+endif
 
-NAME 	= Cub3D
-#NAME	=	libftcub3d.a
+LIBFT	= ./libft/libft.a
+
+MLX		= $(MLX_DIR)/libmlx.a
+
+HEADERS	=	-I ./includes/
+HEADERS +=	-I ./libft/
+HEADERS +=	-I $(MLX_DIR)
+
+LIB_DIR	+= -L libft
+LIB_DIR += -L $(MLX_DIR)
+
+CFLAGS	= -Wall -Wextra -Werror -fsanitize=address
+
+CC		= clang
 
 .c.o:
-			${CC} ${CFLAGS} -I ${HEADERS} -c $< -o ${<:.c=.o}
+			${CC} ${CFLAGS} ${HEADERS} -c $< -o ${<:.c=.o}
 
-${NAME}:	${OBJS}
+${NAME}:	${OBJS} ${LIBFT} $(MLX)
+			${CC} -fsanitize=address $(LIB_DIR) -o ${NAME} ${OBJS} $(LIBS)
+
+${LIBFT}:
 			$(MAKE) -C ./libft
-			cp libft/libft.a $(NAME)
-		#	ar rc ${NAME} ${OBJS}
-			${CC} ${CFLAGS} -I ${HEADERS} ${OBJS} -lmlx -lXext -lX11 -lm -lbsd -o ${NAME}
 			
+$(MLX):
+			$(MAKE) -C $(MLX_DIR)
 
 all:		${NAME}
 
 clean:
-	$(MAKE) clean -C ./libft
+	$(MAKE) -C ./libft fclean
+	$(MAKE) -C $(MLX_DIR) clean
 	rm -f ${OBJS}
 
 fclean:		clean
-			$(MAKE) clean -C ./libft
 			rm -f ${NAME}
 
 re:			fclean all

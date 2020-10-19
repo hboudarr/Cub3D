@@ -56,7 +56,7 @@ void	ft_analyse_line(t_read *args, char *str)
 		while (str[i] == ' ')
 		i++;
 	if (str[i] == 'R')
-		ft_get_resol(args, str, i);
+		ft_get_resol(args, str);
 	else if (str[i] == 'N' && str[i + 1] == 'O')
 		ft_get_north(args, str, ++i);
 	else if (str[i] == 'S' && str[i + 1] == 'O')

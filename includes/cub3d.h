@@ -16,10 +16,9 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
-// # include <mlx.h>
-# include "./minilibx_opengl_20191021/mlx.h"
+# include "mlx.h"
 # include <math.h>
-# include "get_next_line.h"
+# include "libft.h"
 # include <limits.h>
 
 # define W 13
@@ -33,10 +32,6 @@
 # define ROTRIGHT 123
 # define MOVESPEED 0.15
 # define ROTSPEED 0.025
-
-# ifndef BUFER_SIZE
-# define BUFFER_SIZE 7
-#endif 
 
 // STRUCTURE DE PARSING
 
@@ -210,7 +205,7 @@ void  	    ft_init(t_read *args);
 void		ft_read(t_read *args, int fd);
 int			ft_check_element(int tab[8]);
 void		ft_analyse_line(t_read *args, char *str);
-void		ft_get_resol(t_read *args, char *str, int i);
+void		ft_get_resol(t_read *args, char *str);
 void		ft_get_north(t_read *north, char *str, int i);
 void		ft_get_south(t_read *args, char *str, int i);
 void		ft_get_south(t_read *args, char *str, int i);
