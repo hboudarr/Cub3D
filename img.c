@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   img.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hboudarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/19 17:09:16 by hboudarr          #+#    #+#             */
+/*   Updated: 2020/10/19 17:09:17 by hboudarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	ft_define_ptr(t_read *args, t_img *ptr)
@@ -35,7 +47,8 @@ void	ft_tab_in_img(t_read *args, int fd)
 	{
 		x = -1;
 		while (++x < args->resol[0])
-			tab[i++] = *(unsigned int *)(args->addr + y * args->line_length + x * args->bits_per_pixel / 8);
+			tab[i++] = *(unsigned int *)(args->addr + y * args->line_length +
+			x * args->bits_per_pixel / 8);
 		y--;
 	}
 	if (!(write(fd, tab, args->resol[0] * args->resol[1] * 4)))

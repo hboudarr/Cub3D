@@ -1,6 +1,18 @@
-# include "cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sprite.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/19 15:55:14 by hboudarr          #+#    #+#             */
+/*   Updated: 2020/10/19 15:58:54 by hboudarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void		ft_sort(int *order, double *dist, int num)
+#include "cub3d.h"
+
+void	ft_sort(int *order, double *dist, int num)
 {
 	int		i;
 	int		temp;
@@ -17,13 +29,12 @@ void		ft_sort(int *order, double *dist, int num)
 			temp = order[i];
 			order[i] = order[i + 1];
 			order[i + 1] = temp;
-			i = 0; 
+			i = 0;
 		}
 		else
 			i++;
 	}
 }
-
 
 void	ft_place_sprites(t_read *args)
 {
@@ -50,7 +61,7 @@ void	ft_place_sprites(t_read *args)
 	}
 }
 
-void		ft_order_sprite(t_read *args)
+void	ft_order_sprite(t_read *args)
 {
 	int		i;
 
@@ -65,17 +76,17 @@ void		ft_order_sprite(t_read *args)
 		i++;
 	}
 	ft_sort(args->sp_order, args->sp_dist, args->nbsp);
-    ft_raysprite(args);
+	ft_raysprite(args);
 }
 
-void    ft_sprite(t_read *args)
+void	ft_sprite(t_read *args)
 {
-    if (!(args->tab_sprite = malloc(sizeof(t_sprite) * args->nbsp)))
-        ft_exit3(args, 5);
-    ft_place_sprites(args);
-    if (!(args->sp_order = malloc(sizeof(int) * args->nbsp)))
-        ft_exit3(args, 5);
-    if (!(args->sp_dist = malloc(sizeof(double) * args->nbsp)))
-        ft_exit3(args, 5);
-    ft_order_sprite(args);
+	if (!(args->tab_sprite = malloc(sizeof(t_sprite) * args->nbsp)))
+		ft_exit3(args, 5);
+	ft_place_sprites(args);
+	if (!(args->sp_order = malloc(sizeof(int) * args->nbsp)))
+		ft_exit3(args, 5);
+	if (!(args->sp_dist = malloc(sizeof(double) * args->nbsp)))
+		ft_exit3(args, 5);
+	ft_order_sprite(args);
 }

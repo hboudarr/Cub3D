@@ -6,16 +6,16 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 10:55:20 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/16 11:32:25 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/19 15:51:10 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3d.h"
+#include "cub3d.h"
 
 void	ft_make_range(t_read *args)
 {
-	int 	i;
-	char 	**tmp;
+	int		i;
+	char	**tmp;
 
 	i = 0;
 	if (args->y == 1)
@@ -53,7 +53,7 @@ void	ft_make_map(t_read *args)
 	}
 	else
 	{
-		tmp = args->mapdup;	
+		tmp = args->mapdup;
 		if (!(args->mapdup = malloc(sizeof(char *) * (args->y))))
 			ft_exit4(args);
 		while (i < args->y - 1)
@@ -77,20 +77,14 @@ int		ft_flood_fill(char **map, int x, int y, int max)
 	ret2 = 1;
 	ret3 = 1;
 	ret4 = 1;
-	if (y == max - 1 || y == 0 || x == 0 || (size_t)x == ft_strlen(map[y]) - 1 || map[y][x - 1] == ' '
-			|| map[y][x + 1] == ' ' || (size_t)x >= ft_strlen(map[y - 1]) || 
-			(size_t)x >= ft_strlen(map[y + 1]) || map[y - 1][x] == ' ' || 
-			map[y + 1][x] == ' ')
-		return (-1);
-	map[y][x] = 'V';
 	if (map[y - 1][x] == '0' || map[y - 1][x] == '2')
-		ret1 = ft_flood_fill(map, x , y - 1, max);
+		ret1 = ft_checking(map, x, y - 1, max);
 	if (map[y + 1][x] == '0' || map[y + 1][x] == '2')
-		ret2 = ft_flood_fill(map, x, y + 1, max);
+		ret2 = ft_checking(map, x, y + 1, max);
 	if (map[y][x - 1] == '0' || map[y][x - 1] == '2')
-		ret3 = ft_flood_fill(map, x - 1, y, max);
+		ret3 = ft_checking(map, x - 1, y, max);
 	if (map[y][x + 1] == '0' || map[y][x + 1] == '2')
-		ret4 = ft_flood_fill(map, x + 1, y, max);
+		ret4 = ft_checking(map, x + 1, y, max);
 	if (ret1 == 1 && ret2 == 1 && ret3 == 1 && ret4 == 1)
 		return (1);
 	return (0);
@@ -134,5 +128,5 @@ void	ft_read_second_part(t_read *args, int fd)
 	if (i == -1)
 		ft_exit1(args);
 	ft_free_map(args, args->mapdup);
-	close (fd);
+	close(fd);
 }

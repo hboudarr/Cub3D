@@ -1,18 +1,16 @@
-# include "cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/19 17:17:21 by hboudarr          #+#    #+#             */
+/*   Updated: 2020/10/19 17:32:04 by hboudarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	ft_exit1(t_read *args)
-{
-	write(1, "Error\nImpossible to read cub file or to set up the game", 55);
-	write(1, ", program stopped\n", 18);
-	ft_free_args(args);
-	exit(1);
-}
-
-void	ft_exit2(void)
-{
-	write(1, "Error\nInvalid arguments\n", 24);
-	exit(1);
-}
+#include "cub3d.h"
 
 void	ft_exit3(t_read *args, int nb)
 {
@@ -40,9 +38,9 @@ void	ft_exit3(t_read *args, int nb)
 
 void	ft_exit4(t_read *args)
 {
-    args = NULL;
+	args = NULL;
 	write(1, "Error\nInvalid map\n", 18);
-  //  ft_free_args(args);
+//	ft_free_args(args);
 	exit(1);
 }
 

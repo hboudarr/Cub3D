@@ -9,6 +9,7 @@ SRCS	= ./parsing.c\
 		  ./hook.c\
 		  ./init.c\
 		  ./myray.c\
+		  ./myray2.c\
 		  ./myspriteray.c\
 		  ./sprite.c\
 		  ./tex.c\
@@ -16,6 +17,7 @@ SRCS	= ./parsing.c\
 		  ./exit.c\
 		  ./free.c\
 		  ./img.c\
+		  ./exit2.c\
 
 OBJS	= ${SRCS:.c=.o}
 
@@ -29,11 +31,13 @@ ifeq ($(UNAME_S), Linux)
 	MLX_DIR = minilibx-linux
 	LIBS += -lXext
 	LIBS += -lX11
+	SRCS += key_linux.c
 	#LIBS += -lbsd
 else
 	MLX_DIR = minilibx_opengl_20191021
 	LIBS += -framework OpenGL
 	LIBS += -framework AppKit
+	SRCS += key.c
 endif
 
 LIBFT	= ./libft/libft.a
@@ -61,7 +65,7 @@ ${LIBFT}:
 			$(MAKE) -C ./libft
 			
 $(MLX):
-			$(MAKE) -C $(MLX_DIR)
+			$(MAKE) 2>/dev/null -C $(MLX_DIR)
 
 all:		${NAME}
 

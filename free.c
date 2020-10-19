@@ -1,11 +1,21 @@
-# include "cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/19 17:19:20 by hboudarr          #+#    #+#             */
+/*   Updated: 2020/10/19 17:19:38 by hboudarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "cub3d.h"
 
 void	ft_free_args2(t_read *args)
 {
 	if (args->tex4 != NULL)
 		free(args->tex4);
-	// free(args->tex4);
 	if (args->sprite != NULL)
 		free(args->sprite);
 	free(args->tab_sprite);
@@ -32,12 +42,9 @@ void	ft_free_args(t_read *args)
 	free(args->sp);
 	if (args->tex3 != NULL)
 		free(args->tex3);
-	// free(args->tex3);
 	if (args->tex1 != NULL)
 		free(args->tex1);
-	//free(args->tex1);
 	if (args->tex2 != NULL)
 		free(args->tex2);
-	// free(args->tex2);
 	ft_free_args2(args);
 }

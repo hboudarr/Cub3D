@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing2.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/19 15:35:58 by hboudarr          #+#    #+#             */
+/*   Updated: 2020/10/19 15:40:47 by hboudarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	ft_get_floor(t_read *args, char *str, int i)
 {
 	args->split = ft_split(str, ' ');
 	if ((!(args->split[1])) || args->split[2])
-		ft_exit3(args, 6);	
+		ft_exit3(args, 6);
 	ft_free_split(args->split);
 	i++;
 	args->split = ft_split(str + i, ',');
@@ -21,13 +33,14 @@ void	ft_get_floor(t_read *args, char *str, int i)
 	ft_free_split(args->split);
 }
 
-void		ft_get_ceiling_rgb(t_read *args)
+void	ft_get_ceiling_rgb(t_read *args)
 {
 	args->rgb.r = args->c[0];
 	args->rgb.g = args->c[1];
 	args->rgb.b = args->c[2];
 	args->ceiling = args->rgb.b + args->rgb.g * 256 + args->rgb.r * 65536;
 }
+
 void	ft_get_celling(t_read *args, char *str, int i)
 {
 	args->split = ft_split(str, ' ');
@@ -48,12 +61,13 @@ void	ft_get_celling(t_read *args, char *str, int i)
 	args->tab[7] = 1;
 	ft_free_split(args->split);
 }
+
 void	ft_analyse_line(t_read *args, char *str)
 {
 	int i;
 
 	i = 0;
-		while (str[i] == ' ')
+	while (str[i] == ' ')
 		i++;
 	if (str[i] == 'R')
 		ft_get_resol(args, str);
@@ -77,10 +91,10 @@ void	ft_analyse_line(t_read *args, char *str)
 
 void	ft_read(t_read *args, int fd)
 {
-	int 	ret;
-	char	*line;
+	int		ret;
 	int		i;
-	
+	char	*line;
+
 	ret = 0;
 	i = 0;
 	while (i < 8)
@@ -91,12 +105,12 @@ void	ft_read(t_read *args, int fd)
 	while (ft_check_element(args->tab) == 0)
 	{
 		ret = get_next_line(fd, &line);
-			if (ret == -1)
-				ft_exit1(args);
-			if (ret == 0)
-				ft_exit1(args);
-			if (line[0] != '\0')
-				ft_analyse_line(args, line);
+		if (ret == -1)
+			ft_exit1(args);
+		if (ret == 0)
+			ft_exit1(args);
+		if (line[0] != '\0')
+			ft_analyse_line(args, line);
 		free(line);
 	}
 }

@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing4.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/19 15:52:32 by hboudarr          #+#    #+#             */
+/*   Updated: 2020/10/19 15:53:27 by hboudarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	ft_check_value(char *str, t_read *args)
 {
-	int	R;
+	int	r;
 
-	R = ft_atoi(str);
-	if ((R < 0 || R > 255))
+	r = ft_atoi(str);
+	if ((r < 0 || r > 255))
 		ft_exit3(args, 6);
 }
 
-void		ft_get_floor_rgb(t_read *args)
+void	ft_get_floor_rgb(t_read *args)
 {
 	args->rgb.r = args->f[0];
 	args->rgb.g = args->f[1];
@@ -59,7 +71,7 @@ void	ft_orient2(t_read *args, char c)
 	}
 }
 
-void		ft_orient(t_read *args, char c)
+void	ft_orient(t_read *args, char c)
 {
 	if (c == 'N')
 	{
@@ -76,5 +88,4 @@ void		ft_orient(t_read *args, char c)
 		args->planey = 0;
 	}
 	ft_orient2(args, c);
-
 }
