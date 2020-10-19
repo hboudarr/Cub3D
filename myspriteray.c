@@ -42,7 +42,7 @@ void	ft_raysprite(t_read *args)
              	spcast->texy = ((spcast->d * args->sprite->height) / spcast->sp_height);
 				// printf("[%f]\n", spcast->spritey);
                 args->color = (unsigned int)args->sprite->tex_data[args->sprite->width * (int)spcast->texy + (int)spcast->texx];
-			    if (args->color != 0xFFFFFF)
+			    if ((args->color & 0x00FFFFFF) != 0x00FFFFFF)
 					ft_draw_to_image(args, spcast->x, spcast->y, args->color);
                 spcast->y++;
             }
