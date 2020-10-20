@@ -79,7 +79,7 @@ void	ft_bzero(void *s, int n)
 
 void	ft_move_fwd(t_read *args)
 {
-	if (args->fwd == 1)
+	if (args->fwd == 1 || args->ktab[0] == 1 || args->ktab[7])
 	{
 		if (args->map[(int)(args->posy)][(int)(args->posx + args->dirx
 			* 0.15)] == '0')

@@ -20,20 +20,23 @@ void	ft_esc(t_read *args)
 
 int		ft_key_press(int key, t_read *args)
 {
-	if (key == 122)
+	printf("%d\n", key);
+	if (key == 119)
 		args->ktab[0] = 1;
-	if (key == 115)
+	if (key == 97)
 		args->ktab[1] = 1;
-	if (key == 113)
-		args->ktab[2] = 1;
 	if (key == 100)
+		args->ktab[2] = 1;
+	if (key == 115)
 		args->ktab[3] = 1;
-	if (key == 65363)
+	if (key == 65364)
 		args->ktab[4] = 1;
 	if (key == 65361)
 		args->ktab[5] = 1;
-	if (key == 65505)
+	if (key == 65363)
 		args->ktab[6] = 1;
+	if (key == 65362)
+		args->ktab[7] = 1;
 	if (key == 65307)
 		ft_deal_exit(args);
 	return (0);
@@ -41,20 +44,22 @@ int		ft_key_press(int key, t_read *args)
 
 int		ft_key_release(int key, t_read *args)
 {
-	if (key == 122)
+	if (key == 119)
 		args->ktab[0] = 0;
-	if (key == 115)
+	if (key == 97)
 		args->ktab[1] = 0;
-	if (key == 113)
-		args->ktab[2] = 0;
 	if (key == 100)
+		args->ktab[2] = 0;
+	if (key == 115)
 		args->ktab[3] = 0;
-	if (key == 65363)
+	if (key == 65364)
 		args->ktab[4] = 0;
 	if (key == 65361)
 		args->ktab[5] = 0;
-	if (key == 65505)
+	if (key == 65363)
 		args->ktab[6] = 0;
+	if (key == 65362)
+		args->ktab[7] = 0;
 	return (0);
 }
 

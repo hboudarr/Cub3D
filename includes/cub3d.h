@@ -187,7 +187,7 @@ typedef	struct		s_read{
 	int				*sp_order;
 	double			*sp_dist;
 	double			*zbuffer;
-	int				ktab[5];
+	int				ktab[8];
 	int				mapwidth;
 }					t_read;
 
