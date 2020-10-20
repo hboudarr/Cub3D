@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/20 16:04:07 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/20 20:50:37 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,6 @@ typedef	struct		s_read{
 	int				*sp_order;
 	double			*sp_dist;
 	double			*zbuffer;
-	int				ktab[8];
 	int				mapwidth;
 }					t_read;
 

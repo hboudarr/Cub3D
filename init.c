@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:15:28 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/20 16:21:27 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/20 20:49:44 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	ft_bzero(void *s, int n)
 
 void	ft_move_fwd(t_read *args)
 {
-	if (args->fwd == 1 || args->ktab[0] == 1 || args->ktab[7])
+	if (args->fwd == 1)
 	{
 		if (args->map[(int)(args->posy)][(int)(args->posx + args->dirx
 			* 0.15)] == '0')

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:04:46 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/19 17:04:48 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/20 20:51:31 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_move_bwd(t_read *args)
 {
-	if (args->bwd == 1 || args->ktab[4] == 1 || args->ktab[3])
+	if (args->bwd == 1)
 	{
 		if (args->map[(int)(args->posy)][(int)(args->posx -
 		args->dirx * MOVESPEED)] == '0')
@@ -27,7 +27,7 @@ void	ft_move_bwd(t_read *args)
 
 void	ft_move_left(t_read *args)
 {
-	if (args->left == 1 || args->ktab[1] == 1)
+	if (args->left == 1)
 	{
 		if (args->map[(int)(args->posy - args->dirx * MOVESPEED)]
 		[(int)(args->posx)] == '0')
@@ -40,7 +40,7 @@ void	ft_move_left(t_read *args)
 
 void	ft_move_right(t_read *args)
 {
-	if (args->right == 1 || args->ktab[3] == 1)
+	if (args->right == 1)
 	{
 		if (args->map[(int)(args->posy + args->dirx * MOVESPEED)]
 		[(int)(args->posx)] == '0')
@@ -74,9 +74,9 @@ int		ft_hook(t_read *args)
 	ft_move_bwd(args);
 	ft_move_left(args);
 	ft_move_right(args);
-	if (args->rotleft == 1 || args->ktab[5])
+	if (args->rotleft == 1)
 		ft_rotate(args, 1);
-	if (args->rotright == 1 || args->ktab[6])
+	if (args->rotright == 1)
 		ft_rotate(args, -1);
 	ft_esc(args);
 	return (1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_linux.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:27:58 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/20 09:26:04 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/20 20:51:29 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,21 @@ int		ft_key_press(int key, t_read *args)
 {
 	printf("%d\n", key);
 	if (key == 119)
-		args->ktab[0] = 1;
+		args->fwd = 1;
 	if (key == 97)
-		args->ktab[1] = 1;
+		args->left = 1;
 	if (key == 100)
-		args->ktab[2] = 1;
+		args->bwd = 1;
 	if (key == 115)
-		args->ktab[3] = 1;
+		args->right = 1;
 	if (key == 65364)
-		args->ktab[4] = 1;
+		args->right = 1;
 	if (key == 65361)
-		args->ktab[5] = 1;
+		args->rotleft = 1;
 	if (key == 65363)
-		args->ktab[6] = 1;
+		args->bwd = 1;
 	if (key == 65362)
-		args->ktab[7] = 1;
+		args->fwd = 1;
 	if (key == 65307)
 		ft_deal_exit(args);
 	return (0);
@@ -45,21 +45,21 @@ int		ft_key_press(int key, t_read *args)
 int		ft_key_release(int key, t_read *args)
 {
 	if (key == 119)
-		args->ktab[0] = 0;
+		args->fwd = 0;
 	if (key == 97)
-		args->ktab[1] = 0;
+		args->left = 0;
 	if (key == 100)
-		args->ktab[2] = 0;
+		args->bwd = 0;
 	if (key == 115)
-		args->ktab[3] = 0;
+		args->right = 0;
 	if (key == 65364)
-		args->ktab[4] = 0;
+		args->right = 0;
 	if (key == 65361)
-		args->ktab[5] = 0;
+		args->rotleft = 0;
 	if (key == 65363)
-		args->ktab[6] = 0;
+		args->bwd = 0;
 	if (key == 65362)
-		args->ktab[7] = 0;
+		args->fwd = 0;
 	return (0);
 }
 
