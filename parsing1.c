@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 10:55:20 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/19 15:51:10 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/20 17:13:38 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_make_map(t_read *args)
 {
 	int		i;
 	char	**tmp;
-
+	
 	i = 0;
 	if (args->y == 1)
 	{
@@ -109,12 +109,10 @@ void	ft_read_second_part(t_read *args, int fd)
 	int i;
 
 	ret = 1;
-	args->y = 0;
-	args->count = 0;
 	while (ret > 0)
 	{
 		ret = get_next_line(fd, &args->s);
-		if (ret == -1)
+		if (ret == -1 || args->s[0] == '\0')
 			ft_exit1(args);
 		if (ret == 1 || ret == 0)
 		{
@@ -125,7 +123,7 @@ void	ft_read_second_part(t_read *args, int fd)
 		}
 	}
 	i = ft_flood_fill(args->mapdup, args->posx, args->posy, args->y);
-	if (i == -1)
+	if (i == 0)
 		ft_exit1(args);
 	ft_free_map(args, args->mapdup);
 	close(fd);

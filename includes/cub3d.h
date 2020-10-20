@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/19 18:54:22 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/20 16:04:07 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ typedef	struct		s_read{
 	double			*sp_dist;
 	double			*zbuffer;
 	int				ktab[5];
+	int				mapwidth;
 }					t_read;
 
 void				ft_error(int nb);
@@ -197,7 +198,6 @@ int					ft_check_element(int tab[8]);
 void				ft_analyse_line(t_read *args, char *str);
 void				ft_get_resol(t_read *args, char *str);
 void				ft_get_north(t_read *north, char *str, int i);
-void				ft_get_south(t_read *args, char *str, int i);
 void				ft_get_south(t_read *args, char *str, int i);
 void				ft_get_west(t_read *args, char *str, int i);
 void				ft_get_east(t_read *args, char *str, int i);
@@ -274,5 +274,7 @@ void				ft_exit6(t_read *args);
 void				ft_free_args(t_read *args);
 void				ft_free_args2(t_read *args);
 int					ft_deal_exit(t_read *args);
+void	ft_check_line(char *str, t_read *args);
+ void	ft_parse_empty_line(t_read *args, int fd);
 
 #endif

@@ -52,7 +52,6 @@ LIB_DIR	+= -L libft
 LIB_DIR += -L $(MLX_DIR)
 
 CFLAGS	= -Wall -Wextra -Werror -fsanitize=address
-
 CC		= clang
 
 .c.o:

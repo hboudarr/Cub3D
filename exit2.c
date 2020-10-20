@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:17:30 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/19 17:18:33 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/20 13:11:35 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	ft_exit1(t_read *args)
 {
 	write(1, "Error\nImpossible to read cub file or to set up the game", 55);
 	write(1, ", program stopped\n", 18);
-	ft_free_args(args);
+	(void) args;
+//	ft_free_args(args);
 	exit(1);
 }
 

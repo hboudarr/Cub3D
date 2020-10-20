@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:07:45 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/19 16:57:55 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/20 16:27:07 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,32 @@ void	ft_main2(t_read *args)
 	ft_textures_data(args);
 }
 
+void	ft_parse_empty_line(t_read *args, int fd)
+{
+	int		ret;
+
+	ret = get_next_line(fd, &args->s);
+	while (ret == 1 && args->s[0] == '\0')
+	{
+		free(args->s);
+		ret = get_next_line(fd, &args->s);
+	}
+	if (ret == -1 || ret == 0)
+		ft_exit1(args);
+	args->count = 0;
+	ft_analyse_str(args);
+	args->y = 1;
+	ft_make_range(args);
+	ft_make_map(args);
+}
+
 int		main(int ac, char **av)
 {
 	t_read		*args;
 	int			fd;
+	int	i;
 
+	i = 0;
 	if ((ac == 2 && ft_check_filename(av[1]) == 1) || (ac == 3 &&
 	ft_check_arg(av[2]) == 1 && ft_check_filename(av[1]) == 1))
 	{
@@ -100,7 +121,13 @@ int		main(int ac, char **av)
 		if (!(args->mlx_ptr = mlx_init()))
 			ft_exit1(args);
 		ft_read(args, fd);
+		ft_parse_empty_line(args, fd);
 		ft_read_second_part(args, fd);
+		// while (i < args->y)
+		// {
+		// 	printf("%s\n", args->map[i]);
+		// 	i++;
+		// }
 		ft_main2(args);
 		ft_cub3d(args, ac);
 	}
