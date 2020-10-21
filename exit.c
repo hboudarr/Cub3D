@@ -38,9 +38,8 @@ void	ft_exit3(t_read *args, int nb)
 
 void	ft_exit4(t_read *args)
 {
-	args = NULL;
 	write(1, "Error\nInvalid map\n", 18);
-//	ft_free_args(args);
+	ft_free_args(args);
 	exit(1);
 }
 
@@ -59,10 +58,14 @@ void	ft_exit6(t_read *args)
 
 int		ft_deal_exit(t_read *args)
 {
+	if (args->img)
+		mlx_destroy_image(args->mlx_ptr, args->img);
+	
+	
 	if (args->win_ptr)
 		mlx_destroy_window(args->mlx_ptr, args->win_ptr);
 	if (args->mlx_ptr)
 		free(args->mlx_ptr);
-	free(args);
+	//ft_free_args(args);
 	exit(0);
 }

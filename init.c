@@ -46,13 +46,11 @@ void	ft_init(t_read *args)
 	args->tex4 = malloc(sizeof(t_textures));
 	ft_bzero(args->tex4, sizeof(t_textures));
 	args->tex4->tex_ptr = NULL;
-	args->tex1->tex_data = NULL;
+	args->tex4->tex_data = NULL;
 	args->sprite = malloc(sizeof(t_textures));
 	ft_bzero(args->sprite, sizeof(t_textures));
 	args->sprite->tex_ptr = NULL;
 	args->sprite->tex_data = NULL;
-	args->tab_sprite = malloc(sizeof(t_sprite));
-	ft_bzero(args->tab_sprite, sizeof(t_sprite));
 	args->f[0] = -1;
 	args->f[1] = -1;
 	args->f[2] = -1;
@@ -97,8 +95,6 @@ void	ft_check_line(char *str, t_read *args)
 
 	i = 0;
 	j = ft_strlen(str);
-	//printf("%c\n", args->s[i]);
-	//printf("%c\n", args->s[j]);
 	if (str[i] != '1')
 		ft_exit1(args);
 	if (str[j - 1] != '1')
@@ -113,7 +109,7 @@ void	ft_analyse_str(t_read *args)
 	//if (args->s == '\0')
 	//	ft_exit1(args);
 	if (ft_check_alphanum(args->s, "NSEW102 ") == 0)
-		ft_exit4(args);
+		ft_exit8(args, args->s);
 	//ft_check_line(args->s, args);
 //	if (args->s[i] == '0')
 //		ft_exit1(args);
@@ -138,5 +134,5 @@ void	ft_analyse_str(t_read *args)
 		i++;
 	}
 	if (args->count > 1)
-		ft_exit4(args);
+		ft_exit8(args, args->s);
 }

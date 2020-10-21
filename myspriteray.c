@@ -87,4 +87,7 @@ void	ft_raysprite(t_read *args)
 		}
 		spcast->i++;
 	}
+	free(args->tab_sprite);
+	free(args->sp_order);
+	free(args->sp_dist);
 }

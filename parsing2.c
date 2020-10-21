@@ -86,7 +86,7 @@ void	ft_analyse_line(t_read *args, char *str)
 	else if (str[i] == 'C' && str[i + 1] == ' ')
 		ft_get_celling(args, str, i);
 	else
-		ft_exit1(args);
+		ft_exit8(args, str);
 }
 
 void	ft_read(t_read *args, int fd)
@@ -106,9 +106,9 @@ void	ft_read(t_read *args, int fd)
 	{
 		ret = get_next_line(fd, &line);
 		if (ret == -1)
-			ft_exit1(args);
+			ft_exit8(args, line);
 		if (ret == 0)
-			ft_exit1(args);
+			ft_exit8(args, line);
 		if (line[0] != '\0')
 			ft_analyse_line(args, line);
 		free(line);

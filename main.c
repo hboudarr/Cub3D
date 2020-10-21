@@ -95,7 +95,7 @@ void	ft_parse_empty_line(t_read *args, int fd)
 		ret = get_next_line(fd, &args->s);
 	}
 	if (ret == -1 || ret == 0)
-		ft_exit1(args);
+		ft_exit8(args, args->s);
 	args->count = 0;
 	ft_analyse_str(args);
 	args->y = 1;
@@ -123,11 +123,6 @@ int		main(int ac, char **av)
 		ft_read(args, fd);
 		ft_parse_empty_line(args, fd);
 		ft_read_second_part(args, fd);
-		// while (i < args->y)
-		// {
-		// 	printf("%s\n", args->map[i]);
-		// 	i++;
-		// }
 		ft_main2(args);
 		ft_cub3d(args, ac);
 	}

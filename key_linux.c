@@ -20,21 +20,20 @@ void	ft_esc(t_read *args)
 
 int		ft_key_press(int key, t_read *args)
 {
-	printf("%d\n", key);
 	if (key == 119)
 		args->fwd = 1;
 	if (key == 97)
 		args->left = 1;
 	if (key == 100)
-		args->bwd = 1;
+		args->right = 1;
 	if (key == 115)
-		args->right = 1;
+		args->bwd = 1;
 	if (key == 65364)
-		args->right = 1;
+		args->bwd = 1;
 	if (key == 65361)
 		args->rotleft = 1;
 	if (key == 65363)
-		args->bwd = 1;
+		args->rotright = 1;
 	if (key == 65362)
 		args->fwd = 1;
 	if (key == 65307)
@@ -49,15 +48,15 @@ int		ft_key_release(int key, t_read *args)
 	if (key == 97)
 		args->left = 0;
 	if (key == 100)
-		args->bwd = 0;
+		args->right = 0;
 	if (key == 115)
-		args->right = 0;
+		args->bwd = 0;
 	if (key == 65364)
-		args->right = 0;
+		args->bwd = 0;
 	if (key == 65361)
 		args->rotleft = 0;
 	if (key == 65363)
-		args->bwd = 0;
+		args->rotright = 0;
 	if (key == 65362)
 		args->fwd = 0;
 	return (0);

@@ -74,9 +74,9 @@ int		ft_hook(t_read *args)
 	ft_move_bwd(args);
 	ft_move_left(args);
 	ft_move_right(args);
-	if (args->rotleft == 1)
-		ft_rotate(args, 1);
 	if (args->rotright == 1)
+		ft_rotate(args, 1);
+	if (args->rotleft == 1)
 		ft_rotate(args, -1);
 	ft_esc(args);
 	return (1);

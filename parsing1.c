@@ -21,14 +21,14 @@ void	ft_make_range(t_read *args)
 	if (args->y == 1)
 	{
 		if (!(args->map = malloc(sizeof(char*) * (args->y))))
-			ft_exit4(args);
+			ft_exit8(args, args->s);
 		args->map[0] = args->s;
 	}
 	else
 	{
 		tmp = args->map;
 		if (!(args->map = malloc(sizeof(char*) * (args->y))))
-			ft_exit4(args);
+			ft_exit8(args, args->s);
 		while (i < args->y - 1)
 		{
 			args->map[i] = tmp[i];
@@ -48,14 +48,14 @@ void	ft_make_map(t_read *args)
 	if (args->y == 1)
 	{
 		if (!(args->mapdup = malloc(sizeof(char *) * (args->y))))
-			ft_exit4(args);
+			ft_exit8(args, args->s);
 		args->mapdup[0] = ft_strdup(args->s);
 	}
 	else
 	{
 		tmp = args->mapdup;
 		if (!(args->mapdup = malloc(sizeof(char *) * (args->y))))
-			ft_exit4(args);
+			ft_exit8(args, args->s);
 		while (i < args->y - 1)
 		{
 			args->mapdup[i] = tmp[i];
@@ -113,7 +113,7 @@ void	ft_read_second_part(t_read *args, int fd)
 	{
 		ret = get_next_line(fd, &args->s);
 		if (ret == -1 || args->s[0] == '\0')
-			ft_exit1(args);
+			ft_exit8(args, args->s);
 		if (ret == 1 || ret == 0)
 		{
 			args->y += 1;
@@ -124,7 +124,7 @@ void	ft_read_second_part(t_read *args, int fd)
 	}
 	i = ft_flood_fill(args->mapdup, args->posx, args->posy, args->y);
 	if (i == 0)
-		ft_exit1(args);
+		ft_exit8(args, args->s);
 	ft_free_map(args, args->mapdup);
 	close(fd);
 }
