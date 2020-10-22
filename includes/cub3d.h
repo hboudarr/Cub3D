@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/22 10:25:54 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/22 15:31:00 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,13 +158,9 @@ typedef	struct		s_read{
 	int				line_length;
 	int				endian;
 	void			*img;
-	int				padding;
 	int				xcoor;
 	int				ycoor;
 	double			olddirx;
-	int				padding2;
-	double			oldplanex;
-	int				padding3;
 	int				fwd;
 	int				bwd;
 	int				left;
@@ -190,7 +186,6 @@ typedef	struct		s_read{
 	int				mapwidth;
 }					t_read;
 
-void				ft_error(int nb);
 void				ft_init(t_read *args);
 void				ft_read(t_read *args, int fd);
 int					ft_check_element(int tab[8]);
@@ -280,6 +275,6 @@ int					ft_deal_exit(t_read *args);
 void				ft_check_line(char *str, t_read *args);
 void				ft_parse_empty_line(t_read *args, int fd);
 void				ft_destroy_images(t_read *args);
-void				ft_malloc_struct(t_read *args);
+void				ft_init2(t_read *args);
 
 #endif
