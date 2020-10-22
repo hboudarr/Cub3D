@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:56:44 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/19 18:02:18 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/22 10:20:38 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,23 @@ void	ft_sp3(t_read *args, t_spcast *spcast)
 	}
 }
 
+void	ft_sp4(t_read *args, t_spcast *spcast)
+{
+	while (spcast->x < spcast->draw_endx)
+	{
+		spcast->texx = ((spcast->x - (-spcast->sp_width / 2 +
+		spcast->sp_screenx)) * args->sprite->width / spcast->sp_width);
+		if (spcast->transformy > 0 && spcast->x >= 0
+		&& spcast->x < args->resol[0]
+		&& spcast->transformy < args->zbuffer[spcast->x])
+		{
+			spcast->y = spcast->draw_starty;
+			ft_sp3(args, spcast);
+		}
+		spcast->x++;
+	}
+}
+
 void	ft_raysprite(t_read *args)
 {
 	t_spcast	*spcast;
@@ -72,19 +89,7 @@ void	ft_raysprite(t_read *args)
 	{
 		ft_sp1(args, spcast);
 		ft_sp2(args, spcast);
-		while (spcast->x < spcast->draw_endx)
-		{
-			spcast->texx = ((spcast->x - (-spcast->sp_width / 2 +
-			spcast->sp_screenx)) * args->sprite->width / spcast->sp_width);
-			if (spcast->transformy > 0 && spcast->x >= 0
-			&& spcast->x < args->resol[0]
-			&& spcast->transformy < args->zbuffer[spcast->x])
-			{
-				spcast->y = spcast->draw_starty;
-				ft_sp3(args, spcast);
-			}
-			spcast->x++;
-		}
+		ft_sp4(args, spcast);
 		spcast->i++;
 	}
 	free(args->tab_sprite);

@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:17:21 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/22 08:50:54 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/22 10:38:45 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_exit3(t_read *args, int nb)
 	if (nb == 8)
 		write(1, "Error\nResolution <= 0\n", 22);
 	ft_free_args(args);
+	ft_init(args);
 	exit(1);
 }
 
@@ -40,6 +41,7 @@ void	ft_exit4(t_read *args)
 {
 	write(1, "Error\nInvalid map\n", 18);
 	ft_free_args(args);
+	ft_init(args);
 	exit(1);
 }
 
@@ -47,27 +49,15 @@ void	ft_exit5(t_read *args)
 {
 	write(1, "Error\nFailed to create an image\n", 32);
 	ft_free_args(args);
+	ft_init(args);
 	exit(1);
 }
 
 void	ft_exit6(t_read *args)
 {
 	ft_free_args(args);
+	ft_init(args);
 	exit(1);
-}
-
-void	ft_destroy_images(t_read *args)
-{
-//	if (args->no)
-		mlx_destroy_image(args->mlx_ptr, args->tex1->tex_ptr);
-//	if (args->so)
-		mlx_destroy_image(args->mlx_ptr, args->tex2->tex_ptr);
-//	if (args->ea)
-		mlx_destroy_image(args->mlx_ptr, args->tex3->tex_ptr);
-//	if (args->we)
-		mlx_destroy_image(args->mlx_ptr, args->tex4->tex_ptr);
-//	if (args->sprite)
-		mlx_destroy_image(args->mlx_ptr, args->sprite->tex_ptr);
 }
 
 int		ft_deal_exit(t_read *args)
@@ -79,6 +69,7 @@ int		ft_deal_exit(t_read *args)
 		mlx_destroy_window(args->mlx_ptr, args->win_ptr);
 	if (args->mlx_ptr)
 		free(args->mlx_ptr);
-	//ft_free_args(args);
 	exit(0);
 }
+
+000000000000000

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_linux.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:27:58 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/20 20:51:29 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/22 10:22:33 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_esc(t_read *args)
 {
 	args = 0;
-	//exit(1);
 }
 
 int		ft_key_press(int key, t_read *args)
@@ -73,7 +72,6 @@ void	ft_get_resol(t_read *args, char *str)
 		ft_exit3(args, 0);
 	args->resol[0] = ft_atoi(args->split[1]);
 	args->resol[1] = ft_atoi(args->split[2]);
-	// ft_check_resolution(args->resol[0], args->resol[1], args);
 	ret = ft_check_nb(args->split[1], args->split[2]);
 	if (ret == -1)
 		ft_exit3(args, 0);

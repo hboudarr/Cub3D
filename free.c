@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:19:20 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/20 12:14:12 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/22 10:30:05 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	ft_free_args2(t_read *args)
 	free(args->sp_dist);
 	if (args->map != NULL)
 		ft_free_map(args, args->map);
-//	if (args->mapdup != NULL)
-//		ft_free_map(args, args->mapdup);
-//		mlx_destroy_image(args->mlx_ptr, args->img);
+	ft_destroy_images(args);
+	if (args->img)
+		mlx_destroy_image(args->mlx_ptr, args->img);
 	if (args->win_ptr != NULL)
 		mlx_destroy_window(args->mlx_ptr, args->win_ptr);
 	if (args->mlx_ptr != NULL)
@@ -68,4 +68,37 @@ void	ft_free_args(t_read *args)
 		free(args->tex2);
 	}
 	ft_free_args2(args);
+}
+
+int		ft_check_arg(char *str)
+{
+	char	cmp[7];
+	int		i;
+
+	cmp[0] = '-';
+	cmp[1] = '-';
+	cmp[2] = 's';
+	cmp[3] = 'a';
+	cmp[4] = 'v';
+	cmp[5] = 'e';
+	cmp[6] = '\0';
+	i = 0;
+	if (ft_strlen(str) != 6)
+		return (0);
+	while (str[i] != '\0')
+	{
+		if (str[i] != cmp[i])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	ft_destroy_images(t_read *args)
+{
+	mlx_destroy_image(args->mlx_ptr, args->tex1->tex_ptr);
+	mlx_destroy_image(args->mlx_ptr, args->tex2->tex_ptr);
+	mlx_destroy_image(args->mlx_ptr, args->tex3->tex_ptr);
+	mlx_destroy_image(args->mlx_ptr, args->tex4->tex_ptr);
+	mlx_destroy_image(args->mlx_ptr, args->sprite->tex_ptr);
 }

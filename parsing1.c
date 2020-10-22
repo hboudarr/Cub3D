@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 10:55:20 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/20 17:13:38 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/22 10:13:20 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_make_map(t_read *args)
 {
 	int		i;
 	char	**tmp;
-	
+
 	i = 0;
 	if (args->y == 1)
 	{

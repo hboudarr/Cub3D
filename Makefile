@@ -51,15 +51,15 @@ HEADERS +=	-I $(MLX_DIR)
 LIB_DIR	+= -L libft
 LIB_DIR += -L $(MLX_DIR)
 
-CFLAGS	= -Wall -Wextra -Werror
-#CFLAGS	= -Wall -Wextra -Werror -fsanitize=address
+# CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -fsanitize=address
 CC		= clang
 
 .c.o:
 			${CC} ${CFLAGS} ${HEADERS} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS} ${LIBFT} $(MLX)
-			${CC} $(LIB_DIR) -o ${NAME} ${OBJS} $(LIBS)
+			${CC} -fsanitize=address $(LIB_DIR) -o ${NAME} ${OBJS} $(LIBS)
 
 ${LIBFT}:
 			$(MAKE) -C ./libft

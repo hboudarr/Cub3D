@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:07:45 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/20 16:27:07 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/22 10:21:53 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,30 +42,6 @@ int		ft_check_filename(char *str)
 	&& str[i - 3] == 'c' && str[i - 4] == '.')
 		return (1);
 	return (0);
-}
-
-int		ft_check_arg(char *str)
-{
-	char	cmp[7];
-	int		i;
-
-	cmp[0] = '-';
-	cmp[1] = '-';
-	cmp[2] = 's';
-	cmp[3] = 'a';
-	cmp[4] = 'v';
-	cmp[5] = 'e';
-	cmp[6] = '\0';
-	i = 0;
-	if (ft_strlen(str) != 6)
-		return (0);
-	while (str[i] != '\0')
-	{
-		if (str[i] != cmp[i])
-			return (0);
-		i++;
-	}
-	return (1);
 }
 
 void	ft_main2(t_read *args)
@@ -107,7 +83,7 @@ int		main(int ac, char **av)
 {
 	t_read		*args;
 	int			fd;
-	int	i;
+	int			i;
 
 	i = 0;
 	if ((ac == 2 && ft_check_filename(av[1]) == 1) || (ac == 3 &&

@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:27:51 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/22 08:42:32 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/22 10:22:14 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_esc(t_read *args)
 {
 	args = 0;
-	//exit(1);
 }
 
 int		ft_key_press(int key, t_read *args)

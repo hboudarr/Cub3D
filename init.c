@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:15:28 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/20 20:49:44 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/22 10:05:04 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_init(t_read *args)
 {
 	ft_bzero(args, sizeof(*args));
-	args->s = NULL;
+/*	args->s = NULL;
 	args->map = NULL;
 	args->mapdup = NULL;
 	args->split = NULL;
@@ -30,7 +30,7 @@ void	ft_init(t_read *args)
 	args->img = NULL;
 	args->sp_order = NULL;
 	args->sp_dist = NULL;
-	args->zbuffer = NULL;
+	args->zbuffer = NULL; */
 	args->tex1 = malloc(sizeof(t_textures));
 	ft_bzero(args->tex1, sizeof(t_textures));
 	args->tex1->tex_ptr = NULL;
