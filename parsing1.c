@@ -97,10 +97,12 @@ void	ft_free_map(t_read *args, char **map)
 	i = 0;
 	while (i < args->y)
 	{
-		free(map[i]);
+		if (map[i] != NULL)
+			free(map[i]);
 		i++;
 	}
-	free(map);
+	if (map != NULL)
+		free(map);
 }
 
 void	ft_read_second_part(t_read *args, int fd)

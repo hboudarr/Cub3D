@@ -19,9 +19,12 @@ void	ft_free_args2(t_read *args)
 	if (args->sprite != NULL)
 		free(args->sprite);
 	//free(args->tab_sprite);
-	free(args->zbuffer);
+	if (args->zbuffer != NULL)
+		free(args->zbuffer);
 	//free(args->sp_order);
 	//free(args->sp_dist);
+//	if (args->mapdup != NULL)
+//		ft_free_map(args, args->mapdup);
 	if (args->map != NULL)
 		ft_free_map(args, args->map);
 	if (args->img)
@@ -35,18 +38,28 @@ void	ft_free_args2(t_read *args)
 
 void	ft_free_args(t_read *args)
 {
-	free(args->no);
-	free(args->so);
-	free(args->we);
-	free(args->ea);
-	free(args->sp);
-	mlx_destroy_image(args->mlx_ptr, args->tex1->tex_ptr);
-	mlx_destroy_image(args->mlx_ptr, args->tex2->tex_ptr);
-	mlx_destroy_image(args->mlx_ptr, args->tex3->tex_ptr);
-	mlx_destroy_image(args->mlx_ptr, args->tex4->tex_ptr);
-	mlx_destroy_image(args->mlx_ptr, args->sprite->tex_ptr);
+	if (args->no != NULL)
+		free(args->no);
+	if (args->so != NULL)
+		free(args->so);
+	if (args->we != NULL)
+		free(args->we);
+	if (args->ea != NULL)
+		free(args->ea);
+	if (args->sp != NULL)
+		free(args->sp);
+	if (args->tex1->tex_ptr != NULL)
+		mlx_destroy_image(args->mlx_ptr, args->tex1->tex_ptr);
+	if (args->tex2->tex_ptr != NULL)
+		mlx_destroy_image(args->mlx_ptr, args->tex2->tex_ptr);
+	if (args->tex3->tex_ptr != NULL)
+		mlx_destroy_image(args->mlx_ptr, args->tex3->tex_ptr);
+	if (args->tex4->tex_ptr != NULL)
+		mlx_destroy_image(args->mlx_ptr, args->tex4->tex_ptr);
+	if (args->sprite->tex_ptr != NULL)
+		mlx_destroy_image(args->mlx_ptr, args->sprite->tex_ptr);
 	if (args->tex3 != NULL)
-	free(args->tex3);
+		free(args->tex3);
 	if (args->tex1 != NULL)
 		free(args->tex1);
 	if (args->tex2 != NULL)

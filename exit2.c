@@ -41,8 +41,9 @@ void	ft_exit8(t_read *args, char *str)
 	write(1, "Error\nImpossible to read cub file or to set up the game", 55);
 	write(1, ", program stopped\n", 18);
 	free(str);
+	ft_free_map(args, args->mapdup);
 	ft_free_args(args);
-	ft_init(args);
+	//ft_init(args);
 	exit(1);
 }
 
