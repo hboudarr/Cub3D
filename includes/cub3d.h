@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/22 08:42:33 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/22 10:25:54 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,6 +249,7 @@ void				ft_sprite(t_read *args);
 void				ft_sp1(t_read *args, t_spcast *spcast);
 void				ft_sp2(t_read *args, t_spcast *spcast);
 void				ft_sp3(t_read *args, t_spcast *spcast);
+void				ft_sp4(t_read *args, t_spcast *spcast);
 void				ft_place_sprites(t_read *args);
 void				ft_order_sprite(t_read *args);
 void				ft_sort(int *order, double *dist, int num);
@@ -272,11 +273,11 @@ void				ft_exit5(t_read *args);
 void				ft_exit6(t_read *args);
 void				ft_exit7(t_read *args);
 void				ft_exit8(t_read *args, char *str);
-void	ft_exit9(t_read *args);
+void				ft_exit9(t_read *args);
 void				ft_free_args(t_read *args);
 void				ft_free_args2(t_read *args);
 int					ft_deal_exit(t_read *args);
-void	ft_check_line(char *str, t_read *args);
- void	ft_parse_empty_line(t_read *args, int fd);
+void				ft_check_line(char *str, t_read *args);
+void				ft_parse_empty_line(t_read *args, int fd);
 
 #endif
