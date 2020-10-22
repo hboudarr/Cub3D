@@ -62,14 +62,8 @@ void	ft_exit6(t_read *args)
 
 int		ft_deal_exit(t_read *args)
 {
-	ft_destroy_images(args);
-	if (args->img)
-		mlx_destroy_image(args->mlx_ptr, args->img);
-	if (args->win_ptr)
-		mlx_destroy_window(args->mlx_ptr, args->win_ptr);
-	if (args->mlx_ptr)
-		free(args->mlx_ptr);
-	exit(0);
+	ft_free_args(args);
+//	ft_init(args);
+	exit(1);
 }
 
-000000000000000

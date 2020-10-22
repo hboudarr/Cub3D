@@ -62,6 +62,20 @@ void	ft_init(t_read *args)
 	args->rgb.b = 0;
 }
 
+void	ft_malloc_struct(t_read *args)
+{
+	args->tex1 = malloc(sizeof(t_textures));
+	ft_bzero(args->tex1, sizeof(t_textures));
+	args->tex2 = malloc(sizeof(t_textures));
+	ft_bzero(args->tex2, sizeof(t_textures));
+	args->tex3 = malloc(sizeof(t_textures));
+	ft_bzero(args->tex3, sizeof(t_textures));
+	args->tex4 = malloc(sizeof(t_textures));
+	ft_bzero(args->tex4, sizeof(t_textures));
+	args->sprite = malloc(sizeof(t_textures));
+	ft_bzero(args->sprite, sizeof(t_textures));
+}
+
 void	ft_bzero(void *s, int n)
 {
 	unsigned char	*dest;
@@ -106,17 +120,8 @@ void	ft_analyse_str(t_read *args)
 	int i;
 
 	i = 0;
-	//if (args->s == '\0')
-	//	ft_exit1(args);
 	if (ft_check_alphanum(args->s, "NSEW102 ") == 0)
 		ft_exit8(args, args->s);
-	//ft_check_line(args->s, args);
-//	if (args->s[i] == '0')
-//		ft_exit1(args);
-//	while (args->s[i] != '\0')
-//		args->s[i++];
-//	if (args->s[i] == '0')
-//		ft_exit1(args);
 	while (args->s[i])
 	{
 		

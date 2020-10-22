@@ -279,5 +279,7 @@ void				ft_free_args2(t_read *args);
 int					ft_deal_exit(t_read *args);
 void				ft_check_line(char *str, t_read *args);
 void				ft_parse_empty_line(t_read *args, int fd);
+void				ft_destroy_images(t_read *args);
+void				ft_malloc_struct(t_read *args);
 
 #endif

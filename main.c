@@ -18,7 +18,7 @@ void	ft_cub3d(t_read *args, int ac)
 	{
 		mlx_hook(args->win_ptr, 2, 1L << 0, ft_key_press, args);
 		mlx_hook(args->win_ptr, 3, 1L << 1, ft_key_release, args);
-		mlx_hook(args->win_ptr, 17, 10001, ft_deal_exit, args);
+		mlx_hook(args->win_ptr, 17, 1L << 17, ft_deal_exit, args);
 		mlx_loop_hook(args->mlx_ptr, ft_raycasting, args);
 		mlx_loop(args->mlx_ptr);
 	}
@@ -91,6 +91,7 @@ int		main(int ac, char **av)
 	{
 		if (!(args = malloc(sizeof(t_read))))
 			ft_exit1(args);
+	//	ft_malloc_struct(args);
 		ft_init(args);
 		if ((fd = open(av[1], O_RDONLY)) < 0)
 			ft_exit1(args);

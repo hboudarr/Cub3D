@@ -15,7 +15,7 @@
 void	ft_esc(t_read *args)
 {
 	args = 0;
-}
+} 
 
 int		ft_key_press(int key, t_read *args)
 {

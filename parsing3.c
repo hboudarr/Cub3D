@@ -14,6 +14,8 @@
 
 void	ft_get_north(t_read *args, char *str, int i)
 {
+	void *tex;
+
 	args->split = ft_split(str, ' ');
 	if ((!(args->split[1]) || args->split[2]))
 		ft_exit7(args);
@@ -23,13 +25,16 @@ void	ft_get_north(t_read *args, char *str, int i)
 		i++;
 	args->no = ft_strdup(str + i);
 	args->tab[1] = 1;
-	if (!(mlx_xpm_file_to_image(args->mlx_ptr, args->no,
+	if (!(tex = mlx_xpm_file_to_image(args->mlx_ptr, args->no,
 	&args->tex1->width, &args->tex1->height)))
 		ft_exit7(args);
+	mlx_destroy_image(args->mlx_ptr, tex);
 }
 
 void	ft_get_south(t_read *args, char *str, int i)
 {
+	void	*tex;
+
 	args->split = ft_split(str, ' ');
 	if ((!(args->split[1]) || args->split[2]))
 		ft_exit7(args);
@@ -39,13 +44,16 @@ void	ft_get_south(t_read *args, char *str, int i)
 		i++;
 	args->so = ft_strdup(str + i);
 	args->tab[2] = 1;
-	if (!(mlx_xpm_file_to_image(args->mlx_ptr, args->so,
+	if (!(tex = mlx_xpm_file_to_image(args->mlx_ptr, args->so,
 	&args->tex2->width, &args->tex2->height)))
 		ft_exit7(args);
+	mlx_destroy_image(args->mlx_ptr, tex);
 }
 
 void	ft_get_west(t_read *args, char *str, int i)
 {
+	void *tex;
+
 	args->split = ft_split(str, ' ');
 	if ((!(args->split[1]) || args->split[2]))
 		ft_exit7(args);
@@ -55,13 +63,16 @@ void	ft_get_west(t_read *args, char *str, int i)
 		i++;
 	args->we = ft_strdup(str + i);
 	args->tab[3] = 1;
-	if (!(mlx_xpm_file_to_image(args->mlx_ptr, args->we,
+	if (!(tex = mlx_xpm_file_to_image(args->mlx_ptr, args->we,
 	&args->tex3->width, &args->tex3->height)))
 		ft_exit7(args);
+	mlx_destroy_image(args->mlx_ptr, tex);
 }
 
 void	ft_get_east(t_read *args, char *str, int i)
-{
+{	
+	void	*tex;
+
 	args->split = ft_split(str, ' ');
 	if ((!(args->split[1]) || args->split[2]))
 		ft_exit7(args);
@@ -71,13 +82,17 @@ void	ft_get_east(t_read *args, char *str, int i)
 		i++;
 	args->ea = ft_strdup(str + i);
 	args->tab[4] = 1;
-	if (!(mlx_xpm_file_to_image(args->mlx_ptr, args->ea,
+	if (!(tex = mlx_xpm_file_to_image(args->mlx_ptr, args->ea,
 	&args->tex4->width, &args->tex4->height)))
 		ft_exit7(args);
+	mlx_destroy_image(args->mlx_ptr, tex);
+	// free(str);
 }
 
 void	ft_get_sprite(t_read *args, char *str, int i)
 {
+	void	*tex;
+
 	args->split = ft_split(str, ' ');
 	if ((!(args->split[1]) || args->split[2]))
 		ft_exit7(args);
@@ -87,7 +102,9 @@ void	ft_get_sprite(t_read *args, char *str, int i)
 		i++;
 	args->sp = ft_strdup(str + i);
 	args->tab[5] = 1;
-	if (!(mlx_xpm_file_to_image(args->mlx_ptr, args->sp,
+	if (!(tex = mlx_xpm_file_to_image(args->mlx_ptr, args->sp,
 	&args->sprite->width, &args->sprite->height)))
 		ft_exit7(args);
+	mlx_destroy_image(args->mlx_ptr, tex);
+	//free(str);
 }

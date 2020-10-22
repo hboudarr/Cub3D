@@ -15,24 +15,15 @@
 void	ft_free_args2(t_read *args)
 {
 	if (args->tex4 != NULL)
-	{
-		free(args->tex4->tex_ptr);
-		free(args->tex4->tex_data);
 		free(args->tex4);
-	}
 	if (args->sprite != NULL)
-	{
-		free(args->sprite->tex_ptr);
-		free(args->sprite->tex_data);
 		free(args->sprite);
-	}
-	free(args->tab_sprite);
+	//free(args->tab_sprite);
 	free(args->zbuffer);
-	free(args->sp_order);
-	free(args->sp_dist);
+	//free(args->sp_order);
+	//free(args->sp_dist);
 	if (args->map != NULL)
 		ft_free_map(args, args->map);
-	ft_destroy_images(args);
 	if (args->img)
 		mlx_destroy_image(args->mlx_ptr, args->img);
 	if (args->win_ptr != NULL)
@@ -49,24 +40,17 @@ void	ft_free_args(t_read *args)
 	free(args->we);
 	free(args->ea);
 	free(args->sp);
+	mlx_destroy_image(args->mlx_ptr, args->tex1->tex_ptr);
+	mlx_destroy_image(args->mlx_ptr, args->tex2->tex_ptr);
+	mlx_destroy_image(args->mlx_ptr, args->tex3->tex_ptr);
+	mlx_destroy_image(args->mlx_ptr, args->tex4->tex_ptr);
+	mlx_destroy_image(args->mlx_ptr, args->sprite->tex_ptr);
 	if (args->tex3 != NULL)
-	{
-		free(args->tex3->tex_ptr);
-		free(args->tex3->tex_data);
-		free(args->tex3);
-	}
+	free(args->tex3);
 	if (args->tex1 != NULL)
-	{
-		free(args->tex1->tex_ptr);
-		free(args->tex1->tex_data);
 		free(args->tex1);
-	}
 	if (args->tex2 != NULL)
-	{
-		free(args->tex2->tex_ptr);
-		free(args->tex2->tex_data);
 		free(args->tex2);
-	}
 	ft_free_args2(args);
 }
 
@@ -92,13 +76,4 @@ int		ft_check_arg(char *str)
 		i++;
 	}
 	return (1);
-}
-
-void	ft_destroy_images(t_read *args)
-{
-	mlx_destroy_image(args->mlx_ptr, args->tex1->tex_ptr);
-	mlx_destroy_image(args->mlx_ptr, args->tex2->tex_ptr);
-	mlx_destroy_image(args->mlx_ptr, args->tex3->tex_ptr);
-	mlx_destroy_image(args->mlx_ptr, args->tex4->tex_ptr);
-	mlx_destroy_image(args->mlx_ptr, args->sprite->tex_ptr);
 }
