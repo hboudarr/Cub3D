@@ -58,15 +58,15 @@ void	ft_exit6(t_read *args)
 
 void	ft_destroy_images(t_read *args)
 {
-	if (args->no)
+//	if (args->no)
 		mlx_destroy_image(args->mlx_ptr, args->tex1->tex_ptr);
-	if (args->so)
+//	if (args->so)
 		mlx_destroy_image(args->mlx_ptr, args->tex2->tex_ptr);
-	if (args->ea)
+//	if (args->ea)
 		mlx_destroy_image(args->mlx_ptr, args->tex3->tex_ptr);
-	if (args->we)
+//	if (args->we)
 		mlx_destroy_image(args->mlx_ptr, args->tex4->tex_ptr);
-	if (args->sprite)
+//	if (args->sprite)
 		mlx_destroy_image(args->mlx_ptr, args->sprite->tex_ptr);
 }
 
