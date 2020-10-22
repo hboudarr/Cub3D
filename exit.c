@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:17:21 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/19 17:32:04 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/22 08:50:54 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,25 @@ void	ft_exit6(t_read *args)
 	exit(1);
 }
 
+void	ft_destroy_images(t_read *args)
+{
+	if (args->no)
+		mlx_destroy_image(args->mlx_ptr, args->tex1->tex_ptr);
+	if (args->so)
+		mlx_destroy_image(args->mlx_ptr, args->tex2->tex_ptr);
+	if (args->ea)
+		mlx_destroy_image(args->mlx_ptr, args->tex3->tex_ptr);
+	if (args->we)
+		mlx_destroy_image(args->mlx_ptr, args->tex4->tex_ptr);
+	if (args->sprite)
+		mlx_destroy_image(args->mlx_ptr, args->sprite->tex_ptr);
+}
+
 int		ft_deal_exit(t_read *args)
 {
+	ft_destroy_images(args);
 	if (args->img)
 		mlx_destroy_image(args->mlx_ptr, args->img);
-	
-	
 	if (args->win_ptr)
 		mlx_destroy_window(args->mlx_ptr, args->win_ptr);
 	if (args->mlx_ptr)

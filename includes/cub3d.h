@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/20 20:50:37 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/22 08:42:33 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 # define FWD 126
 # define BWD 125
 # define ESC 53
-# define ROTLEFT 124
-# define ROTRIGHT 123
+# define ROTLEFT 123
+# define ROTRIGHT 124
 # define MOVESPEED 0.15
 # define ROTSPEED 0.025
 
