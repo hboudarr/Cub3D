@@ -18,7 +18,7 @@ void	ft_check_value(char *str, t_read *args)
 
 	r = ft_atoi(str);
 	if ((r < 0 || r > 255))
-		ft_exit3(args, 6);
+		ft_exit8(args, str);
 }
 
 void	ft_get_floor_rgb(t_read *args)

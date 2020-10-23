@@ -17,7 +17,7 @@ void	ft_exit1(t_read *args)
 	write(1, "Error\nImpossible to read cub file or to set up the game", 55);
 	write(1, ", program stopped\n", 18);
 	ft_free_args(args);
-	ft_init(args);
+//	ft_init(args);
 	exit(1);
 }
 
@@ -26,7 +26,7 @@ void	ft_exit2(void)
 	write(1, "Error\nInvalid arguments\n", 24);
 	exit(1);
 }
-
+/*
 void	ft_exit7(t_read *args)
 {
 	write(1, "Error\nImpossible to read cub file or to set up the game", 55);
@@ -35,9 +35,10 @@ void	ft_exit7(t_read *args)
 	ft_init(args);
 	exit(1);
 }
-
+*/
 void	ft_exit8(t_read *args, char *str)
 {
+
 	write(1, "Error\nImpossible to read cub file or to set up the game", 55);
 	write(1, ", program stopped\n", 18);
 	free(str);
@@ -47,6 +48,19 @@ void	ft_exit8(t_read *args, char *str)
 	exit(1);
 }
 
+void	ft_exit9(t_read *args, char *str, int fd)
+{
+	write(1, "Error\nImpossible to read cub file or to set up the game", 55);
+	write(1, ", program stopped\n", 18);
+	free(str);
+	get_next_line(fd, &str, 1);
+	ft_free_map(args, args->mapdup);
+	ft_free_args(args);
+	close(fd);
+	//ft_init(args);
+	exit(1);
+}
+/*
 void	ft_exit9(t_read *args)
 {
 	write(1, "Error\nImpossible to read cub file or to set up the game", 55);
@@ -55,3 +69,4 @@ void	ft_exit9(t_read *args)
 	ft_init(args);
 	exit(1);
 }
+*/

@@ -16,12 +16,12 @@ void	ft_get_floor(t_read *args, char *str, int i)
 {
 	args->split = ft_split(str, ' ');
 	if ((!(args->split[1])) || args->split[2])
-		ft_exit3(args, 6);
+		ft_exit8(args, str);
 	ft_free_split(args->split);
 	i++;
 	args->split = ft_split(str + i, ',');
 	if ((!(args->split[2])) || args->split[3])
-		ft_exit3(args, 3);
+		ft_exit8(args, str);
 	ft_check_value(args->split[0], args);
 	ft_check_value(args->split[1], args);
 	ft_check_value(args->split[2], args);
@@ -45,12 +45,12 @@ void	ft_get_celling(t_read *args, char *str, int i)
 {
 	args->split = ft_split(str, ' ');
 	if ((!(args->split[1])) || args->split[2])
-		ft_exit3(args, 7);
+		ft_exit8(args, str);
 	ft_free_split(args->split);
 	i++;
 	args->split = ft_split(str + i, ',');
 	if ((!(args->split[2])) || args->split[3])
-		ft_exit3(args, 7);
+		ft_exit8(args, str);
 	ft_check_value(args->split[0], args);
 	ft_check_value(args->split[1], args);
 	ft_check_value(args->split[2], args);
@@ -104,7 +104,7 @@ void	ft_read(t_read *args, int fd)
 	}
 	while (ft_check_element(args->tab) == 0)
 	{
-		ret = get_next_line(fd, &line);
+		ret = get_next_line(fd, &line, 0);
 		if (ret == -1)
 			ft_exit8(args, line);
 		if (ret == 0)

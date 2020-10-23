@@ -64,11 +64,11 @@ void	ft_parse_empty_line(t_read *args, int fd)
 {
 	int		ret;
 
-	ret = get_next_line(fd, &args->s);
+	ret = get_next_line(fd, &args->s, 0);
 	while (ret == 1 && args->s[0] == '\0')
 	{
 		free(args->s);
-		ret = get_next_line(fd, &args->s);
+		ret = get_next_line(fd, &args->s, 0);
 	}
 	if (ret == -1 || ret == 0)
 		ft_exit8(args, args->s);

@@ -40,7 +40,7 @@ void	ft_tab_in_img(t_read *args, int fd)
 
 	tab = malloc(sizeof(int) * (args->resol[1] * args->resol[0]));
 	if (tab == NULL)
-		ft_exit5(args);
+		ft_exit1(args);
 	y = args->resol[1] - 1;
 	i = 0;
 	while (i < (args->resol[0] * args->resol[1]))
@@ -54,7 +54,7 @@ void	ft_tab_in_img(t_read *args, int fd)
 	if (!(write(fd, tab, args->resol[0] * args->resol[1] * 4)))
 	{
 		free(tab);
-		ft_exit5(args);
+		ft_exit1(args);
 	}
 	free(tab);
 }
@@ -67,10 +67,10 @@ void	ft_create_img(t_read *args)
 	ft_define_ptr(args, &ptr);
 	fd = open("cub3d_img.bmp", O_CREAT | O_RDWR | O_TRUNC, S_IRWXU);
 	if (fd == -1)
-		ft_exit5(args);
+		ft_exit1(args);
 	if (write(fd, "BM", 2) == -1 || write(fd, &ptr, 52) == -1)
-		ft_exit5(args);
+		ft_exit1(args);
 	ft_tab_in_img(args, fd);
 	close(fd);
-	ft_exit6(args);
+	ft_exit1(args);
 }

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+/*
 void	ft_exit3(t_read *args, int nb)
 {
 	if (nb == 0)
@@ -58,7 +58,7 @@ void	ft_exit6(t_read *args)
 	ft_free_args(args);
 	ft_init(args);
 	exit(1);
-}
+}*/
 
 int		ft_deal_exit(t_read *args)
 {

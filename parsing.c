@@ -63,7 +63,7 @@ int		ft_check_nb(char *str1, char *str2)
 void	ft_check_resolution(int i, int j, t_read *args)
 {
 	if (i < 0 || i > 2000)
-		ft_exit3(args, 0);
+		ft_exit8(args, args->s);
 	if (j < 0 || j > 2570)
-		ft_exit3(args, 0);
+		ft_exit8(args, args->s);
 }

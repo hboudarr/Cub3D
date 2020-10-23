@@ -59,15 +59,15 @@ void	ft_get_resol(t_read *args, char *str)
 
 	args->split = ft_split(str, ' ');
 	if ((!(args->split[2])) || args->split[3])
-		ft_exit3(args, 0);
+		ft_exit8(args, str);
 	args->resol[0] = ft_atoi(args->split[1]);
 	args->resol[1] = ft_atoi(args->split[2]);
 	ft_check_resolution(args->resol[0], args->resol[1], args);
 	ret = ft_check_nb(args->split[1], args->split[2]);
 	if (ret == -1)
-		ft_exit3(args, 0);
+		ft_exit8(args, str);
 	if (args->resol[0] <= 0 || args->resol[1] <= 0)
-		ft_exit3(args, 0);
+		ft_exit8(args, str);
 	args->tab[0] = 1;
 	ft_free_split(args->split);
 }

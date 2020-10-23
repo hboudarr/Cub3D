@@ -113,9 +113,11 @@ void	ft_read_second_part(t_read *args, int fd)
 	ret = 1;
 	while (ret > 0)
 	{
-		ret = get_next_line(fd, &args->s);
+		ret = get_next_line(fd, &args->s, 0);
 		if (ret == -1 || args->s[0] == '\0')
-			ft_exit8(args, args->s);
+		{
+			ft_exit9(args, args->s, fd);
+		}
 		if (ret == 1 || ret == 0)
 		{
 			args->y += 1;
