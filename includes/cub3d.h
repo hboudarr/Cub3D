@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/22 15:31:00 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/23 17:05:20 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,10 +184,11 @@ typedef	struct		s_read{
 	double			*sp_dist;
 	double			*zbuffer;
 	int				mapwidth;
+	int				fd;
 }					t_read;
 
 void				ft_init(t_read *args);
-void				ft_read(t_read *args, int fd);
+void				ft_read(t_read *args);
 int					ft_check_element(int tab[8]);
 void				ft_analyse_line(t_read *args, char *str);
 void				ft_get_resol(t_read *args, char *str);
@@ -210,7 +211,7 @@ void				ft_make_range(t_read *args);
 void				ft_make_map(t_read *args);
 int					ft_flood_fill(char **map, int x, int y, int max);
 void				ft_analyse_str(t_read *args);
-void				ft_read_second_part(t_read *args, int fd);
+void				ft_read_second_part(t_read *args);
 int					ft_check_alphanum(char *str, char *letter);
 void				ft_orient(t_read *args, char c);
 void				ft_orient2(t_read *args, char c);
@@ -255,25 +256,19 @@ void				ft_move_bwd(t_read *args);
 void				ft_move_left(t_read *args);
 void				ft_move_right(t_read *args);
 void				ft_rotate(t_read *args, int advance);
-void				ft_esc(t_read *args);
 void				ft_define_ptr(t_read *args, t_img *ptr);
 void				ft_tab_in_img(t_read *args, int fd);
 void				ft_create_img(t_read *args);
 int					ft_check_arg(char *str);
+void				ft_error(int nb);
 void				ft_exit1(t_read *args);
 void				ft_exit2(void);
-void				ft_exit3(t_read *args, int nb);
-void				ft_exit4(t_read *args);
-void				ft_exit5(t_read *args);
-void				ft_exit6(t_read *args);
-void				ft_exit7(t_read *args);
-void				ft_exit8(t_read *args, char *str);
-void				ft_exit9(t_read *args, char *str, int fd);
+void				ft_exit3(t_read *args, char *str, int nb);
 void				ft_free_args(t_read *args);
 void				ft_free_args2(t_read *args);
 int					ft_deal_exit(t_read *args);
 void				ft_check_line(char *str, t_read *args);
-void				ft_parse_empty_line(t_read *args, int fd);
+void				ft_parse_empty_line(t_read *args);
 void				ft_destroy_images(t_read *args);
 void				ft_init2(t_read *args);
 

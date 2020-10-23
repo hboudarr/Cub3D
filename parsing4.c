@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:52:32 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/19 15:53:27 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/23 16:54:07 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_check_value(char *str, t_read *args)
 
 	r = ft_atoi(str);
 	if ((r < 0 || r > 255))
-		ft_exit8(args, str);
+		ft_exit3(args, str, 6);
 }
 
 void	ft_get_floor_rgb(t_read *args)

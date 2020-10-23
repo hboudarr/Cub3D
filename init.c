@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:15:28 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/22 10:05:04 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/23 17:13:13 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,6 @@
 void	ft_init(t_read *args)
 {
 	ft_bzero(args, sizeof(*args));
-/*	args->s = NULL;
-	args->map = NULL;
-	args->mapdup = NULL;
-	args->split = NULL;
-	args->no = NULL;
-	args->ea = NULL;
-	args->so = NULL;
-	args->we = NULL;
-	args->sp = NULL;
-	args->win_ptr = NULL;
-	args->mlx_ptr = NULL;
-	args->addr = NULL;
-	args->img = NULL;
-	args->sp_order = NULL;
-	args->sp_dist = NULL;
-	args->zbuffer = NULL; */
 	args->tex1 = malloc(sizeof(t_textures));
 	ft_bzero(args->tex1, sizeof(t_textures));
 	args->tex1->tex_ptr = NULL;
@@ -51,29 +35,7 @@ void	ft_init(t_read *args)
 	ft_bzero(args->sprite, sizeof(t_textures));
 	args->sprite->tex_ptr = NULL;
 	args->sprite->tex_data = NULL;
-	args->f[0] = -1;
-	args->f[1] = -1;
-	args->f[2] = -1;
-	args->c[0] = -1;
-	args->c[1] = -1;
-	args->c[2] = -1;
-	args->rgb.r = 0;
-	args->rgb.g = 0;
-	args->rgb.b = 0;
-}
-
-void	ft_malloc_struct(t_read *args)
-{
-	args->tex1 = malloc(sizeof(t_textures));
-	ft_bzero(args->tex1, sizeof(t_textures));
-	args->tex2 = malloc(sizeof(t_textures));
-	ft_bzero(args->tex2, sizeof(t_textures));
-	args->tex3 = malloc(sizeof(t_textures));
-	ft_bzero(args->tex3, sizeof(t_textures));
-	args->tex4 = malloc(sizeof(t_textures));
-	ft_bzero(args->tex4, sizeof(t_textures));
-	args->sprite = malloc(sizeof(t_textures));
-	ft_bzero(args->sprite, sizeof(t_textures));
+	ft_init2(args);
 }
 
 void	ft_bzero(void *s, int n)
@@ -110,9 +72,9 @@ void	ft_check_line(char *str, t_read *args)
 	i = 0;
 	j = ft_strlen(str);
 	if (str[i] != '1')
-		ft_exit1(args);
+		ft_exit3(args, str, 8);
 	if (str[j - 1] != '1')
-		ft_exit1(args);
+		ft_exit3(args, str, 8);
 }
 
 void	ft_analyse_str(t_read *args)
@@ -121,10 +83,9 @@ void	ft_analyse_str(t_read *args)
 
 	i = 0;
 	if (ft_check_alphanum(args->s, "NSEW102 ") == 0)
-		ft_exit8(args, args->s);
+		ft_exit3(args, args->s, 8);
 	while (args->s[i])
 	{
-		
 		if (args->s[i] == 'N' || args->s[i] == 'S' ||
 		args->s[i] == 'E' || args->s[i] == 'W')
 		{
@@ -139,5 +100,5 @@ void	ft_analyse_str(t_read *args)
 		i++;
 	}
 	if (args->count > 1)
-		ft_exit8(args, args->s);
+		ft_exit3(args, args->s, 1);
 }

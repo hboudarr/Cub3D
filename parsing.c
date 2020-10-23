@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:17:18 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/20 09:26:05 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/23 16:45:36 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int		ft_check_nb(char *str1, char *str2)
 void	ft_check_resolution(int i, int j, t_read *args)
 {
 	if (i < 0 || i > 2000)
-		ft_exit8(args, args->s);
+		ft_exit3(args, args->s, 0);
 	if (j < 0 || j > 2570)
-		ft_exit8(args, args->s);
+		ft_exit3(args, args->s, 0);
 }

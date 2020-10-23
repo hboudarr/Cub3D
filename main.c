@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:07:45 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/22 10:21:53 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/23 16:55:57 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,18 @@ void	ft_main2(t_read *args)
 	ft_textures_data(args);
 }
 
-void	ft_parse_empty_line(t_read *args, int fd)
+void	ft_parse_empty_line(t_read *args)
 {
 	int		ret;
 
-	ret = get_next_line(fd, &args->s, 0);
+	ret = get_next_line(args->fd, &args->s, 0);
 	while (ret == 1 && args->s[0] == '\0')
 	{
 		free(args->s);
-		ret = get_next_line(fd, &args->s, 0);
+		ret = get_next_line(args->fd, &args->s, 0);
 	}
 	if (ret == -1 || ret == 0)
-		ft_exit8(args, args->s);
+		ft_exit3(args, args->s, 8);
 	args->count = 0;
 	ft_analyse_str(args);
 	args->y = 1;
@@ -82,7 +82,6 @@ void	ft_parse_empty_line(t_read *args, int fd)
 int		main(int ac, char **av)
 {
 	t_read		*args;
-	int			fd;
 	int			i;
 
 	i = 0;
@@ -91,15 +90,14 @@ int		main(int ac, char **av)
 	{
 		if (!(args = malloc(sizeof(t_read))))
 			ft_exit1(args);
-	//	ft_malloc_struct(args);
 		ft_init(args);
-		if ((fd = open(av[1], O_RDONLY)) < 0)
+		if ((args->fd = open(av[1], O_RDONLY)) < 0)
 			ft_exit1(args);
 		if (!(args->mlx_ptr = mlx_init()))
 			ft_exit1(args);
-		ft_read(args, fd);
-		ft_parse_empty_line(args, fd);
-		ft_read_second_part(args, fd);
+		ft_read(args);
+		ft_parse_empty_line(args);
+		ft_read_second_part(args);
 		ft_main2(args);
 		ft_cub3d(args, ac);
 	}

@@ -17,7 +17,6 @@ SRCS	= ./parsing.c\
 		  ./exit.c\
 		  ./free.c\
 		  ./img.c\
-		  ./exit2.c\
 
 OBJS	= ${SRCS:.c=.o}
 

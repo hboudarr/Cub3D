@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:35:58 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/19 15:40:47 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/23 16:51:14 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void	ft_get_floor(t_read *args, char *str, int i)
 {
 	args->split = ft_split(str, ' ');
 	if ((!(args->split[1])) || args->split[2])
-		ft_exit8(args, str);
+		ft_exit3(args, str, 6);
 	ft_free_split(args->split);
 	i++;
 	args->split = ft_split(str + i, ',');
 	if ((!(args->split[2])) || args->split[3])
-		ft_exit8(args, str);
+		ft_exit3(args, str, 6);
 	ft_check_value(args->split[0], args);
 	ft_check_value(args->split[1], args);
 	ft_check_value(args->split[2], args);
@@ -45,12 +45,12 @@ void	ft_get_celling(t_read *args, char *str, int i)
 {
 	args->split = ft_split(str, ' ');
 	if ((!(args->split[1])) || args->split[2])
-		ft_exit8(args, str);
+		ft_exit3(args, str, 7);
 	ft_free_split(args->split);
 	i++;
 	args->split = ft_split(str + i, ',');
 	if ((!(args->split[2])) || args->split[3])
-		ft_exit8(args, str);
+		ft_exit3(args, str, 7);
 	ft_check_value(args->split[0], args);
 	ft_check_value(args->split[1], args);
 	ft_check_value(args->split[2], args);
@@ -86,10 +86,10 @@ void	ft_analyse_line(t_read *args, char *str)
 	else if (str[i] == 'C' && str[i + 1] == ' ')
 		ft_get_celling(args, str, i);
 	else
-		ft_exit8(args, str);
+		ft_exit3(args, str, 8);
 }
 
-void	ft_read(t_read *args, int fd)
+void	ft_read(t_read *args)
 {
 	int		ret;
 	int		i;
@@ -104,11 +104,11 @@ void	ft_read(t_read *args, int fd)
 	}
 	while (ft_check_element(args->tab) == 0)
 	{
-		ret = get_next_line(fd, &line, 0);
+		ret = get_next_line(args->fd, &line, 0);
 		if (ret == -1)
-			ft_exit8(args, line);
+			ft_exit3(args, line, 0);
 		if (ret == 0)
-			ft_exit8(args, line);
+			ft_exit3(args, line, 0);
 		if (line[0] != '\0')
 			ft_analyse_line(args, line);
 		free(line);

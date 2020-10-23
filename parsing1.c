@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 10:55:20 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/22 10:13:20 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/23 16:48:37 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	ft_make_range(t_read *args)
 	if (args->y == 1)
 	{
 		if (!(args->map = malloc(sizeof(char*) * (args->y))))
-			ft_exit8(args, args->s);
+			ft_exit3(args, args->s, 8);
 		args->map[0] = args->s;
 	}
 	else
 	{
 		tmp = args->map;
 		if (!(args->map = malloc(sizeof(char*) * (args->y))))
-			ft_exit8(args, args->s);
+			ft_exit3(args, args->s, 8);
 		while (i < args->y - 1)
 		{
 			args->map[i] = tmp[i];
@@ -48,14 +48,14 @@ void	ft_make_map(t_read *args)
 	if (args->y == 1)
 	{
 		if (!(args->mapdup = malloc(sizeof(char *) * (args->y))))
-			ft_exit8(args, args->s);
+			ft_exit3(args, args->s, 8);
 		args->mapdup[0] = ft_strdup(args->s);
 	}
 	else
 	{
 		tmp = args->mapdup;
 		if (!(args->mapdup = malloc(sizeof(char *) * (args->y))))
-			ft_exit8(args, args->s);
+			ft_exit3(args, args->s, 8);
 		while (i < args->y - 1)
 		{
 			args->mapdup[i] = tmp[i];
@@ -105,7 +105,7 @@ void	ft_free_map(t_read *args, char **map)
 		free(map);
 }
 
-void	ft_read_second_part(t_read *args, int fd)
+void	ft_read_second_part(t_read *args)
 {
 	int	ret;
 	int i;
@@ -113,11 +113,9 @@ void	ft_read_second_part(t_read *args, int fd)
 	ret = 1;
 	while (ret > 0)
 	{
-		ret = get_next_line(fd, &args->s, 0);
+		ret = get_next_line(args->fd, &args->s, 0);
 		if (ret == -1 || args->s[0] == '\0')
-		{
-			ft_exit9(args, args->s, fd);
-		}
+			ft_exit3(args, args->s, 8);
 		if (ret == 1 || ret == 0)
 		{
 			args->y += 1;
@@ -128,7 +126,7 @@ void	ft_read_second_part(t_read *args, int fd)
 	}
 	i = ft_flood_fill(args->mapdup, args->posx, args->posy, args->y);
 	if (i == 0)
-		ft_exit8(args, args->s);
+		ft_exit3(args, args->s, 8);
 	ft_free_map(args, args->mapdup);
-	close(fd);
+	close(args->fd);
 }
