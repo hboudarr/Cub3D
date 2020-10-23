@@ -1,0 +1,7 @@
+==70547== Memcheck, a memory error detector
+==70547== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==70547== Using Valgrind-3.16.0.GIT and LibVEX; rerun with -h for copyright info
+==70547== Command: ./Cub3D first.cub
+==70547== Parent PID: 50826
+==70547== 
+--70547-- run: /usr/bin/dsymutil "./Cub3D"

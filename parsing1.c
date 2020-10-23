@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 10:55:20 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/23 16:48:37 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/23 17:45:42 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void	ft_read_second_part(t_read *args)
 	}
 	i = ft_flood_fill(args->mapdup, args->posx, args->posy, args->y);
 	if (i == 0)
-		ft_exit3(args, args->s, 8);
+		ft_exit1(args);
 	ft_free_map(args, args->mapdup);
 	close(args->fd);
 }
