@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 10:55:20 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/23 17:57:53 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/23 22:46:53 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	ft_read_second_part(t_read *args)
 	while (ret > 0)
 	{
 		ret = get_next_line(args->fd, &args->s, 0);
-		if (ret == -1 || args->s[0] == '\0')
+		if (ret == -1 || (ret && args->s[0] == '\0'))
 			ft_exit3(args, args->s, 8);
 		if (ret == 1 || ret == 0)
 		{
