@@ -1,22 +1,22 @@
 NAME 	= Cub3D
 
-SRCS	= ./parsing.c\
-		  ./parsing1.c\
-		  ./parsing2.c\
-		  ./parsing3.c\
-		  ./parsing4.c\
-		  ./main.c\
-		  ./hook.c\
-		  ./init.c\
-		  ./myray.c\
-		  ./myray2.c\
-		  ./myspriteray.c\
-		  ./sprite.c\
-		  ./tex.c\
-		  ./utile.c\
-		  ./exit.c\
-		  ./free.c\
-		  ./img.c\
+SRCS	= ./SRCS/parsing.c\
+		  ./SRCS/parsing1.c\
+		  ./SRCS/parsing2.c\
+		  ./SRCS/parsing3.c\
+		  ./SRCS/parsing4.c\
+		  ./SRCS/main.c\
+		  ./SRCS/hook.c\
+		  ./SRCS/init.c\
+		  ./SRCS/myray.c\
+		  ./SRCS/myray2.c\
+		  ./SRCS/myspriteray.c\
+		  ./SRCS/sprite.c\
+		  ./SRCS/tex.c\
+		  ./SRCS/utile.c\
+		  ./SRCS/exit.c\
+		  ./SRCS/free.c\
+		  ./SRCS/img.c\
 
 OBJS	= ${SRCS:.c=.o}
 
@@ -30,13 +30,13 @@ ifeq ($(UNAME_S), Linux)
 	MLX_DIR = minilibx-linux
 	LIBS += -lXext
 	LIBS += -lX11
-	SRCS += key_linux.c
+	SRCS += ./SRCS/key_linux.c
 	#LIBS += -lbsd
 else
 	MLX_DIR = minilibx_opengl_20191021
 	LIBS += -framework OpenGL
 	LIBS += -framework AppKit
-	SRCS += key.c
+	SRCS += ./SRCS/key.c
 endif
 
 LIBFT	= ./libft/libft.a
