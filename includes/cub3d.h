@@ -15,11 +15,11 @@
 
 # include <stdlib.h>
 # include <fcntl.h>
-# include <stdio.h>
 # include "mlx.h"
 # include <math.h>
 # include "libft.h"
 # include <limits.h>
+# include <sys/stat.h>
 
 # define W 13
 # define S 1
