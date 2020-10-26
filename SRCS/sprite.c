@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:55:14 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/23 16:54:42 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/26 16:14:46 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	ft_sort(int *order, double *dist, int num)
 			temp2 = dist[i + 1];
 			dist[i + 1] = dist[i];
 			dist[i] = temp2;
-			temp = order[i];
-			order[i] = order[i + 1];
-			order[i + 1] = temp;
+			temp = order[i + 1];
+			order[i + 1] = order[i];
+			order[i] = temp;
 			i = 0;
 		}
 		else

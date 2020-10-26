@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/26 09:41:12 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/26 14:51:08 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -273,5 +273,6 @@ void				ft_check_line(char *str, t_read *args);
 void				ft_parse_empty_line(t_read *args);
 void				ft_destroy_images(t_read *args);
 void				ft_init2(t_read *args);
+void				ft_compare(t_read *args);
 
 #endif

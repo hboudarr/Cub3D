@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:07:45 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/26 09:23:24 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/26 14:49:26 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int		main(int ac, char **av)
 		if (!(args->mlx_ptr = mlx_init()))
 			ft_exit1(args);
 		ft_read(args);
+		ft_compare(args);
 		ft_parse_empty_line(args);
 		ft_read_second_part(args);
 		ft_main2(args);

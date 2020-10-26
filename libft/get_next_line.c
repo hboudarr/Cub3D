@@ -6,11 +6,12 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 14:20:43 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/26 10:47:49 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/26 12:57:19 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 char	*ft_get_line(char *left, char **line, int ret)
 {
