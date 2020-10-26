@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:09:16 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/19 17:09:17 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/26 09:52:56 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,5 @@ void	ft_create_img(t_read *args)
 		ft_exit1(args);
 	ft_tab_in_img(args, fd);
 	close(fd);
-	ft_exit1(args);
+	ft_deal_exit(args);
 }

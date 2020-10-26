@@ -31,7 +31,7 @@ ifeq ($(UNAME_S), Linux)
 	LIBS += -lXext
 	LIBS += -lX11
 	SRCS += ./SRCS/key_linux.c
-	#LIBS += -lbsd
+
 else
 	MLX_DIR = minilibx_opengl_20191021
 	LIBS += -framework OpenGL
@@ -51,7 +51,7 @@ LIB_DIR	+= -L libft
 LIB_DIR += -L $(MLX_DIR)
 
 CFLAGS	= -Wall -Wextra -Werror
-# CFLAGS	= -Wall -Wextra -Werror -fsanitize=address
+
 CC		= clang
 
 .c.o:
