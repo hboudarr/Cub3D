@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/23 17:05:20 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/26 09:41:12 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "libft.h"
 # include <limits.h>
 # include <sys/stat.h>
+# include <sys/types.h>
 
 # define W 13
 # define S 1
