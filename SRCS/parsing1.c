@@ -126,7 +126,7 @@ void	ft_read_second_part(t_read *args)
 	}
 	i = ft_flood_fill(args->mapdup, args->posx, args->posy, args->y);
 	if (i == 0)
-		ft_exit1(args);
+		ft_exit3(args, args->s, 8);
 	ft_free_map(args, args->mapdup);
 	close(args->fd);
 }

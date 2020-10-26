@@ -82,11 +82,11 @@ void	ft_order_sprite(t_read *args)
 void	ft_sprite(t_read *args)
 {
 	if (!(args->tab_sprite = malloc(sizeof(t_sprite) * args->nbsp)))
-		ft_exit1(args);
+		ft_exit4(args, 1);
 	ft_place_sprites(args);
 	if (!(args->sp_order = malloc(sizeof(int) * args->nbsp)))
-		ft_exit1(args);
+		ft_exit4(args, 2);
 	if (!(args->sp_dist = malloc(sizeof(double) * args->nbsp)))
-		ft_exit1(args);
+		ft_exit4(args, 3);
 	ft_order_sprite(args);
 }

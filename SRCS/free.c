@@ -98,3 +98,9 @@ void	ft_init2(t_read *args)
 	args->rgb.g = 0;
 	args->rgb.b = 0;
 }
+
+int		ft_deal_exit(t_read *args)
+{
+	ft_free_args(args);
+	exit(1);
+}

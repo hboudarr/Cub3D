@@ -106,9 +106,9 @@ void	ft_read(t_read *args)
 	{
 		ret = get_next_line(args->fd, &line, 0);
 		if (ret == -1)
-			ft_exit3(args, line, 0);
+			ft_exit3(args, line, 9);
 		if (ret == 0)
-			ft_exit3(args, line, 0);
+			ft_exit3(args, line, 9);
 		if (line[0] != '\0')
 			ft_analyse_line(args, line);
 		free(line);
