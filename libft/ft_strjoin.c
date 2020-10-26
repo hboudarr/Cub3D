@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 11:28:44 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/26 09:44:08 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/26 10:37:43 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,3 @@ char	*ft_strjoin(char *s1, char *s2)
 	s1 = NULL;
 	return (dest);
 }
-

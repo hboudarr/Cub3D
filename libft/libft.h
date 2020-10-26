@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:57:44 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/26 09:46:30 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/26 10:39:16 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,5 @@ char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen2(char *str);
 char	*ft_strndup(char *s1, int n);
 char	*ft_substr(char *s, unsigned int start, size_t len);
-
 
 #endif

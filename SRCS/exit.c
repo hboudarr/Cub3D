@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:17:21 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/23 17:44:20 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/26 10:47:25 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	ft_error(int nb)
 	if (nb == 8)
 		write(1, "Error\nInvalid Map\n", 18);
 	if (nb == 9)
-	write(1, "Error\nImpossible to read cub file or to set up the game", 55);
+		write(1, "Error\nImpossible to read cub file", 33);
 	if (nb == 10)
-	write(1, "Error\nWrong allocation for Malloc\n", 34);
+		write(1, "Error\nWrong allocation for Malloc\n", 34);
 }
 
 void	ft_exit3(t_read *args, char *str, int nb)

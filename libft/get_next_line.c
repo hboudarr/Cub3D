@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 14:20:43 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/01/06 16:03:15 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/26 10:47:49 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,23 @@ int		ft_free(char *left)
 	return (-1);
 }
 
+int		ft_flag(char *left, int flag)
+{
+	if (flag == 1 && left)
+	{
+		free(left);
+		return (0);
+	}
+	return (1);
+}
+
 int		get_next_line(int fd, char **line, int flag)
 {
 	static char *left = NULL;
 	char		buf[BUFFER_SIZE + 1];
 	int			ret;
 
-	if (flag == 1 && left)
-	{	
-		free(left);
-		return(0);
-	}
+	ft_flag(left, flag);
 	if (fd < 0 || fd > 10000 || BUFFER_SIZE <= 0 || !line)
 		return (-1);
 	ret = 1;
