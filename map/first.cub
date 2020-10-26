@@ -2,10 +2,14 @@ R 800 600
 NO ./textures/no_1.xpm
 SO ./textures/so.xpm
 WE ./textures/textt.xpm
-EA ./textures/ea.xpm
+EA ./textur
+
+
+es/ea.xpm
 S ./textures/chaton.xpm
 F 220,145,189
 C 175,100,57
+
 1111
 1001
 1001

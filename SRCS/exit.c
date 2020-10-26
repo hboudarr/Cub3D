@@ -58,9 +58,9 @@ void	ft_exit3(t_read *args, char *str, int nb)
 	write(1, "program stopped\n", 16);
 	free(str);
 	get_next_line(args->fd, &str, 1);
+	close(args->fd);
 	ft_free_map(args, args->mapdup);
 	ft_free_args(args);
-	close(args->fd);
 	exit(1);
 }
 
