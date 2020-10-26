@@ -38,17 +38,24 @@ int		ft_free(char *left)
 	return (-1);
 }
 
+int		ft_flag(char **left, int flag)
+{
+	if (flag == 1 && *left)
+	{
+		free(*left);
+		return (1);
+	}
+	return (0);
+}
+
 int		get_next_line(int fd, char **line, int flag)
 {
 	static char *left = NULL;
 	char		buf[BUFFER_SIZE + 1];
 	int			ret;
 
-	if (flag == 1 && left)
-	{
-		free(left);
+	if (ft_flag(&left, flag))
 		return (0);
-	}
 	if (fd < 0 || fd > 10000 || BUFFER_SIZE <= 0 || !line)
 		return (-1);
 	ret = 1;
