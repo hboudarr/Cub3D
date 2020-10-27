@@ -267,6 +267,7 @@ void				ft_exit1(t_read *args);
 void				ft_exit2(void);
 void				ft_exit3(t_read *args, char *str, int nb);
 void				ft_exit4(t_read *args, int nb);
+void				ft_exit5(t_read *args, char *str, int nb);
 void				ft_free_args(t_read *args);
 void				ft_free_args2(t_read *args);
 int					ft_deal_exit(t_read *args);

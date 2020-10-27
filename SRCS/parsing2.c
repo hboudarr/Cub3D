@@ -16,12 +16,12 @@ void	ft_get_floor(t_read *args, char *str, int i)
 {
 	args->split = ft_split(str, ' ');
 	if ((!(args->split[1])) || args->split[2])
-		ft_exit3(args, str, 6);
+		ft_exit5(args, str, 6);
 	ft_free_split(args->split);
 	i++;
 	args->split = ft_split(str + i, ',');
 	if ((!(args->split[2])) || args->split[3])
-		ft_exit3(args, str, 6);
+		ft_exit5(args, str, 6);
 	ft_check_value(args->split[0], args);
 	ft_check_value(args->split[1], args);
 	ft_check_value(args->split[2], args);
@@ -45,12 +45,12 @@ void	ft_get_celling(t_read *args, char *str, int i)
 {
 	args->split = ft_split(str, ' ');
 	if ((!(args->split[1])) || args->split[2])
-		ft_exit3(args, str, 7);
+		ft_exit5(args, str, 7);
 	ft_free_split(args->split);
 	i++;
 	args->split = ft_split(str + i, ',');
 	if ((!(args->split[2])) || args->split[3])
-		ft_exit3(args, str, 7);
+		ft_exit5(args, str, 7);
 	ft_check_value(args->split[0], args);
 	ft_check_value(args->split[1], args);
 	ft_check_value(args->split[2], args);

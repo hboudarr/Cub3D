@@ -91,3 +91,16 @@ void	ft_exit4(t_read *args, int nb)
 		exit(1);
 	}
 }
+
+void	ft_exit5(t_read *args, char *str, int nb)
+{
+	ft_error(nb);
+	write(1, "program stopped\n", 16);
+	free(str);
+	get_next_line(args->fd, &str, 1);
+	close(args->fd);
+	ft_free_split(args->split);
+	ft_free_map(args, args->mapdup);
+	ft_free_args(args);
+	exit(1);
+}
