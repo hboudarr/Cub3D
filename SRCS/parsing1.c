@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 10:55:20 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/23 22:46:53 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/27 13:36:07 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_make_range(t_read *args)
 	i = 0;
 	if (args->y == 1)
 	{
-		if (!(args->map = malloc(sizeof(char*) * (args->y))))
+		if (!(args->map = malloc(sizeof(char*) * (args->y + 1))))
 			ft_exit3(args, args->s, 8);
 		args->map[0] = args->s;
 	}

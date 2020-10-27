@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:07:45 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/26 14:49:26 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/27 14:01:46 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int		main(int ac, char **av)
 		ft_read(args);
 		ft_compare(args);
 		ft_parse_empty_line(args);
-		ft_read_second_part(args);
+		ft_read_second_part(args); 
 		ft_main2(args);
 		ft_cub3d(args, ac);
 	}

@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:15:28 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/27 10:30:48 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/27 13:51:49 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,13 @@ void	ft_check_line(char *str, t_read *args)
 		ft_exit3(args, str, 8);
 }
 
-void	ft_analyse_str(t_read *args)
+int		ft_analyse_str(t_read *args)
 {
 	int i;
 
 	i = 0;
 	if (ft_check_alphanum(args->s, "NSEW102 ") == 0)
-		ft_exit3(args, args->s, 8);
+		ft_exit3(args, args->s, 8);	
 	while (args->s[i])
 	{
 		if (args->s[i] == 'N' || args->s[i] == 'S' ||
@@ -101,4 +101,5 @@ void	ft_analyse_str(t_read *args)
 	}
 	if (args->count > 1)
 		ft_exit3(args, args->s, 1);
+	return (1);
 }
