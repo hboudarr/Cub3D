@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 10:55:20 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/27 13:36:07 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/28 11:21:21 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,8 @@ void	ft_read_second_part(t_read *args)
 			ft_exit3(args, args->s, 8);
 		if (ret == 1 || ret == 0)
 		{
-			args->y += 1;
 			ft_analyse_str(args);
+			args->y += 1;
 			ft_make_range(args);
 			ft_make_map(args);
 		}

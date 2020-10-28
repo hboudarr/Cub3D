@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   myray.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:56:29 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/19 18:34:26 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/28 11:43:49 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int		ft_raycasting(t_read *args)
 	int x;
 
 	x = 0;
+	ft_textures_data(args);
 	while (x < args->resol[0])
 	{
 		ft_ray1(args, x);
@@ -73,7 +74,7 @@ int		ft_raycasting(t_read *args)
 		x++;
 	}
 	ft_sprite(args);
-	mlx_put_image_to_window(args->mlx_ptr, args->win_ptr, args->img, 0, 0);
-	ft_hook(args);
+//	mlx_put_image_to_window(args->mlx_ptr, args->win_ptr, args->img, 0, 0);
+//	ft_hook(args);
 	return (1);
 }
