@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:55:14 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/28 14:58:37 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/28 15:29:33 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,10 @@ void	ft_order_sprite(t_read *args)
 	while (i < args->nbsp)
 	{
 		args->sp_order[i] = i;
-		args->sp_dist[i] = sqrt((args->posx - args->tab_sprite[i].x) *
-			(args->x - args->tab_sprite[i].x) +
-			(args->y - args->tab_sprite[i].y) *
-			(args->y - args->tab_sprite[i].y));
+		args->sp_dist[i] = ((args->posx - args->tab_sprite[i].x) *
+			(args->posx - args->tab_sprite[i].x) +
+			(args->posy - args->tab_sprite[i].y) *
+			(args->posy - args->tab_sprite[i].y));
 		i++;
 	}
 //	ft_sort(args->sp_order, args->sp_dist, args->nbsp);
@@ -110,5 +110,5 @@ void	ft_sprite(t_read *args)
 	ft_order_sprite(args);
 	ft_sort(args->sp_order, args->sp_dist, args->nbsp);
 	ft_place_sprites(args);
-	ft_raysprite(args);
+//	ft_raysprite(args);
 }

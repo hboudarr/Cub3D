@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:56:29 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/28 14:27:59 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/28 15:24:28 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int		ft_raycasting(t_read *args)
 
 	x = 0;
 	ft_textures_data(args);
+	ft_sprite(args);
 	while (x < args->resol[0])
 	{
 		ft_ray1(args, x);
@@ -73,6 +74,6 @@ int		ft_raycasting(t_read *args)
 		args->zbuffer[x] = args->perpwalldist;
 		x++;
 	}
-	ft_sprite(args);
+	ft_raysprite(args);
 	return (1);
 }
