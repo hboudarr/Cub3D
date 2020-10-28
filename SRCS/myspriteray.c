@@ -6,7 +6,7 @@
 /*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:56:44 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/22 10:20:38 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/28 14:46:28 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ void	ft_raysprite(t_read *args)
 	t_spcast	struct_spcast;
 
 	spcast = &struct_spcast;
-	spcast->i = 0;
-	while (spcast->i < args->nbsp)
+	spcast->i = args->nbsp - 1;
+	while (spcast->i >= 0)
 	{
 		ft_sp1(args, spcast);
 		ft_sp2(args, spcast);
 		ft_sp4(args, spcast);
-		spcast->i++;
+		spcast->i--;
 	}
 	free(args->tab_sprite);
 	free(args->sp_order);

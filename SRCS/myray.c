@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   myray.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:56:29 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/28 12:34:11 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/28 14:27:59 by hboudarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_ray5(t_read *args, int x)
 		ft_draw_to_image(args, x, args->ycoor, args->ceiling);
 		args->ycoor++;
 	}
-	while (args->ycoor < args->drawend)
+	while (args->ycoor <= args->drawend)
 	{
 		args->tex.y = (int)args->tex.tex_pos;
 		args->tex.tex_pos += args->tex.step_tex;
