@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:09:16 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/26 09:52:56 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/28 12:35:06 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,12 @@ void	ft_create_img(t_read *args)
 	ft_tab_in_img(args, fd);
 	close(fd);
 	ft_deal_exit(args);
+}
+
+int    ft_loop(t_read *args)
+{
+    ft_hook(args);
+    ft_raycasting(args);
+    mlx_put_image_to_window(args->mlx_ptr, args->win_ptr, args->img, 0, 0);
+	return (1);
 }

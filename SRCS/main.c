@@ -6,19 +6,11 @@
 /*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:07:45 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/28 11:45:33 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/28 12:35:01 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int    ft_loop(t_read *args)
-{
-    ft_hook(args);
-    ft_raycasting(args);
-    mlx_put_image_to_window(args->mlx_ptr, args->win_ptr, args->img, 0, 0);
-	return (1);
-}
 
 void	ft_cub3d(t_read *args, int ac)
 {
@@ -27,17 +19,14 @@ void	ft_cub3d(t_read *args, int ac)
 		if (!(args->win_ptr = mlx_new_window(args->mlx_ptr, args->resol[0],
 		args->resol[1], "CUB3D")))
 			ft_exit1(args);
-		//ft_textures_data(args);
 		mlx_hook(args->win_ptr, 2, 1L << 0, ft_key_press, args);
 		mlx_hook(args->win_ptr, 3, 1L << 1, ft_key_release, args);
 		mlx_hook(args->win_ptr, 17, 1L << 17, ft_deal_exit, args);
 		mlx_loop_hook(args->mlx_ptr, ft_loop, args);
-	//	mlx_loop_hook(args->mlx_ptr, ft_raycasting, args);
 		mlx_loop(args->mlx_ptr);
 	}
 	else
 	{
-		//ft_textures_data(args);
 		ft_raycasting(args);
 		ft_create_img(args);
 	}
@@ -68,10 +57,6 @@ void	ft_main2(t_read *args)
 	if (!(args->addr = mlx_get_data_addr(args->img, &args->bits_per_pixel,
 	&args->line_length, &args->endian)))
 		ft_exit1(args);
-//	if (!(args->win_ptr = mlx_new_window(args->mlx_ptr, args->resol[0],
-//	args->resol[1], "CUB3D")))
-//		ft_exit1(args);
-//	ft_textures_data(args);
 }
 
 void	ft_parse_empty_line(t_read *args)
