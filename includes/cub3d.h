@@ -6,7 +6,7 @@
 /*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/28 11:45:01 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/29 02:51:16 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -276,6 +276,8 @@ void				ft_parse_empty_line(t_read *args);
 void				ft_destroy_images(t_read *args);
 void				ft_init2(t_read *args);
 void				ft_compare(t_read *args);
-int    ft_loop(t_read *args);
+int					ft_loop(t_read *args);
+void				ft_dblswap(double *a, double *b);
+void				ft_swap(int *a, int *b);
 
 #endif

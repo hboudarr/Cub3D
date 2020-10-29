@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:15:28 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/27 13:51:49 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/29 02:45:17 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int		ft_analyse_str(t_read *args)
 		ft_exit3(args, args->s, 8);	
 	while (args->s[i])
 	{
+		if (args->s[i] == ' ')
+			args->s[i] = '0';
 		if (args->s[i] == 'N' || args->s[i] == 'S' ||
 		args->s[i] == 'E' || args->s[i] == 'W')
 		{

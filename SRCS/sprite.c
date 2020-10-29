@@ -3,32 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sprite.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:55:14 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/28 15:29:33 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/29 02:51:50 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	ft_swap(int *a, int *b)
-{
-	int	t;
-
-	t = *a;
-	*a = *b;
-	*b = t;
-}
-
-void	ft_dblswap(double *a, double *b)
-{
-	double	t;
-
-	t = *a;
-	*a = *b;
-	*b = t;
-}
 
 void	ft_sort(int *order, double *dist, int num)
 {
@@ -92,15 +74,10 @@ void	ft_order_sprite(t_read *args)
 			(args->posy - args->tab_sprite[i].y));
 		i++;
 	}
-//	ft_sort(args->sp_order, args->sp_dist, args->nbsp);
-	//ft_raysprite(args);
 }
 
 void	ft_sprite(t_read *args)
 {
-/*	if (!(args->tab_sprite = malloc(sizeof(t_sprite) * args->nbsp)))
-		ft_exit4(args, 1);
-	ft_place_sprites(args);*/
 	if (!(args->tab_sprite = malloc(sizeof(t_sprite) * args->nbsp)))
 		ft_exit4(args, 1);
 	if (!(args->sp_order = malloc(sizeof(int) * args->nbsp)))
@@ -110,5 +87,4 @@ void	ft_sprite(t_read *args)
 	ft_order_sprite(args);
 	ft_sort(args->sp_order, args->sp_dist, args->nbsp);
 	ft_place_sprites(args);
-//	ft_raysprite(args);
 }

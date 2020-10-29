@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compare.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 14:50:00 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/26 14:55:34 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/29 02:50:36 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,22 @@ void	ft_compare(t_read *args)
 		return (ft_exit3(args, args->s, 5));
 	if (ft_strcmp(args->ea, args->sp))
 		return (ft_exit3(args, args->s, 5));
+}
+
+void	ft_swap(int *a, int *b)
+{
+	int	t;
+
+	t = *a;
+	*a = *b;
+	*b = t;
+}
+
+void	ft_dblswap(double *a, double *b)
+{
+	double	t;
+
+	t = *a;
+	*a = *b;
+	*b = t;
 }
