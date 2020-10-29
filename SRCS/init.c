@@ -6,7 +6,7 @@
 /*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:15:28 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/29 02:45:17 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/29 14:17:14 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int		ft_analyse_str(t_read *args)
 
 	i = 0;
 	if (ft_check_alphanum(args->s, "NSEW102 ") == 0)
-		ft_exit3(args, args->s, 8);	
+		ft_exit3(args, args->s, 8);
 	while (args->s[i])
 	{
 		if (args->s[i] == ' ')

@@ -6,7 +6,7 @@
 /*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:17:21 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/27 18:38:11 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/29 14:21:40 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,17 +90,4 @@ void	ft_exit4(t_read *args, int nb)
 		ft_free_args(args);
 		exit(1);
 	}
-}
-
-void	ft_exit5(t_read *args, char *str, int nb)
-{
-	ft_error(nb);
-	write(1, "program stopped\n", 16);
-	free(str);
-	get_next_line(args->fd, &str, 1);
-	close(args->fd);
-	ft_free_split(args->split);
-	ft_free_map(args, args->mapdup);
-	ft_free_args(args);
-	exit(1);
 }

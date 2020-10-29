@@ -6,7 +6,7 @@
 /*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 14:50:00 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/29 02:50:36 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/29 14:21:46 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,17 @@ void	ft_dblswap(double *a, double *b)
 	t = *a;
 	*a = *b;
 	*b = t;
+}
+
+void	ft_exit5(t_read *args, char *str, int nb)
+{
+	ft_error(nb);
+	write(1, "program stopped\n", 16);
+	free(str);
+	get_next_line(args->fd, &str, 1);
+	close(args->fd);
+	ft_free_split(args->split);
+	ft_free_map(args, args->mapdup);
+	ft_free_args(args);
+	exit(1);
 }

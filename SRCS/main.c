@@ -6,7 +6,7 @@
 /*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:07:45 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/28 12:35:01 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/29 14:17:38 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	ft_main2(t_read *args)
 	if (!(args->addr = mlx_get_data_addr(args->img, &args->bits_per_pixel,
 	&args->line_length, &args->endian)))
 		ft_exit1(args);
+	ft_textures_data(args);
 }
 
 void	ft_parse_empty_line(t_read *args)
@@ -97,7 +98,7 @@ int		main(int ac, char **av)
 		ft_read(args);
 		ft_compare(args);
 		ft_parse_empty_line(args);
-		ft_read_second_part(args); 
+		ft_read_second_part(args);
 		ft_main2(args);
 		ft_cub3d(args, ac);
 	}
