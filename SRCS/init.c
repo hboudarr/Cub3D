@@ -6,7 +6,7 @@
 /*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:15:28 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/31 10:50:40 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/31 13:33:13 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,16 @@ void	ft_move_fwd(t_read *args)
 	if (args->fwd == 1)
 	{
 		if (args->map[(int)(args->posy)][(int)(args->posx + args->dirx
-			* 0.15)] == '0')
+			* 0.15)] == '0' || args->map[(int)(args->posy)]
+			[(int)(args->posx + args->dirx
+			* 0.15)] == '2' || (args->map[(int)(args->posy)]
+			[(int)(args->posx + args->dirx
+			* 0.15)] == '1'))
 			args->posx += args->dirx * 0.15;
 		if (args->map[(int)(args->posy + args->diry * 0.15)]
-		[(int)(args->posx)] == '0')
+		[(int)(args->posx)] == '0' || (args->map[(int)
+		(args->posy + args->diry * 0.15)]
+		[(int)(args->posx)] == '2'))
 			args->posy += args->diry * 0.15;
 	}
 }

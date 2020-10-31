@@ -6,7 +6,7 @@
 /*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:55:14 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/31 13:04:39 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/31 13:13:53 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_order_sprite(t_read *args)
 	while (i < args->nbsp)
 	{
 		args->sp_order[i] = i;
-		args->sp_dist[i] = sqrt((args->posx - args->tab_sprite[i].x) *
+		args->sp_dist[i] = ((args->posx - args->tab_sprite[i].x) *
 			(args->posx - args->tab_sprite[i].x) +
 			(args->posy - args->tab_sprite[i].y) *
 			(args->posy - args->tab_sprite[i].y));

@@ -6,7 +6,7 @@
 /*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:04:46 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/28 12:23:19 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/31 13:34:34 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@ void	ft_move_bwd(t_read *args)
 	if (args->bwd == 1)
 	{
 		if (args->map[(int)(args->posy)][(int)(args->posx -
-		args->dirx * MOVESPEED)] == '0')
+		args->dirx * MOVESPEED)] == '0' ||
+		(args->map[(int)(args->posy)][(int)(args->posx -
+		args->dirx * MOVESPEED)] == '2'))
 			args->posx -= args->dirx * MOVESPEED;
 		if (args->map[(int)(args->posy - args->diry * MOVESPEED)]
-		[(int)(args->posx)] == '0')
+		[(int)(args->posx)] == '0' || (args->map[(int)
+		(args->posy - args->diry * MOVESPEED)]
+		[(int)(args->posx)] == '2'))
 			args->posy -= args->diry * MOVESPEED;
 	}
 }
@@ -30,10 +34,14 @@ void	ft_move_left(t_read *args)
 	if (args->left == 1)
 	{
 		if (args->map[(int)(args->posy - args->dirx * MOVESPEED)]
-		[(int)(args->posx)] == '0')
+		[(int)(args->posx)] == '0' || (args->map
+		[(int)(args->posy - args->dirx * MOVESPEED)]
+		[(int)(args->posx)] == '2'))
 			args->posy += -args->dirx * MOVESPEED;
 		if (args->map[(int)(args->posy)][(int)(args->posx + args->diry *
-		MOVESPEED)] == '0')
+		MOVESPEED)] == '0' || (args->map[(int)(args->posy)]
+		[(int)(args->posx + args->diry *
+		MOVESPEED)] == '2'))
 			args->posx += args->diry * MOVESPEED;
 	}
 }
@@ -43,10 +51,14 @@ void	ft_move_right(t_read *args)
 	if (args->right == 1)
 	{
 		if (args->map[(int)(args->posy + args->dirx * MOVESPEED)]
-		[(int)(args->posx)] == '0')
+		[(int)(args->posx)] == '0' || (args->map[(int)
+		(args->posy + args->dirx * MOVESPEED)]
+		[(int)(args->posx)] == '2'))
 			args->posy -= -args->dirx * MOVESPEED;
 		if (args->map[(int)(args->posy)][(int)(args->posx - args->diry *
-		MOVESPEED)] == '0')
+		MOVESPEED)] == '0' || (args->map[(int)(args->posy)]
+		[(int)(args->posx - args->diry *
+		MOVESPEED)] == '2'))
 			args->posx -= args->diry * MOVESPEED;
 	}
 }
