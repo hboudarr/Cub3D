@@ -6,7 +6,7 @@
 /*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:55:14 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/31 12:58:55 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/31 13:04:39 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_place_sprites(t_read *args)
 	nb = 0;
 	i = 0;
 	j = 0;
-	while ( i < args->y)
+	while (i < args->y)
 	{
 		while (args->map[i][j] && nb < args->nbsp)
 		{
