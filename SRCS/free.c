@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:19:20 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/27 10:42:04 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/31 10:53:40 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	ft_free_args2(t_read *args)
 		mlx_destroy_window(args->mlx_ptr, args->win_ptr);
 	if (args->mlx_ptr != NULL)
 		mlx_destroy_display(args->mlx_ptr);
+	if (args->mlx_ptr != NULL)
+		free(args->mlx_ptr);
 	free(args);
 }
 

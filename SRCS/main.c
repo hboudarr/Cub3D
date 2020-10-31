@@ -6,7 +6,7 @@
 /*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:07:45 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/29 14:17:38 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/30 20:40:04 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int		main(int ac, char **av)
 		ft_compare(args);
 		ft_parse_empty_line(args);
 		ft_read_second_part(args);
+		close(args->fd);
 		ft_main2(args);
 		ft_cub3d(args, ac);
 	}

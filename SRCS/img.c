@@ -6,7 +6,7 @@
 /*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:09:16 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/29 14:15:57 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/31 10:39:32 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,17 @@ int		ft_loop(t_read *args)
 	ft_raycasting(args);
 	mlx_put_image_to_window(args->mlx_ptr, args->win_ptr, args->img, 0, 0);
 	return (1);
+}
+
+void	ft_exit6(t_read *args, char *str, int nb)
+{
+	args->y = args->y - 1;
+	ft_error(nb);
+	write(1, "program stopped\n", 16);
+	free(str);
+	get_next_line(args->fd, &str, 1);
+	close(args->fd);
+	ft_free_map(args, args->mapdup);
+	ft_free_args(args);
+	exit(1);
 }

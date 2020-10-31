@@ -6,7 +6,7 @@
 /*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:55:14 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/29 02:51:50 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/29 22:36:45 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	ft_sort(int *order, double *dist, int num)
 
 	i = 0;
 	j = 1;
-	while (i < num)
+	while (num && i < num)
 	{
-		while (j < num)
+		while (num && j < num)
 		{
 			if (dist[j] < dist[i])
 			{

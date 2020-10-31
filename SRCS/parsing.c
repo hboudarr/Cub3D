@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboudarr <hboudarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:17:18 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/23 16:45:36 by hboudarr         ###   ########.fr       */
+/*   Updated: 2020/10/31 10:49:57 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,10 @@ void	ft_check_resolution(int i, int j, t_read *args)
 		ft_exit3(args, args->s, 0);
 	if (j < 0 || j > 2570)
 		ft_exit3(args, args->s, 0);
+}
+
+void	ft_norme(t_read *args)
+{
+	if (args->count > 1)
+		ft_exit3(args, args->s, 8);
 }

@@ -6,7 +6,7 @@
 /*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:15:28 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/29 14:17:14 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/31 10:50:40 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_init(t_read *args)
 	ft_bzero(args->sprite, sizeof(t_textures));
 	args->sprite->tex_ptr = NULL;
 	args->sprite->tex_data = NULL;
+	args->orient = 0;
 	ft_init2(args);
 }
 
@@ -77,11 +78,12 @@ void	ft_check_line(char *str, t_read *args)
 		ft_exit3(args, str, 8);
 }
 
-int		ft_analyse_str(t_read *args)
+void	ft_analyse_str(t_read *args)
 {
 	int i;
 
 	i = 0;
+	args->count = 0;
 	if (ft_check_alphanum(args->s, "NSEW102 ") == 0)
 		ft_exit3(args, args->s, 8);
 	while (args->s[i])
@@ -96,12 +98,11 @@ int		ft_analyse_str(t_read *args)
 			args->count += 1;
 			ft_orient(args, args->s[i]);
 			args->s[i] = '0';
+			args->orient += 1;
 		}
 		if (args->s[i] == '2')
 			args->nbsp += 1;
 		i++;
 	}
-	if (args->count > 1)
-		ft_exit3(args, args->s, 1);
-	return (1);
+	ft_norme(args);
 }

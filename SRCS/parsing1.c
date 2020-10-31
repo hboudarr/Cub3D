@@ -6,7 +6,7 @@
 /*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 10:55:20 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/28 11:21:21 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/30 20:39:57 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +124,10 @@ void	ft_read_second_part(t_read *args)
 			ft_make_map(args);
 		}
 	}
+	if (args->orient != 1)
+		ft_exit6(args, args->s, 8);
 	i = ft_flood_fill(args->mapdup, args->posx, args->posy, args->y);
 	if (i == 0)
-		ft_exit3(args, args->s, 8);
+		ft_exit6(args, args->s, 8);
 	ft_free_map(args, args->mapdup);
-	close(args->fd);
 }

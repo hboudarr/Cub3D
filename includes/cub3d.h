@@ -6,7 +6,7 @@
 /*   By: halimbdr <halimbdr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:25:11 by hboudarr          #+#    #+#             */
-/*   Updated: 2020/10/29 02:51:16 by halimbdr         ###   ########.fr       */
+/*   Updated: 2020/10/31 10:47:59 by halimbdr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,7 @@ typedef	struct		s_read{
 	double			*zbuffer;
 	int				mapwidth;
 	int				fd;
+	int				orient;
 }					t_read;
 
 void				ft_init(t_read *args);
@@ -212,7 +213,7 @@ void				ft_main2(t_read *args);
 void				ft_make_range(t_read *args);
 void				ft_make_map(t_read *args);
 int					ft_flood_fill(char **map, int x, int y, int max);
-int					ft_analyse_str(t_read *args);
+void				ft_analyse_str(t_read *args);
 void				ft_read_second_part(t_read *args);
 int					ft_check_alphanum(char *str, char *letter);
 void				ft_orient(t_read *args, char c);
@@ -268,6 +269,7 @@ void				ft_exit2(void);
 void				ft_exit3(t_read *args, char *str, int nb);
 void				ft_exit4(t_read *args, int nb);
 void				ft_exit5(t_read *args, char *str, int nb);
+void				ft_exit6(t_read *args, char *str, int nb);
 void				ft_free_args(t_read *args);
 void				ft_free_args2(t_read *args);
 int					ft_deal_exit(t_read *args);
@@ -279,5 +281,6 @@ void				ft_compare(t_read *args);
 int					ft_loop(t_read *args);
 void				ft_dblswap(double *a, double *b);
 void				ft_swap(int *a, int *b);
+void				ft_norme(t_read *args);
 
 #endif
