@@ -30,8 +30,8 @@ void	ft_free_args2(t_read *args)
 		mlx_destroy_image(args->mlx_ptr, args->img);
 	if (args->win_ptr != NULL)
 		mlx_destroy_window(args->mlx_ptr, args->win_ptr);
-	if (args->mlx_ptr != NULL)
-		mlx_destroy_display(args->mlx_ptr);
+//	if (args->mlx_ptr != NULL)
+//		mlx_destroy_display(args->mlx_ptr);
 	if (args->mlx_ptr != NULL)
 		free(args->mlx_ptr);
 	free(args);
